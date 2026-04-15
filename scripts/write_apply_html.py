@@ -205,7 +205,7 @@ def main() -> None:
         "\uc544\ub798 \uc591\uc2dd\uc744 \uc791\uc131\ud574 \uc8fc\uc2dc\uba74 \uc2e0\uccad \uc21c\uc73c\ub85c \uc5f0\ub77d\ub4dc\ub9bd\ub2c8\ub2e4. ",
         "\u0031\uae30\ub294 2026\ub144 5\uc6d4 4\uc77c(\uc6d4) \uc2dc\uc791 \uc608\uc815\uc774\uba70, \ud22c\uc790 \uc548\ub0b4\ub294 \uc18c\uac1c \ud398\uc774\uc9c0\uc640 \ub3d9\uc77c\ud569\ub2c8\ub2e4.",
         '</p>\n\n',
-        '      <form action="https://formsubmit.co/imhen97@gmail.com" method="POST">\n',
+        '      <form action="https://formsubmit.co/5cfd2fc4981310af349ed00e7916c485" method="POST">\n',
         '        <input type="hidden" name="_subject" value="[AI Inner Circle] ',
         "\u0031\uae30 \ucc38\uac00 \uc2e0\uccad",
         '">\n',
