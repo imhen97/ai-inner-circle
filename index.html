@@ -837,6 +837,19 @@
     margin-bottom: 0.4rem;
     letter-spacing: -0.01em;
   }
+  .stat-strike {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: rgba(240,236,228,0.38);
+    text-decoration: line-through;
+    text-decoration-color: rgba(255,85,85,0.65);
+    text-decoration-thickness: 1.5px;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.01em;
+  }
 
   .stat-label {
     font-family: 'DM Mono', monospace;
@@ -1989,16 +2002,17 @@
 
   .btn-primary-lg {
     background: var(--gold);
-    color: var(--black);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
+    color: #000;
+    font-family: 'Noto Sans KR', 'Pretendard', 'DM Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     padding: 1.3rem 3rem;
     border: none;
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
+    text-align: center;
     width: 100%;
     transition: all 0.3s ease;
     position: relative;
@@ -2832,8 +2846,9 @@
         <span class="stat-label">첫 특가 정원</span>
       </div>
       <div class="stat">
+        <span class="stat-strike">149만</span>
         <span class="stat-num">129만</span>
-        <span class="stat-label">월 투자금액</span>
+        <span class="stat-label">첫 10인 특가</span>
       </div>
     </div>
     <div class="scroll-hint">Scroll</div>
@@ -2889,7 +2904,7 @@
     </div>
     <div class="diff-pair">
       <p class="diff-them"><strong>129만원</strong>은 수업료가 아닙니다.</p>
-      <p class="diff-us"><em>1억, 10억의 가치 창출</em>을 위한 투자금입니다.</p>
+      <p class="diff-us"><em>1억, 10억 그 이상의 가치 창출</em>을 위한 투자금입니다.</p>
     </div>
   </div>
 </section>
@@ -3128,10 +3143,6 @@
     <p class="pricing-sub">첫 10인 129만원 → 다음 10인 149만원 → 2기부터 30% 이상 추가 인상됩니다.</p>
 
     <div class="price-card">
-      <div class="price-members">
-        <div class="pm-label">첫 번째 멤버</div>
-        <div class="pm-list">김정률 대표님 — 법무법인 혜움 대표 · BNI 영등포 섹터 의장</div>
-      </div>
       <div class="price-badge">첫 10인 한정 특가 · The AI Inner Circle</div>
       <div class="price-amount">129<span style="font-size:2rem;">만원</span></div>
       <div class="price-raise">첫 10인 마감 시 149만원 · 2기 30% 이상 추가 인상</div>
