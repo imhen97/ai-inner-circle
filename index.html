@@ -2190,6 +2190,41 @@
     font-size: 0.9rem;
     font-style: italic;
   }
+  .mc-firm {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.68em;
+    color: rgba(201,169,110,0.9);
+    letter-spacing: 0.01em;
+    margin-bottom: 0.2rem;
+    line-height: 1.2;
+  }
+  .mc-goal {
+    margin-top: 0.7rem;
+    padding-top: 0.7rem;
+    border-top: 1px dashed rgba(201,169,110,0.25);
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(240,236,228,0.78);
+    line-height: 1.55;
+    letter-spacing: -0.005em;
+  }
+  .mc-goal-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.56rem;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-right: 0.5rem;
+  }
+  .mc-goal strong {
+    color: var(--gold);
+    font-weight: 700;
+  }
   .mc-desc {
     font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
     font-size: 0.8rem;
@@ -2325,6 +2360,8 @@
 
   .instructor-img-placeholder {
     aspect-ratio: 3/4;
+    max-width: 340px;
+    margin: 0 auto;
     background: rgba(201,169,110,0.05);
     border: 1px solid rgba(201,169,110,0.15);
     display: flex;
@@ -2366,23 +2403,33 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 1.5rem;
-    background: linear-gradient(to top, rgba(8,8,8,0.9), transparent);
+    z-index: 3;
+    padding: 1.4rem 1.2rem;
+    background: linear-gradient(to top, rgba(8,8,8,0.95), rgba(8,8,8,0.3) 70%, transparent);
   }
-
-  .instructor-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: var(--off-white);
-  }
-
-  .instructor-role {
+  .instructor-company {
     font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
     color: var(--gold);
     text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+  .instructor-name {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+  .instructor-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: rgba(201,169,110,0.8);
   }
 
   .instructor-heading {
@@ -3109,8 +3156,9 @@
       <div class="instructor-img-placeholder">
         <img class="instructor-photo" src="assets/haena.jpg" alt="김해나 · AI Inner Circle Founding Director">
         <div class="instructor-name-tag">
+          <div class="instructor-company">ENGZ 대표</div>
           <div class="instructor-name">김해나</div>
-          <div class="instructor-role">AI Inner Circle 디렉터</div>
+          <div class="instructor-role">Inner Circle Director</div>
         </div>
       </div>
     </div>
@@ -3158,8 +3206,9 @@
       <div class="mc-rank">01</div>
       <div class="mc-body">
         <div class="mc-ordinal">첫 번째 멤버</div>
-        <h3 class="mc-name">법무법인 혜움 김정률 대표님</h3>
+        <h3 class="mc-name"><span class="mc-firm">법무법인 혜움</span>김정률 대표님</h3>
         <p class="mc-desc">만 <strong>21세 최연소</strong> 세무사 합격 · 계약 거래처 <strong>500+</strong> · <strong>BNI 영등포 섹터 의장</strong></p>
+        <p class="mc-goal"><span class="mc-goal-label">참가 목표</span>AI 자동화 시스템을 적용해 <strong>매출 50%+ 달성</strong></p>
       </div>
     </article>
     <div class="members-status">
