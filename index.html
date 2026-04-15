@@ -1593,6 +1593,23 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  .diff-note {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: clamp(0.82rem, 1.15vw, 0.95rem);
+    font-weight: 400;
+    color: rgba(240,236,228,0.55);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    margin-top: 0.65rem;
+    padding-left: 2.2rem;
+  }
+  .diff-note strong {
+    color: rgba(201,169,110,0.9);
+    font-weight: 700;
+  }
+  @media (max-width: 640px) {
+    .diff-note { padding-left: 1.6rem; font-size: 0.8rem; margin-top: 0.5rem; }
+  }
 
   @media (max-width: 640px) {
     .differentiation { padding-top: 4rem; padding-bottom: 4rem; }
@@ -3022,6 +3039,7 @@
     <div class="diff-pair">
       <p class="diff-them">그들은 <strong>누구나</strong> 받습니다.</p>
       <p class="diff-us">우리는 <em>엄선된 20인</em>만 선발합니다.</p>
+      <p class="diff-note">같은 전문직종 <strong>최대 3인</strong>까지만 받아 섹터 다양성을 보장합니다.</p>
     </div>
     <div class="diff-pair">
       <p class="diff-them">그들의 수업은 <strong>이론</strong>에서 끝납니다.</p>
