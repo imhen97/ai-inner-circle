@@ -130,10 +130,10 @@
   }
 
   .cd-ms {
-    font-size: 0.52em;
-    opacity: 0.75;
-    letter-spacing: 0;
-    margin-left: 0.15em;
+    font-size: 1em;
+    opacity: 0.95;
+    letter-spacing: 0.02em;
+    margin-left: 0.05em;
   }
 
   .cd-lbl {
@@ -1316,7 +1316,7 @@
 <section class="video-intro" id="video-intro">
   <div class="video-intro-overlay"></div>
   <div class="video-intro-content">
-    <div class="video-warning-badge">⚠ 2030년까지 남은 시간</div>
+    <div class="video-warning-badge">⚠ 2029년까지 남은 시간</div>
     <div class="countdown" id="countdown" aria-live="polite">
       <div class="cd-unit"><div class="cd-num" id="cd-y">--</div><div class="cd-lbl">Years</div></div>
       <div class="cd-sep">:</div>
@@ -1330,7 +1330,7 @@
       <div class="cd-sep">:</div>
       <div class="cd-unit cd-sec"><div class="cd-num"><span id="cd-s">--</span><span class="cd-ms">.<span id="cd-ms">00</span></span></div><div class="cd-lbl">Seconds</div></div>
     </div>
-    <h2 class="video-intro-title">AI와 인간의 경계가<br><em>허물어지는 2030년</em><br>특이점이 도래합니다.</h2>
+    <h2 class="video-intro-title">AI가 인간을 추월하는<br><em>2029년,</em><br>특이점이 곧 도래합니다.</h2>
     <p class="video-intro-sub">Google 엔지니어링 디렉터 레이 커즈와일이 경고합니다.<br>지금 이 영상을 보고 판단하십시오.</p>
     <div class="video-wrap">
       <iframe
@@ -1750,9 +1750,9 @@
 
   revealEls.forEach(el => observer.observe(el));
 
-  // Countdown to 2030-01-01 (KST) — with centiseconds
+  // Countdown to 2029-01-01 (KST) — with centiseconds
   (function () {
-    const target = new Date('2030-01-01T00:00:00+09:00');
+    const target = new Date('2029-01-01T00:00:00+09:00');
     const pad = (n) => String(n).padStart(2, '0');
     const el = {
       y: document.getElementById('cd-y'),
