@@ -1146,10 +1146,12 @@
   /* INVITATION GATE (봉인→편지) */
   .invitation.gate {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5rem 2rem;
+    box-sizing: border-box;
+    padding: calc(env(safe-area-inset-top, 0px) + 6.75rem) 2rem 5.75rem;
   }
   .invitation.gate.opened {
     align-items: flex-start;
@@ -1158,6 +1160,7 @@
   /* Before full unlock: trap scroll inside invitation so content below does not show */
   body.gate-locked:not(.gate-scrollable) .invitation.gate.opened {
     max-height: 100vh;
+    max-height: 100dvh;
     overflow-y: auto;
     overflow-x: hidden;
     overscroll-behavior: contain;
@@ -1172,7 +1175,7 @@
   .gate-seal {
     max-width: 520px;
     margin: 0 auto;
-    padding: 3.2rem 2.2rem;
+    padding: 3.45rem 2.2rem 3.35rem;
     text-align: center;
     border: 1px solid rgba(201,169,110,0.32);
     background: linear-gradient(180deg, rgba(201,169,110,0.05), rgba(8,8,8,0.55));
@@ -1372,8 +1375,8 @@
 
   .gate-more-wrap {
     text-align: center;
-    margin-top: 1.5rem;
-    padding-bottom: 0.25rem;
+    margin-top: 2.4rem;
+    padding-bottom: 1rem;
   }
   .gate-more {
     display: inline-flex;
@@ -1407,7 +1410,7 @@
   .gate-members-card {
     margin: 0 auto;
     max-width: 420px;
-    padding: 1.15rem 1.25rem 1.25rem;
+    padding: 1.35rem 1.35rem 2rem;
     border: 1px solid rgba(201,169,110,0.45);
     background: linear-gradient(165deg, rgba(201,169,110,0.12), rgba(8,8,8,0.55));
     box-shadow: 0 18px 48px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
@@ -1483,7 +1486,7 @@
     font-size: 0.72rem;
     line-height: 1.55;
     color: rgba(240,236,228,0.62);
-    margin: 0;
+    margin: 0.35rem 0 0;
     letter-spacing: -0.01em;
   }
   .gmp-desc strong {
@@ -3312,9 +3315,11 @@
 
   /* MOBILE — 임팩트 우선 최적화 */
   @media (max-width: 640px) {
-    /* Gate seal */
-    .invitation.gate { padding: 3.5rem 1.2rem; }
-    .gate-seal { padding: 2.65rem 1.5rem; max-width: 100%; }
+    /* Gate seal — 모바일 topbar·safe-area 여유 */
+    .invitation.gate {
+      padding: calc(env(safe-area-inset-top, 0px) + 7rem) 1.2rem 4.5rem;
+    }
+    .gate-seal { padding: 2.85rem 1.5rem 2.75rem; max-width: 100%; }
     .seal-badge { font-size: 0.7rem; letter-spacing: 0.22em; }
     .seal-number { font-size: 0.64rem; letter-spacing: 0.18em; }
     .seal-brand { font-size: clamp(2rem, 8.2vw, 2.45rem); line-height: 1.18; }
@@ -3330,7 +3335,7 @@
     .seal-footer { font-size: 0.58rem; letter-spacing: 0.16em; margin-top: 1.6rem; }
 
     /* Gate letter */
-    .gate-letter { padding: 0 0.2rem; }
+    .gate-letter { padding: 0.35rem 0.2rem 0; }
     .invitation-header {
       flex-direction: row;
       justify-content: space-between;
@@ -3345,8 +3350,9 @@
     .gate-enter { font-size: 0.62rem; letter-spacing: 0.2em; padding: 0.9rem 1.4rem; }
     .gate.show-members .gate-members-panel { max-height: 1200px; }
     .gate-members-kicker { font-size: clamp(1.12rem, 4.2vw, 1.38rem); margin-bottom: 1rem; }
-    .gate-members-card { margin-top: 0; padding: 1rem 1rem 1.1rem; max-width: none; }
+    .gate-members-card { margin-top: 0; padding: 1.2rem 1.15rem 1.95rem; max-width: none; }
     .gate-more { width: 100%; max-width: 100%; box-sizing: border-box; font-size: 0.84rem; }
+    .gate-more-wrap { margin-top: 2.1rem; padding-bottom: 1.25rem; }
     .gate-member-preview { gap: 0.65rem; }
     .gmp-rank { font-size: 1.4rem; }
     .gmp-name { font-size: 0.88rem; }
