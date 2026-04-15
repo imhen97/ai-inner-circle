@@ -3,7 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The AI Inner Circle</title>
+<title>The AI Inner Circle · 1기 선발 초대장</title>
+<meta name="description" content="2029년, AI가 인간을 대체합니다. 코딩 없이 4주 안에, AI로 '대체하는 쪽'에 설 20인 — The AI Inner Circle 1기 선발 초대장.">
+<meta name="theme-color" content="#080808">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="The AI Inner Circle · 1기 선발 초대장">
+<meta property="og:description" content="2029년, AI가 인간을 대체합니다. 코딩 없이 4주 안에, AI로 '대체하는 쪽'에 설 20인 — 선발 초대장.">
+<meta property="og:image" content="https://imhen97.github.io/ai-inner-circle/assets/kurzweil.png">
+<meta property="og:url" content="https://imhen97.github.io/ai-inner-circle/">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Sans+KR:wght@500;700;900&family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -1133,6 +1144,60 @@
   .enter-arrow { transition: transform 0.3s ease; display: inline-block; }
   .gate-enter:hover .enter-arrow { transform: translateY(3px); }
 
+  /* PERSONAL FEAR (개인화 공포) */
+  .personal-fear {
+    padding: 9rem 2rem;
+    text-align: center;
+    background: #050505;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(201,169,110,0.12);
+    border-bottom: 1px solid rgba(201,169,110,0.12);
+  }
+  .personal-fear::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(255,68,68,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .personal-fear-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .personal-fear-title {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: clamp(1.7rem, 3.8vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.4;
+    color: rgba(240,236,228,0.5);
+    letter-spacing: -0.025em;
+    margin-bottom: 1.8rem;
+  }
+  .personal-fear-punch {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: clamp(2rem, 4.8vw, 3.6rem);
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: -0.035em;
+    color: #fff;
+  }
+  .personal-fear-punch em {
+    font-style: normal;
+    color: var(--gold);
+    background: linear-gradient(180deg, var(--gold-light), var(--gold) 55%, var(--gold-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  @media (max-width: 640px) {
+    .personal-fear { padding: 5rem 1.5rem; }
+    .personal-fear-title { font-size: clamp(1.35rem, 6.5vw, 1.9rem); margin-bottom: 1.3rem; }
+    .personal-fear-punch { font-size: clamp(1.55rem, 8vw, 2.4rem); }
+  }
+
   /* INVITATION (선발 포지셔닝) */
   .invitation {
     position: relative;
@@ -2032,7 +2097,7 @@
   }
 
   .faq-a.open {
-    max-height: 200px;
+    max-height: 800px;
     padding-bottom: 1.5rem;
   }
 
@@ -2353,7 +2418,7 @@
       <div class="cd-sep">:</div>
       <div class="cd-unit"><div class="cd-num" id="cd-mi">--</div><div class="cd-lbl">분</div></div>
       <div class="cd-sep">:</div>
-      <div class="cd-unit cd-sec"><div class="cd-num"><span id="cd-s">--</span><span class="cd-ms">:<span id="cd-ms">00</span></span></div><div class="cd-lbl">초</div></div>
+      <div class="cd-unit cd-sec"><div class="cd-num"><span id="cd-s">--</span><span class="cd-ms">:<span id="cd-cs">00</span></span></div><div class="cd-lbl">초</div></div>
     </div>
     <h2 class="video-intro-title">우리가 아는 모든 일자리는<br><em>2029년, 사라집니다.</em></h2>
     <div class="video-wrap">
@@ -2385,7 +2450,14 @@
   </div>
 </section>
 
-<!-- INVITATION (선발 포지셔닝) -->
+<!-- PERSONAL FEAR (개인화 공포) — 영상 뒤, 히어로 앞 -->
+<section class="personal-fear">
+  <div class="personal-fear-inner reveal">
+    <h2 class="personal-fear-title">AI는 당신의 직업을<br>빼앗지 않습니다.</h2>
+    <p class="personal-fear-punch"><em>AI를 쓰는 경쟁자가 빼앗습니다.</em></p>
+  </div>
+</section>
+
 <!-- HERO -->
 <section class="hero" id="hero-main">
   <div class="hero-watermark" aria-hidden="true">Inner Circle</div>
@@ -2775,11 +2847,11 @@
 <!-- FOOTER CTA -->
 <section class="footer-cta" id="apply">
   <h2 class="footer-cta-title reveal">
-    AI 시대의<br>
-    <em>Inner Circle</em>에<br>
-    합류하십시오.
+    대체당할 것인가,<br>
+    <em>대체하는 쪽</em>에<br>
+    설 것인가.
   </h2>
-  <p class="footer-cta-sub reveal">20인 한정. 마감되면 다음 기수를 기다려야 합니다.</p>
+  <p class="footer-cta-sub reveal">20인 한정 · 1기 특가 129만원 · 2기부터 30% 이상 인상</p>
   <div class="footer-cta-btn reveal">
     <a href="https://open.kakao.com/o/placeholder" class="btn-primary-lg" style="max-width:320px; margin:0 auto;"><span>지금 신청하기</span></a>
   </div>
@@ -2870,7 +2942,7 @@
       h: document.getElementById('cd-h'),
       mi: document.getElementById('cd-mi'),
       s: document.getElementById('cd-s'),
-      ms: document.getElementById('cd-ms'),
+      ms: document.getElementById('cd-cs'),
     };
     if (!el.y) return;
 
