@@ -1132,7 +1132,8 @@
     opacity: 0.82;
   }
   .sticky-cta:hover { filter: brightness(1.06); }
-  body.gate-intro .sticky-cta {
+  /* Hide sticky CTA while gate is locked (no overlap with seal button) */
+  body.gate-locked .sticky-cta {
     transform: translateY(110%);
     opacity: 0;
     pointer-events: none;
@@ -1221,7 +1222,14 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    /* Top padding clears fixed topbar */
     padding: calc(env(safe-area-inset-top, 0px) + 6.75rem) 2rem 5.75rem;
+  }
+  @media (max-width: 768px) {
+    body.gate-locked .invitation.gate {
+      padding-top: calc(env(safe-area-inset-top, 0px) + 8.75rem);
+      padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
+    }
   }
   .invitation.gate.opened {
     align-items: flex-start;
@@ -1353,6 +1361,10 @@
     transition: background 0.3s ease, color 0.3s ease;
     box-shadow: 0 0 0 0 rgba(201,169,110,0.4);
     animation: sealBtnPulse 2.6s ease infinite;
+    position: relative;
+    z-index: 2;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(201,169,110,0.35);
   }
   @keyframes sealBtnPulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,110,0.45); }
@@ -4069,7 +4081,7 @@
       <div class="seal-brand">The AI <em>Inner Circle</em></div>
       <div class="seal-sub">1st Cohort · Sealed Invitation</div>
       <div class="seal-wax" aria-hidden="true">✺</div>
-      <button class="seal-btn" type="button" id="gate-open">
+      <button class="seal-btn" type="button" id="gate-open" onclick="document.getElementById('invitation').classList.add('opened')">
         <span>초대장 열어보기</span>
         <span class="seal-btn-arrow">▼</span>
       </button>
