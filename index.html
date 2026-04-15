@@ -273,10 +273,10 @@
   .authority-lead {
     font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
     font-weight: 500;
-    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
-    color: rgba(240,236,228,0.85);
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    color: rgba(240,236,228,0.88);
     line-height: 1.75;
-    margin-bottom: 1.3rem;
+    margin-bottom: 1.4rem;
     letter-spacing: -0.01em;
   }
   .authority-lead em {
@@ -295,10 +295,10 @@
   .authority-body {
     font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
     font-weight: 700;
-    font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+    font-size: clamp(1.25rem, 2.1vw, 1.6rem);
     color: #fff;
-    line-height: 1.6;
-    margin-bottom: 1.6rem;
+    line-height: 1.55;
+    margin-bottom: 1.7rem;
     letter-spacing: -0.015em;
   }
   .authority-body em {
@@ -309,19 +309,19 @@
 
   .authority-cite {
     font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.24em;
-    color: rgba(201,169,110,0.8);
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    color: rgba(201,169,110,0.85);
     line-height: 1.95;
     text-transform: uppercase;
   }
   .authority-cite .cite-sub {
     display: block;
-    color: rgba(240,236,228,0.5);
-    font-size: 0.62rem;
-    letter-spacing: 0.14em;
+    color: rgba(240,236,228,0.58);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
     text-transform: none;
-    margin-top: 0.2rem;
+    margin-top: 0.3rem;
   }
 
   .video-intro-sub {
@@ -2338,7 +2338,20 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, transparent 40%, rgba(201,169,110,0.05) 100%);
+    background: linear-gradient(180deg, transparent 45%, rgba(8,8,8,0.55) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .instructor-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    filter: contrast(1.03) saturate(0.92);
+    z-index: 1;
   }
 
   .instructor-initials {
@@ -2660,11 +2673,11 @@
 
     /* Authority panel — 폰 크기 상향 */
     .authority-panel { padding: 2.2rem 0.7rem; margin-bottom: 2rem; }
-    .authority-lead { font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.2rem; }
-    .authority-lead em { font-size: 1.3em; }
-    .authority-body { font-size: 1.2rem; line-height: 1.55; margin-bottom: 1.4rem; }
-    .authority-cite { font-size: 0.6rem; letter-spacing: 0.16em; line-height: 1.9; }
-    .authority-cite .cite-sub { font-size: 0.56rem; letter-spacing: 0.08em; line-height: 1.7; margin-top: 0.3rem; }
+    .authority-lead { font-size: 1.2rem; line-height: 1.7; margin-bottom: 1.3rem; }
+    .authority-lead em { font-size: 1.35em; }
+    .authority-body { font-size: 1.35rem; line-height: 1.5; margin-bottom: 1.5rem; }
+    .authority-cite { font-size: 0.7rem; letter-spacing: 0.16em; line-height: 1.9; }
+    .authority-cite .cite-sub { font-size: 0.66rem; letter-spacing: 0.08em; line-height: 1.7; margin-top: 0.35rem; }
 
     /* Hero mobile */
     .hero { min-height: auto; }
@@ -2827,8 +2840,8 @@
 <!-- PERSONAL FEAR (개인화 공포) — 권위 뒤, 히어로 앞 -->
 <section class="personal-fear">
   <div class="personal-fear-inner reveal">
-    <h2 class="personal-fear-title">AI는 당신의 직업을<br>빼앗지 않습니다.</h2>
-    <p class="personal-fear-punch"><em>AI를 쓰는 경쟁자가 빼앗습니다.</em></p>
+    <h2 class="personal-fear-title">2029년은<br>먼 얘기가 아닙니다.</h2>
+    <p class="personal-fear-punch"><em>벌써 시작되고 있습니다.</em></p>
     <p class="personal-fear-secondary"><strong>동종업계 경쟁자</strong>는 지금도 <strong>AI를 활용해</strong><br><strong>당신의 파이를 빼앗고 있습니다.</strong></p>
   </div>
 </section>
@@ -3094,7 +3107,7 @@
   <div class="instructor-layout">
     <div class="reveal">
       <div class="instructor-img-placeholder">
-        <span class="instructor-initials">HN</span>
+        <img class="instructor-photo" src="assets/haena.jpg" alt="김해나 · AI Inner Circle Founding Director">
         <div class="instructor-name-tag">
           <div class="instructor-name">김해나</div>
           <div class="instructor-role">AI Inner Circle 디렉터</div>
@@ -3104,9 +3117,8 @@
     <div class="reveal">
       <div class="section-label">디렉터 소개</div>
       <h2 class="instructor-heading">
-        비개발자인 제가<br>
-        직접 만들고<br>
-        직접 <em>증명했습니다.</em>
+        비개발자인 저는 AI를 활용해,<br>
+        2년 만에 매출을 <em>5배로 끌어올렸습니다.</em>
       </h2>
       <p class="instructor-body">
         8년간 영어회화·IELTS 전문 강사로 활동하면서, AI 자동화로 내 사업 전체를 재구성했습니다. 수강생 모집 자동화봇, AI 수강생 개인 맞춤형 교재 생성 시스템, 수업 관리 플랫폼 Engz — 모두 AI만 활용하여 직접 개발했습니다.
