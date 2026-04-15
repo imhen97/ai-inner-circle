@@ -972,12 +972,6 @@
     .topbar-logo { font-size: 0.6rem; letter-spacing: 0.2em; }
     .topbar-cta { padding: 0.5rem 0.9rem; font-size: 0.6rem; letter-spacing: 0.15em; }
 
-    /* Mobile: keep navigation and CTA visible even on gate screen */
-    body.gate-locked .topbar {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-      pointer-events: auto !important;
-    }
     body.gate-locked .sticky-cta {
       transform: translateY(0);
       opacity: 1;
@@ -3117,11 +3111,6 @@
       font-size: 1rem;
       font-weight: 900;
     }
-    body.gate-locked .topbar {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-      pointer-events: auto !important;
-    }
     body.gate-locked .sticky-cta {
       transform: translateY(0) !important;
       opacity: 1 !important;
@@ -3185,7 +3174,6 @@
     <a href="#pricing">수강료</a>
     <a href="#faq">Q&amp;A</a>
   </nav>
-  <a href="#apply" class="topbar-cta">입단신청</a>
 </header>
 
 <!-- INVITATION GATE — 첫 화면, 봉인→편지 2단 -->
