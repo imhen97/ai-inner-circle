@@ -3127,6 +3127,50 @@
       opacity: 1 !important;
       pointer-events: auto !important;
     }
+
+    /* Mobile typography polish: cleaner Korean line wrapping */
+    body {
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+      line-break: strict;
+    }
+    p, li {
+      line-height: 1.72;
+      letter-spacing: -0.01em;
+    }
+    .section-label,
+    .hero-eyebrow,
+    .hero-note,
+    .video-skip,
+    .topbar-menu a,
+    .topbar-logo,
+    .topbar-cta {
+      letter-spacing: 0.04em !important;
+    }
+
+    /* Avoid awkward forced line-breaks from desktop-only <br> usage */
+    .hero-title br,
+    .what-heading br,
+    .build-title br,
+    .curriculum-title br,
+    .for-whom-title br,
+    .instructor-heading br,
+    .members-title br,
+    .footer-cta-title br {
+      display: none;
+    }
+
+    /* Slightly tighten key text blocks for better rhythm */
+    .what-body,
+    .instructor-body,
+    .persona-text,
+    .price-include-item,
+    .faq-a p,
+    .build-sub {
+      font-size: 0.95rem;
+      line-height: 1.76;
+      letter-spacing: -0.012em;
+    }
   }
 </style>
 </head>
