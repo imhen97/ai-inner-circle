@@ -3125,8 +3125,10 @@
     }
     .btn-primary {
       padding: 1.1rem 1.8rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+      font-weight: 800;
       width: 100%;
       justify-content: center;
     }
@@ -3167,6 +3169,8 @@
       align-items: center;
       gap: 0.55rem 0.7rem;
       padding: 0.65rem 0.75rem;
+      z-index: 1300;
+      background: rgba(8,8,8,0.92);
     }
     .topbar-logo {
       font-size: 0.56rem;
@@ -3205,6 +3209,25 @@
     .hero::after { width: min(90vw, 520px); height: min(90vw, 520px); }
     .invitation::before { width: min(140vw, 760px); height: min(140vw, 760px); }
     .footer-cta::before { width: min(120vw, 520px); height: min(120vw, 520px); }
+
+    /* Ensure key nav/CTA stay visible on mobile */
+    .sticky-cta {
+      z-index: 1250;
+      bottom: env(safe-area-inset-bottom, 0);
+      padding-bottom: calc(0.95rem + (env(safe-area-inset-bottom, 0) * 0.35));
+      font-size: 1rem;
+      font-weight: 900;
+    }
+    body.gate-locked .topbar {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
+    }
+    body.gate-locked .sticky-cta {
+      transform: translateY(0) !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
   }
 </style>
 </head>
