@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The AI Inner Circle</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Sans+KR:wght@500;700;900&family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --black: #080808;
@@ -111,31 +111,29 @@
 
   .cd-unit {
     min-width: 78px;
-    padding: 0.9rem 0.6rem 0.7rem;
-    background: linear-gradient(180deg, rgba(255,68,68,0.06) 0%, rgba(255,68,68,0.02) 100%);
-    border: 1px solid rgba(255,68,68,0.3);
+    padding: 0.2rem 0.4rem;
     text-align: center;
     position: relative;
-    box-shadow: inset 0 0 20px rgba(255,68,68,0.05);
-  }
-
-  .cd-unit::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,68,68,0.6), transparent);
+    background: none;
+    border: none;
   }
 
   .cd-num {
     font-family: 'DM Mono', monospace;
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 500;
     color: #ff5555;
     line-height: 1;
     letter-spacing: 0.02em;
     text-shadow: 0 0 20px rgba(255,68,68,0.35);
     font-variant-numeric: tabular-nums;
+  }
+
+  .cd-ms {
+    font-size: 0.52em;
+    opacity: 0.75;
+    letter-spacing: 0;
+    margin-left: 0.15em;
   }
 
   .cd-lbl {
@@ -179,17 +177,24 @@
   }
 
   .video-intro-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 300;
-    line-height: 1.1;
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: -0.035em;
     margin-bottom: 1.5rem;
-    color: var(--off-white);
+    color: #fff;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.5);
   }
 
   .video-intro-title em {
-    font-style: italic;
+    font-style: normal;
+    font-weight: 900;
     color: var(--gold);
+    background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 55%, var(--gold-dark) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .video-intro-sub {
@@ -388,18 +393,20 @@
   }
 
   .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.8rem, 9vw, 8.5rem);
-    font-weight: 300;
-    line-height: 0.98;
-    letter-spacing: -0.025em;
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: clamp(3rem, 7.5vw, 6.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
     margin-bottom: 2rem;
     opacity: 0;
+    color: #fff;
     animation: fadeUp 0.8s ease forwards 0.4s;
   }
 
   .hero-title em {
-    font-style: italic;
+    font-style: normal;
+    font-weight: 900;
     color: var(--gold);
     position: relative;
     background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 55%, var(--gold-dark) 100%);
@@ -1321,7 +1328,7 @@
       <div class="cd-sep">:</div>
       <div class="cd-unit"><div class="cd-num" id="cd-mi">--</div><div class="cd-lbl">Minutes</div></div>
       <div class="cd-sep">:</div>
-      <div class="cd-unit cd-sec"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Seconds</div></div>
+      <div class="cd-unit cd-sec"><div class="cd-num"><span id="cd-s">--</span><span class="cd-ms">.<span id="cd-ms">00</span></span></div><div class="cd-lbl">Seconds</div></div>
     </div>
     <h2 class="video-intro-title">AI와 인간의 경계가<br><em>허물어지는 2030년</em><br>특이점이 도래합니다.</h2>
     <p class="video-intro-sub">Google 엔지니어링 디렉터 레이 커즈와일이 경고합니다.<br>지금 이 영상을 보고 판단하십시오.</p>
@@ -1743,7 +1750,7 @@
 
   revealEls.forEach(el => observer.observe(el));
 
-  // Countdown to 2030-01-01 (KST)
+  // Countdown to 2030-01-01 (KST) — with centiseconds
   (function () {
     const target = new Date('2030-01-01T00:00:00+09:00');
     const pad = (n) => String(n).padStart(2, '0');
@@ -1754,6 +1761,7 @@
       h: document.getElementById('cd-h'),
       mi: document.getElementById('cd-mi'),
       s: document.getElementById('cd-s'),
+      ms: document.getElementById('cd-ms'),
     };
     if (!el.y) return;
 
@@ -1762,6 +1770,7 @@
       if (now >= target) {
         el.y.textContent = el.mo.textContent = el.d.textContent = '00';
         el.h.textContent = el.mi.textContent = el.s.textContent = '00';
+        if (el.ms) el.ms.textContent = '00';
         return;
       }
       let y = target.getFullYear() - now.getFullYear();
@@ -1770,6 +1779,8 @@
       let h = target.getHours() - now.getHours();
       let mi = target.getMinutes() - now.getMinutes();
       let s = target.getSeconds() - now.getSeconds();
+      let ms = 999 - now.getMilliseconds();
+      if (ms < 0) { s--; ms += 1000; }
       if (s < 0) { mi--; s += 60; }
       if (mi < 0) { h--; mi += 60; }
       if (h < 0) { d--; h += 24; }
@@ -1785,9 +1796,15 @@
       el.h.textContent = pad(h);
       el.mi.textContent = pad(mi);
       el.s.textContent = pad(s);
+      if (el.ms) el.ms.textContent = pad(Math.floor(ms / 10));
     }
-    tick();
-    setInterval(tick, 1000);
+
+    let rafId;
+    function loop() {
+      tick();
+      rafId = requestAnimationFrame(loop);
+    }
+    loop();
   })();
 </script>
 </body>
