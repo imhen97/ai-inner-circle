@@ -934,6 +934,130 @@
     .topbar-cta { padding: 0.5rem 0.9rem; font-size: 0.6rem; letter-spacing: 0.15em; }
   }
 
+  /* INVITATION (선발 포지셔닝) */
+  .invitation {
+    position: relative;
+    padding: 9rem 2rem;
+    background: #050505;
+    overflow: hidden;
+    border-top: 1px solid rgba(201,169,110,0.15);
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+  }
+  .invitation::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1100px; height: 1100px;
+    background: radial-gradient(circle, rgba(201,169,110,0.055) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .invitation-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .invitation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3.5rem;
+    padding-bottom: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    color: rgba(201,169,110,0.7);
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(201,169,110,0.22);
+  }
+  .invitation-meta { color: rgba(240,236,228,0.4); }
+
+  .invitation-greeting {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(240,236,228,0.65);
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.01em;
+  }
+  .invitation-lead,
+  .invitation-offer {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-weight: 500;
+    line-height: 1.75;
+    margin-bottom: 2.2rem;
+    letter-spacing: -0.015em;
+  }
+  .invitation-lead {
+    font-size: clamp(1.2rem, 2.1vw, 1.6rem);
+    color: #fff;
+  }
+  .invitation-offer {
+    font-size: clamp(1.1rem, 1.9vw, 1.45rem);
+    color: rgba(240,236,228,0.9);
+  }
+  .invitation-lead em,
+  .invitation-offer em {
+    font-style: normal;
+    font-weight: 800;
+    color: var(--gold);
+    background: linear-gradient(180deg, var(--gold-light), var(--gold) 55%, var(--gold-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .invitation-final {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+    margin-bottom: 4rem;
+  }
+
+  .invitation-signature {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(201,169,110,0.18);
+  }
+  .sig-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.9rem;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: -0.01em;
+  }
+  .sig-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    color: rgba(240,236,228,0.45);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .invitation { padding: 6rem 1.5rem; }
+    .invitation-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.55rem;
+    }
+    .invitation-signature {
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.3rem;
+    }
+  }
+
   /* DIVIDER */
   .divider {
     width: 100%;
@@ -1729,6 +1853,24 @@
       <p class="authority-lead">지난 20년, '레이 커즈와일'의 AI 예측 적중률 <em>87%</em>.</p>
       <p class="authority-body">그런 그가 이번엔 말했다 —<br>"2029년, 인간의 일자리는 <em>모두 대체된다</em>."</p>
       <p class="authority-cite">— Ray Kurzweil<span class="cite-sub">Google AI 디렉터 · TIME 선정 세계 100대 인물 · 《The Singularity Is Nearer》 (2024)</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- INVITATION (선발 포지셔닝) -->
+<section class="invitation" id="invitation">
+  <div class="invitation-inner">
+    <div class="invitation-header">
+      <span>Invitation · Confidential</span>
+      <span class="invitation-meta">No. 001 / 020</span>
+    </div>
+    <p class="invitation-greeting">안녕하세요.</p>
+    <p class="invitation-lead">이 페이지는 제가 직접 선정한 분들께만<br>전달되는 <em>초대장</em>입니다.</p>
+    <p class="invitation-offer">2029년이 오기 전,<br>남들보다 앞서 생산성을 최대로 끌어올려<br><em>사다리의 최상단에 설 20인</em> —</p>
+    <p class="invitation-final">'The AI Inner Circle · 1기'에 모십니다.</p>
+    <div class="invitation-signature">
+      <span class="sig-name">김해나</span>
+      <span class="sig-role">Program Director</span>
     </div>
   </div>
 </section>
