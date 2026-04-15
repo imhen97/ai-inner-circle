@@ -110,12 +110,13 @@
   }
 
   .cd-unit {
-    min-width: 78px;
-    padding: 0.2rem 0.4rem;
-    text-align: center;
+    padding: 0 0.25rem;
     position: relative;
     background: none;
     border: none;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
   }
 
   .cd-num {
@@ -138,11 +139,11 @@
 
   .cd-lbl {
     font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    color: rgba(255,85,85,0.85);
-    margin-top: 0.85rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: rgba(255,85,85,0.95);
+    margin-top: 0;
   }
 
   .cd-sep {
@@ -933,6 +934,204 @@
     .topbar-logo { font-size: 0.6rem; letter-spacing: 0.2em; }
     .topbar-cta { padding: 0.5rem 0.9rem; font-size: 0.6rem; letter-spacing: 0.15em; }
   }
+
+  /* GATE LOCK (초대장 열기 전 스크롤 차단) */
+  body.gate-locked { overflow: hidden; height: 100vh; }
+  body.gate-locked .topbar { opacity: 0 !important; pointer-events: none !important; }
+
+  /* INVITATION GATE (봉인→편지) */
+  .invitation.gate {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 2rem;
+  }
+  .invitation.gate .invitation-inner {
+    position: relative;
+    width: 100%;
+  }
+
+  /* SEAL — 봉인 상태 */
+  .gate-seal {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 3.2rem 2.2rem;
+    text-align: center;
+    border: 1px solid rgba(201,169,110,0.32);
+    background: linear-gradient(180deg, rgba(201,169,110,0.05), rgba(8,8,8,0.55));
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 0 60px rgba(201,169,110,0.04);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.2,.7,.3,1), visibility 0s linear 0.6s;
+  }
+  .gate-seal::before,
+  .gate-seal::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .gate-seal::before { top: -1px; }
+  .gate-seal::after  { bottom: -1px; }
+
+  .gate.opened .gate-seal {
+    opacity: 0;
+    transform: scale(0.94) translateY(-24px);
+    pointer-events: none;
+    visibility: hidden;
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 100%;
+    margin-top: -200px;
+    transform-origin: center;
+  }
+
+  .seal-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.35em;
+    color: rgba(201,169,110,0.9);
+    text-transform: uppercase;
+  }
+  .seal-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+    color: rgba(240,236,228,0.42);
+    margin-top: 0.45rem;
+    text-transform: uppercase;
+  }
+  .seal-ornament {
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.7;
+    margin: 1.8rem auto;
+  }
+  .seal-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .seal-brand em {
+    font-style: italic;
+    color: var(--gold);
+    background: linear-gradient(180deg, var(--gold-light), var(--gold) 55%, var(--gold-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .seal-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+    color: rgba(240,236,228,0.55);
+    text-transform: uppercase;
+    margin-top: 0.75rem;
+  }
+  .seal-wax {
+    font-size: 2rem;
+    color: var(--gold);
+    opacity: 0.55;
+    margin: 2rem 0 1.6rem;
+    line-height: 1;
+    animation: wax-pulse 3.2s ease infinite;
+  }
+  @keyframes wax-pulse {
+    0%, 100% { opacity: 0.45; transform: scale(1); }
+    50% { opacity: 0.75; transform: scale(1.06); }
+  }
+  .seal-btn {
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    border: 1px solid var(--gold);
+    padding: 1rem 2.2rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    transition: background 0.3s ease, color 0.3s ease;
+    box-shadow: 0 0 0 0 rgba(201,169,110,0.4);
+    animation: sealBtnPulse 2.6s ease infinite;
+  }
+  @keyframes sealBtnPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,110,0.45); }
+    50% { box-shadow: 0 0 0 14px rgba(201,169,110,0); }
+  }
+  .seal-btn:hover {
+    background: transparent;
+    color: var(--gold);
+  }
+  .seal-btn-arrow { transition: transform 0.3s ease; display: inline-block; }
+  .seal-btn:hover .seal-btn-arrow { transform: translateY(3px); }
+
+  .seal-footer {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.54rem;
+    letter-spacing: 0.28em;
+    color: rgba(240,236,228,0.3);
+    text-transform: uppercase;
+    margin-top: 2rem;
+  }
+
+  /* LETTER — 편지 (초대장 열린 상태) */
+  .gate-letter {
+    max-width: 760px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(26px);
+    pointer-events: none;
+    transition: opacity 0.9s ease 0.2s, transform 0.9s cubic-bezier(.2,.7,.3,1) 0.2s;
+  }
+  .gate.opened .gate-letter {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .gate-enter-wrap {
+    text-align: center;
+    margin-top: 3rem;
+  }
+  .gate-enter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1rem 2.2rem;
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s ease, color 0.3s ease;
+  }
+  .gate.opened .gate-enter {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.3s;
+  }
+  .gate-enter:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+  .enter-arrow { transition: transform 0.3s ease; display: inline-block; }
+  .gate-enter:hover .enter-arrow { transform: translateY(3px); }
 
   /* INVITATION (선발 포지셔닝) */
   .invitation {
@@ -1824,6 +2023,53 @@
   <a href="#apply" class="topbar-cta">입단신청</a>
 </header>
 
+<!-- INVITATION GATE — 첫 화면, 봉인→편지 2단 -->
+<section class="invitation gate" id="invitation">
+  <div class="invitation-inner">
+    <!-- SEAL (봉인 상태) -->
+    <div class="gate-seal">
+      <div class="seal-badge">Invitation · Confidential</div>
+      <div class="seal-number">No. 001 / 020</div>
+      <div class="seal-ornament"></div>
+      <div class="seal-brand">The AI <em>Inner Circle</em></div>
+      <div class="seal-sub">1st Cohort · Sealed Invitation</div>
+      <div class="seal-wax" aria-hidden="true">✺</div>
+      <button class="seal-btn" type="button" id="gate-open">
+        <span>초대장 열어보기</span>
+        <span class="seal-btn-arrow">▼</span>
+      </button>
+      <div class="seal-footer">For your eyes only · Not transferable</div>
+    </div>
+
+    <!-- LETTER (편지 상태) -->
+    <div class="gate-letter">
+      <div class="invitation-header">
+        <span>Invitation · Confidential</span>
+        <span class="invitation-meta">No. 001 / 020</span>
+      </div>
+      <p class="invitation-greeting">안녕하세요.</p>
+      <p class="invitation-lead">이 페이지는 제가 직접 선정한 분들께만<br>전달되는 <em>초대장</em>입니다.</p>
+      <p class="invitation-offer">2029년이 오기 전,<br>남들보다 앞서 생산성을 최대로 끌어올려<br><em>사다리의 최상단에 설 20인</em> —</p>
+      <p class="invitation-final">'The AI Inner Circle · 1기'에 모십니다.</p>
+      <div class="invitation-signature">
+        <div class="sig-block">
+          <div class="sig-top">
+            <span class="sig-name">김해나</span>
+            <span class="sig-role">Founding Director</span>
+          </div>
+          <div class="sig-cred">The AI Inner Circle<span class="sig-dot">·</span>1st Cohort</div>
+        </div>
+      </div>
+      <div class="gate-enter-wrap">
+        <a href="#video-intro" class="gate-enter" id="gate-enter">
+          <span>Enter the Inner Circle</span>
+          <span class="enter-arrow">↓</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- VIDEO INTRO -->
 <section class="video-intro" id="video-intro">
   <div class="video-intro-overlay"></div>
@@ -1842,7 +2088,7 @@
       <div class="cd-sep">:</div>
       <div class="cd-unit cd-sec"><div class="cd-num"><span id="cd-s">--</span><span class="cd-ms">:<span id="cd-ms">00</span></span></div><div class="cd-lbl">초</div></div>
     </div>
-    <h2 class="video-intro-title">우리가 아는 모든 일은<br><em>2029년, 사라집니다.</em></h2>
+    <h2 class="video-intro-title">우리가 아는 모든 일자리는<br><em>2029년, 사라집니다.</em></h2>
     <div class="video-wrap">
       <a class="video-card" href="https://www.youtube.com/watch?v=VyTo59QmiIE&t=2416s" target="_blank" rel="noopener noreferrer" aria-label="Ray Kurzweil 인터뷰 40:16부터 재생">
         <img class="video-thumb" src="assets/kurzweil.png" alt="Ray Kurzweil — 92NY conversation"
@@ -1873,28 +2119,6 @@
 </section>
 
 <!-- INVITATION (선발 포지셔닝) -->
-<section class="invitation" id="invitation">
-  <div class="invitation-inner">
-    <div class="invitation-header">
-      <span>Invitation · Confidential</span>
-      <span class="invitation-meta">No. 001 / 020</span>
-    </div>
-    <p class="invitation-greeting">안녕하세요.</p>
-    <p class="invitation-lead">이 페이지는 제가 직접 선정한 분들께만<br>전달되는 <em>초대장</em>입니다.</p>
-    <p class="invitation-offer">2029년이 오기 전,<br>남들보다 앞서 생산성을 최대로 끌어올려<br><em>사다리의 최상단에 설 20인</em> —</p>
-    <p class="invitation-final">'The AI Inner Circle · 1기'에 모십니다.</p>
-    <div class="invitation-signature">
-      <div class="sig-block">
-        <div class="sig-top">
-          <span class="sig-name">김해나</span>
-          <span class="sig-role">Founding Director</span>
-        </div>
-        <div class="sig-cred">The AI Inner Circle<span class="sig-dot">·</span>1st Cohort</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- HERO -->
 <section class="hero" id="hero-main">
   <div class="hero-watermark" aria-hidden="true">Inner Circle</div>
@@ -2298,6 +2522,31 @@
   }, { threshold: 0.1 });
 
   revealEls.forEach(el => observer.observe(el));
+
+  // Invitation Gate — 봉인→편지 2단 오프닝
+  (function () {
+    const gate = document.getElementById('invitation');
+    const openBtn = document.getElementById('gate-open');
+    const enterBtn = document.getElementById('gate-enter');
+    if (!gate || !openBtn) return;
+
+    document.body.classList.add('gate-locked');
+
+    openBtn.addEventListener('click', () => {
+      gate.classList.add('opened');
+    });
+
+    if (enterBtn) {
+      enterBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.body.classList.remove('gate-locked');
+        const target = document.getElementById('video-intro');
+        setTimeout(() => {
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 60);
+      });
+    }
+  })();
 
   // Topbar show/hide — appears once user scrolls past video intro
   (function () {
