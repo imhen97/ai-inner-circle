@@ -967,6 +967,18 @@
     .topbar-menu a { font-size: 0.72rem; }
     .topbar-logo { font-size: 0.6rem; letter-spacing: 0.2em; }
     .topbar-cta { padding: 0.5rem 0.9rem; font-size: 0.6rem; letter-spacing: 0.15em; }
+
+    /* Mobile: keep navigation and CTA visible even on gate screen */
+    body.gate-locked .topbar {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
+    }
+    body.gate-locked .sticky-cta {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 
   /* STICKY BOTTOM CTA — 페이지 하단 항상 따라다님 */
@@ -3143,6 +3155,56 @@
     /* Topbar */
     .topbar-menu { gap: 0.7rem; }
     .topbar-menu a { font-size: 0.65rem; }
+
+    /* Prevent common mobile overflow issues */
+    body * { min-width: 0; }
+    img, video, iframe { max-width: 100%; height: auto; }
+
+    /* Topbar layout: 2 rows on small phones */
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 0.55rem 0.7rem;
+      padding: 0.65rem 0.75rem;
+    }
+    .topbar-logo {
+      font-size: 0.56rem;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .topbar-cta {
+      padding: 0.45rem 0.62rem;
+      font-size: 0.54rem;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+    .topbar-menu {
+      grid-column: 1 / -1;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      white-space: nowrap;
+      gap: 0.85rem;
+      padding-bottom: 0.2rem;
+    }
+    .topbar-menu::-webkit-scrollbar { display: none; }
+    .topbar-menu a {
+      flex: 0 0 auto;
+      font-size: 0.68rem;
+      padding: 0.2rem 0;
+    }
+
+    /* Grid sections become single-column on phones */
+    .weeks { grid-template-columns: 1fr; }
+
+    /* Keep visual glows proportional to viewport */
+    .hero::after { width: min(90vw, 520px); height: min(90vw, 520px); }
+    .invitation::before { width: min(140vw, 760px); height: min(140vw, 760px); }
+    .footer-cta::before { width: min(120vw, 520px); height: min(120vw, 520px); }
   }
 </style>
 </head>
@@ -3905,6 +3967,14 @@
     const topbar = document.getElementById('topbar');
     const hero = document.getElementById('hero-main');
     if (!topbar || !hero) return;
+    const mobileMq = window.matchMedia('(max-width: 768px)');
+
+    // Mobile: always visible so menu is never lost.
+    if (mobileMq.matches) {
+      topbar.classList.add('visible');
+      return;
+    }
+
     function getTrigger() {
       return hero.offsetTop + hero.offsetHeight - 120;
     }
