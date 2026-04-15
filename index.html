@@ -1562,6 +1562,246 @@
     font-weight: 500;
   }
 
+  /* NEWS BRIEF (멤버 전용 일간 AI 뉴스 데모) */
+  .news-brief-section {
+    padding: 7rem 2rem;
+    overflow: hidden;
+    position: relative;
+    background: rgba(201,169,110,0.025);
+    border-top: 1px solid rgba(201,169,110,0.1);
+    border-bottom: 1px solid rgba(201,169,110,0.1);
+  }
+  .nb-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .nb-text { padding-right: 1rem; }
+  .nb-text .section-label { margin-bottom: 1.5rem; }
+  .nb-title {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin-bottom: 1.4rem;
+  }
+  .nb-title em {
+    font-style: normal;
+    color: var(--gold);
+    background: linear-gradient(180deg, var(--gold-light), var(--gold) 55%, var(--gold-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .nb-sub {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.75;
+    color: rgba(240,236,228,0.7);
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+  }
+  .nb-features { display: flex; flex-direction: column; gap: 0.8rem; }
+  .nb-feat {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.92rem;
+    color: rgba(240,236,228,0.8);
+    line-height: 1.55;
+  }
+  .nb-feat::before {
+    content: '◆';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .nb-feat strong { color: var(--gold); font-weight: 700; }
+
+  /* PHONE MOCKUP */
+  .phone-frame {
+    width: 320px;
+    margin: 0 auto;
+    background: #1a1a1a;
+    border: 8px solid #0c0c0c;
+    border-radius: 38px;
+    padding: 0;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,169,110,0.15);
+    overflow: hidden;
+    position: relative;
+  }
+  .phone-frame::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 110px; height: 24px;
+    background: #0c0c0c;
+    border-radius: 0 0 14px 14px;
+    z-index: 5;
+  }
+  .phone-screen {
+    background: #1a1a1a;
+    color: #fff;
+    font-family: 'Noto Sans KR', 'Pretendard', -apple-system, sans-serif;
+    min-height: 580px;
+    display: flex;
+    flex-direction: column;
+  }
+  .phone-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1.4rem 0.4rem;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #fff;
+  }
+  .phone-status .status-icons { display: flex; gap: 0.3rem; font-size: 0.7rem; opacity: 0.85; }
+
+  .chat-header {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.6rem 1rem 0.7rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .chat-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .chat-info { flex: 1; min-width: 0; }
+  .chat-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .chat-meta {
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.1rem;
+  }
+
+  .chat-body {
+    flex: 1;
+    padding: 1rem 0.7rem 0.5rem;
+    overflow: hidden;
+  }
+  .chat-date {
+    text-align: center;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+  .msg-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+  }
+  .msg-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .msg-bubble {
+    background: #2c2c2e;
+    color: #fff;
+    padding: 0.65rem 0.85rem;
+    border-radius: 16px 16px 16px 4px;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    max-width: 80%;
+    letter-spacing: -0.01em;
+  }
+  .msg-time {
+    font-size: 0.55rem;
+    color: rgba(255,255,255,0.4);
+    flex-shrink: 0;
+    margin-bottom: 0.15rem;
+  }
+  .news-card {
+    max-width: 92%;
+    padding: 0.85rem 0.85rem 0.7rem;
+    background: linear-gradient(180deg, #2c2c2e 0%, #232325 100%);
+    border: 1px solid rgba(201,169,110,0.15);
+  }
+  .news-header {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+    letter-spacing: -0.01em;
+  }
+  .news-item {
+    display: flex;
+    gap: 0.55rem;
+    padding: 0.55rem 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .news-item:first-of-type { border-top: none; padding-top: 0.2rem; }
+  .news-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    line-height: 1.2;
+  }
+  .news-body { flex: 1; min-width: 0; }
+  .news-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.15rem;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+  }
+  .news-desc {
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.45;
+    margin-bottom: 0.2rem;
+  }
+  .news-time {
+    font-size: 0.55rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.02em;
+  }
+  .news-more {
+    margin-top: 0.6rem;
+    text-align: right;
+    font-size: 0.62rem;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .chat-input {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 0.7rem 1rem;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.35);
+    background: #1a1a1a;
+  }
+
+  @media (max-width: 768px) {
+    .news-brief-section { padding: 4.5rem 1.5rem; }
+    .nb-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .nb-text { padding-right: 0; }
+  }
+  @media (max-width: 640px) {
+    .phone-frame { width: 280px; border-width: 6px; }
+    .phone-screen { min-height: 520px; }
+  }
+
   /* DIFFERENTIATION — 차별점 */
   .differentiation { padding-top: 7rem; padding-bottom: 7rem; }
   .diff-header {
@@ -3188,6 +3428,90 @@
         <div class="feature-content">
           <h4>4주 후 멤버십 1달 무료 연장 <span class="feature-value">(월 10만원+ 가치)</span></h4>
           <p>프로그램 종료 후 1개월 멤버십 무료 자동 연장. 새 AI 툴·트렌드 리포트·<strong>멤버 네트워킹 파티 참여권</strong>이 끊기지 않습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- NEWS BRIEF — 멤버 전용 매일 아침 AI 브리핑 -->
+<section class="news-brief-section" id="news-brief">
+  <div class="nb-inner">
+    <div class="nb-text reveal">
+      <div class="section-label">멤버 전용 일간 브리핑</div>
+      <h2 class="nb-title"><em>매일 아침</em><br>AI 최신 뉴스 브리핑.</h2>
+      <p class="nb-sub">빠르게 변하는 AI 흐름을 매일 오전 8:30, 카톡으로 받아봅니다. 직접 리서치할 시간이 없는 대표·전문직을 위한 멤버 전용 큐레이션.</p>
+      <div class="nb-features">
+        <p class="nb-feat">매일 <strong>오전 8:30</strong> 자동 발송</p>
+        <p class="nb-feat">국내·해외 핵심 뉴스 <strong>4선</strong>으로 압축</p>
+        <p class="nb-feat">멤버십 종료 후 <strong>1개월 무료 연장</strong></p>
+      </div>
+    </div>
+    <div class="nb-mockup reveal">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-status">
+            <span>9:41</span>
+            <div class="status-icons"><span>●●●</span><span>📶</span><span>🔋</span></div>
+          </div>
+          <div class="chat-header">
+            <div class="chat-avatar">🧠</div>
+            <div class="chat-info">
+              <div class="chat-name">AI 이너서클</div>
+              <div class="chat-meta">Inner Circle 멤버 전용</div>
+            </div>
+          </div>
+          <div class="chat-body">
+            <div class="chat-date">2026년 4월 15일 · 화요일</div>
+            <div class="msg-row">
+              <div class="msg-avatar">🧠</div>
+              <div class="msg-bubble">☀️ 좋은 아침입니다.<br>오늘의 AI 뉴스 브리핑을 시작합니다.</div>
+              <div class="msg-time">8:30</div>
+            </div>
+            <div class="msg-row">
+              <div class="msg-avatar">🧠</div>
+              <div class="msg-bubble news-card">
+                <div class="news-header">📰 오늘의 AI 뉴스 4선</div>
+                <div class="news-item">
+                  <div class="news-icon">🚀</div>
+                  <div class="news-body">
+                    <div class="news-title">OpenAI, GPT-5 공식 발표</div>
+                    <div class="news-desc">추론 능력 10배 향상 · 기업용 API 다음주 출시</div>
+                    <div class="news-time">2분 전</div>
+                  </div>
+                </div>
+                <div class="news-item">
+                  <div class="news-icon">🤖</div>
+                  <div class="news-body">
+                    <div class="news-title">Google Gemini 2.0, 코드 생성 혁신</div>
+                    <div class="news-desc">실시간 디버깅 · GitHub Copilot과 정면 승부</div>
+                    <div class="news-time">15분 전</div>
+                  </div>
+                </div>
+                <div class="news-item">
+                  <div class="news-icon">⚖️</div>
+                  <div class="news-body">
+                    <div class="news-title">EU AI Act 최종안 통과</div>
+                    <div class="news-desc">고위험 AI 규제 강화 · 위반 시 매출 7% 벌금</div>
+                    <div class="news-time">1시간 전</div>
+                  </div>
+                </div>
+                <div class="news-item">
+                  <div class="news-icon">💰</div>
+                  <div class="news-body">
+                    <div class="news-title">국내 AI 스타트업 '업스테이지' 시리즈 C</div>
+                    <div class="news-desc">1,200억 투자 유치 · LLM 최적화로 글로벌 가속</div>
+                    <div class="news-time">2시간 전</div>
+                  </div>
+                </div>
+                <div class="news-more">전체 뉴스 보기 →</div>
+              </div>
+              <div class="msg-time">8:30</div>
+            </div>
+          </div>
+          <div class="chat-input">메시지를 입력하세요</div>
         </div>
       </div>
     </div>
