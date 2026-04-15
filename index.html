@@ -7,14 +7,14 @@
 <meta name="description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 대상 · 1기 정원 20명 · 첫 10인 특가 · 5/4(월) 시작.">
 <meta name="theme-color" content="#080808">
 <link rel="canonical" href="https://imhen97.github.io/ai-inner-circle/">
-<link rel="image_src" href="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k4">
+<link rel="image_src" href="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416ogfix">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The AI Inner Circle">
 <meta property="og:title" content="The AI Inner Circle 1기에 함께해주세요">
 <meta property="og:description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 대상 · 1기 정원 20명 · 첫 10인 특가 · 5/4(월) 시작.">
-<meta property="og:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k4">
-<meta property="og:image:secure_url" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k4">
+<meta property="og:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416ogfix">
+<meta property="og:image:secure_url" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416ogfix">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="482">
 <meta property="og:image:height" content="458">
@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The AI Inner Circle 1기에 함께해주세요">
 <meta name="twitter:description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 대상 · 1기 정원 20명 · 첫 10인 특가 · 5/4(월) 시작.">
-<meta name="twitter:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k4">
+<meta name="twitter:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416ogfix">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,7 @@
   "@type": "Course",
   "name": "The AI Inner Circle 1기",
   "description": "대표·전문직을 위한 4주 AI 자동화 실전 프로그램입니다. 코딩 없이 사업에 AI 워크플로를 이식합니다.",
-  "image": "https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k4",
+  "image": "https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416ogfix",
   "url": "https://imhen97.github.io/ai-inner-circle/",
   "inLanguage": "ko-KR",
   "provider": {
@@ -112,6 +112,21 @@
     overflow-x: hidden;
   }
 
+  /* First body image: full dimensions off-screen so link-preview scrapers do not skip to the next <img> (e.g. video thumb). */
+  .og-first-img {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    width: 482px;
+    height: 458px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
   /* NOISE OVERLAY */
   body::before {
     content: '';
@@ -133,6 +148,7 @@
     position: relative;
     overflow: hidden;
     padding: 4rem 2rem;
+    scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 6rem);
   }
 
   .video-intro::before {
@@ -1278,7 +1294,8 @@
   }
   @media (max-width: 768px) {
     body.gate-locked .invitation.gate {
-      padding-top: calc(env(safe-area-inset-top, 0px) + 8.75rem);
+      /* Fixed two-row topbar + notch */
+      padding-top: calc(env(safe-area-inset-top, 0px) + 10rem);
       padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
     }
   }
@@ -3998,6 +4015,35 @@
     .sig-name { font-size: 1.5rem; }
     .sig-role { font-size: 0.56rem; letter-spacing: 0.22em; }
     .sig-cred { font-size: 0.72rem; }
+    /* Opened letter: tighter vertical rhythm so member CTA sits higher */
+    .invitation.gate.opened .invitation-header {
+      margin-bottom: 1.35rem;
+      padding-bottom: 0.55rem;
+    }
+    .invitation.gate.opened .invitation-greeting { margin-bottom: 0.85rem; }
+    .invitation.gate.opened .invitation-lead {
+      margin-bottom: 1.15rem;
+      font-size: 1.08rem;
+      line-height: 1.52;
+    }
+    .invitation.gate.opened .invitation-offer {
+      margin-bottom: 1.15rem;
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+    .invitation.gate.opened .invitation-final {
+      margin-bottom: 1.35rem;
+      font-size: 1.08rem;
+    }
+    .invitation.gate.opened .invitation-signature { padding-top: 0.5rem; }
+    .invitation.gate.opened .sig-name { font-size: 1.35rem; }
+    .invitation.gate.opened .gate-members-flow { margin-top: 0.75rem; }
+    .invitation.gate.opened .gate-members-kicker { margin-bottom: 0.6rem; }
+    .invitation.gate.opened .gate-members-sub { margin: 0 0 0.55rem; }
+    .invitation.gate.opened .gate-teaser-cta-wrap { margin-top: 0.5rem; }
+    .invitation.gate.opened .gate-members-card {
+      padding: 1rem 1rem 1.35rem;
+    }
 
     /* Warning badge — 선명 */
     .video-warning-badge {
@@ -4025,8 +4071,15 @@
     .cd-num { font-size: 1.75rem; }
     .cd-lbl { font-size: 0.85rem; font-weight: 700; }
 
-    /* Video intro */
-    .video-intro { padding: 3.5rem 1.2rem; }
+    /* Video intro: extra top padding under fixed topbar */
+    .video-intro {
+      align-items: flex-start;
+      scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 8.75rem);
+      padding-top: calc(env(safe-area-inset-top, 0px) + 9.25rem);
+      padding-left: 1.2rem;
+      padding-right: 1.2rem;
+      padding-bottom: 3rem;
+    }
     .video-intro-title {
       font-size: clamp(1.55rem, 7vw, 2.1rem);
       line-height: 1.35;
@@ -4232,7 +4285,7 @@
 </head>
 <body>
 <a class="skip-link" href="#video-intro">본문으로 건너뛰기</a>
-<img src="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k4" alt="" width="482" height="458" decoding="async" fetchpriority="low" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);border:0;margin:-1px;padding:0">
+<img class="og-first-img" src="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416ogfix" alt="" width="482" height="458" decoding="async" fetchpriority="high" aria-hidden="true">
 
 <!-- TOP NAV (appears after hero) -->
 <header class="topbar visible" id="topbar">
@@ -5024,7 +5077,7 @@
     const shareData = {
       title: 'The AI Inner Circle 1기에 함께해주세요',
       text: "검증된 분들께만 전하는 초대. The AI Inner Circle 1기 모집.",
-      url: 'https://imhen97.github.io/ai-inner-circle/?v=20260416k4'
+      url: 'https://imhen97.github.io/ai-inner-circle/?v=20260416ogfix'
     };
     function showToast(msg) {
       const t = document.createElement('div');
