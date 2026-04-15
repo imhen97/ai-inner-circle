@@ -2175,38 +2175,61 @@
     .sig-role { font-size: 0.56rem; letter-spacing: 0.22em; }
     .sig-cred { font-size: 0.72rem; }
 
-    /* Warning badge + countdown */
+    /* Warning badge — 선명 */
     .video-warning-badge {
-      font-size: 0.54rem;
-      letter-spacing: 0.18em;
-      padding: 0.5rem 0.9rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      padding: 0.55rem 1rem;
+      white-space: normal;
+      max-width: 92vw;
+      line-height: 1.5;
     }
+    /* Countdown — sep 제거, 3열 2행 깔끔 */
     .countdown {
-      gap: 0.25rem;
+      gap: 0.8rem 0;
       flex-wrap: wrap;
       justify-content: center;
       max-width: 100%;
     }
-    .cd-unit { padding: 0 0.1rem; gap: 0.2rem; }
-    .cd-num { font-size: 1.65rem; }
+    .cd-sep { display: none; }
+    .cd-unit {
+      padding: 0;
+      gap: 0.3rem;
+      flex: 0 0 33.333%;
+      justify-content: center;
+    }
+    .cd-num { font-size: 1.75rem; }
     .cd-lbl { font-size: 0.85rem; font-weight: 700; }
-    .cd-sep { font-size: 1rem; padding-bottom: 0.2rem; }
 
     /* Video intro */
     .video-intro { padding: 3.5rem 1.2rem; }
     .video-intro-title {
-      font-size: clamp(1.45rem, 7vw, 2.1rem);
-      line-height: 1.3;
+      font-size: clamp(1.55rem, 7vw, 2.1rem);
+      line-height: 1.35;
+      padding: 0 1rem;
     }
+    .video-intro-title::before,
+    .video-intro-title::after { font-size: 1.5em; top: 0.25em; }
+    .video-intro-title::after { top: 0.45em; }
     .video-wrap { margin-bottom: 1rem; }
     .video-skip { font-size: 0.56rem; letter-spacing: 0.16em; padding: 0.6rem 0.4rem; }
 
-    /* Authority panel */
-    .authority-panel { padding: 1.8rem 0.5rem; margin-bottom: 1.8rem; }
-    .authority-lead { font-size: 1rem; line-height: 1.7; margin-bottom: 1rem; }
-    .authority-body { font-size: 1.1rem; line-height: 1.55; margin-bottom: 1.2rem; }
-    .authority-cite { font-size: 0.58rem; letter-spacing: 0.2em; }
-    .authority-cite .cite-sub { font-size: 0.54rem; letter-spacing: 0.1em; }
+    /* Video card overlays — 폰 조정 */
+    .video-rec { font-size: 0.5rem; letter-spacing: 0.2em; left: 0.6rem; top: 0.6rem; }
+    .video-top-right { font-size: 0.46rem; letter-spacing: 0.2em; right: 0.6rem; top: 0.6rem; }
+    .video-play { width: 58px; height: 58px; font-size: 1rem; }
+    .video-play-label { font-size: 0.48rem; letter-spacing: 0.2em; }
+    .video-subtitle { bottom: 2.6rem; font-size: 0.7rem; padding: 0.3rem 0.55rem; }
+    .video-meta { font-size: 0.48rem; letter-spacing: 0.12em; }
+    .video-bar { padding: 0.5rem 0.7rem 0.6rem; }
+
+    /* Authority panel — 폰 크기 상향 */
+    .authority-panel { padding: 2.2rem 0.7rem; margin-bottom: 2rem; }
+    .authority-lead { font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.2rem; }
+    .authority-lead em { font-size: 1.3em; }
+    .authority-body { font-size: 1.2rem; line-height: 1.55; margin-bottom: 1.4rem; }
+    .authority-cite { font-size: 0.6rem; letter-spacing: 0.16em; line-height: 1.9; }
+    .authority-cite .cite-sub { font-size: 0.56rem; letter-spacing: 0.08em; line-height: 1.7; margin-top: 0.3rem; }
 
     /* Hero mobile */
     .hero { min-height: auto; }
