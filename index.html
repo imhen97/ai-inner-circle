@@ -1319,58 +1319,63 @@
     pointer-events: auto;
   }
 
-  .gate-enter-wrap {
-    text-align: center;
-    margin-top: 3rem;
+  .gate-members-flow {
+    margin-top: 2.5rem;
   }
-  .gate-enter {
+  .gate-members-teaser {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.65s ease 1s, transform 0.65s cubic-bezier(.2,.7,.3,1) 1s;
+  }
+  .gate.opened .gate-members-teaser {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .gate-teaser-cta-wrap {
+    text-align: center;
+    margin-top: 1.65rem;
+  }
+  .gate-teaser-cta {
     display: inline-flex;
     align-items: center;
-    gap: 0.9rem;
-    padding: 1rem 2.2rem;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.65rem;
     background: transparent;
     color: var(--gold);
     border: 1px solid var(--gold);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    text-decoration: none;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s ease, color 0.3s ease;
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: background 0.25s ease, color 0.25s ease, filter 0.25s ease, transform 0.2s ease;
   }
-  .gate.opened .gate-enter {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 1.3s;
-  }
-  .gate-enter:hover {
+  .gate-teaser-cta:hover {
     background: var(--gold);
     color: var(--black);
+    transform: translateY(-1px);
   }
-  .enter-arrow { transition: transform 0.3s ease; display: inline-block; }
-  .gate-enter:hover .enter-arrow { transform: translateY(3px); }
 
-  .gate-members-panel {
+  .gate-members-detail {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px);
+    transform: translateY(16px);
     max-height: 0;
     overflow: hidden;
     pointer-events: none;
-    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.2,.7,.3,1), max-height 0.65s ease, visibility 0s linear 0.5s;
+    transition: opacity 0.45s ease, transform 0.45s cubic-bezier(.2,.7,.3,1), max-height 0.6s ease, visibility 0s linear 0.45s;
   }
-  .gate.show-members .gate-members-panel {
+  .gate.member-detail-open .gate-members-detail {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
     max-height: 920px;
     pointer-events: auto;
-    transition: opacity 0.55s ease 0.08s, transform 0.55s cubic-bezier(.2,.7,.3,1) 0.08s, max-height 0.65s ease, visibility 0s linear 0s;
-  }
-  .gate.show-members .gate-enter-wrap {
-    display: none;
+    margin-top: 1.75rem;
+    transition: opacity 0.5s ease 0.06s, transform 0.5s cubic-bezier(.2,.7,.3,1) 0.06s, max-height 0.65s ease, visibility 0s linear 0s;
   }
 
   .gate-more-wrap {
@@ -1401,12 +1406,10 @@
     transform: translateY(-1px);
   }
 
-  button.gate-enter {
-    cursor: pointer;
-    -webkit-appearance: none;
-    appearance: none;
+  body.gate-unlocked-main #invitation {
+    display: none;
   }
-  /* Gate letter: members preview — shown after Enter (see .gate.show-members) */
+  /* Gate letter: member list after CTA (.member-detail-open) */
   .gate-members-card {
     margin: 0 auto;
     max-width: 420px;
@@ -3414,8 +3417,8 @@
     .invitation-lead { font-size: 1.22rem; line-height: 1.6; margin-bottom: 1.8rem; }
     .invitation-offer { font-size: 1.08rem; line-height: 1.65; margin-bottom: 1.8rem; }
     .invitation-final { font-size: 1.2rem; line-height: 1.55; margin-bottom: 2.8rem; }
-    .gate-enter { font-size: 0.62rem; letter-spacing: 0.2em; padding: 0.9rem 1.4rem; }
-    .gate.show-members .gate-members-panel { max-height: 1200px; }
+    .gate-teaser-cta { width: 100%; max-width: 100%; box-sizing: border-box; font-size: 0.84rem; }
+    .gate.member-detail-open .gate-members-detail { max-height: 1200px; }
     .gate-members-kicker { font-size: clamp(1.12rem, 4.2vw, 1.38rem); margin-bottom: 1rem; }
     .gate-members-sub { font-size: 0.68rem; line-height: 1.52; margin: -0.15rem 0 0.95rem; }
     .gate-members-card { margin-top: 0; padding: 1.2rem 1.15rem 1.95rem; max-width: none; }
@@ -3701,27 +3704,28 @@
           <div class="sig-cred">The AI Inner Circle<span class="sig-dot">·</span>1st Cohort</div>
         </div>
       </div>
-      <div class="gate-enter-wrap">
-        <button type="button" class="gate-enter" id="gate-enter">
-          <span>Enter the Inner Circle</span>
-          <span class="enter-arrow">↓</span>
-        </button>
-      </div>
-      <div class="gate-members-panel" id="gate-members-panel" aria-hidden="true">
-        <div class="gate-members-card" aria-labelledby="gate-members-heading">
+      <div class="gate-members-flow">
+        <div class="gate-members-teaser">
           <div class="gate-members-kicker" id="gate-members-heading">1기 · 먼저 합류하신 멤버</div>
           <p class="gate-members-sub">실명·프로필은 본인 동의 시에만 공개됩니다. 멤버는 순차적으로 공개됩니다.</p>
-          <article class="gate-member-preview">
-            <div class="gmp-rank" aria-hidden="true">01</div>
-            <div class="gmp-body">
-              <div class="gmp-ordinal">첫 번째 공개 프로필</div>
-              <h3 class="gmp-name"><span class="gmp-firm">법무법인 혜움</span>김정률 대표님</h3>
-              <p class="gmp-desc">만 <strong>21세 최연소</strong> 세무사 합격 · 계약 거래처 <strong>500+</strong> · <strong>현 BNI 의장</strong></p>
-            </div>
-          </article>
+          <div class="gate-teaser-cta-wrap">
+            <button type="button" class="gate-teaser-cta" id="gate-preview-members">현재 먼저 참여 멤버 확인하기</button>
+          </div>
         </div>
-        <div class="gate-more-wrap">
-          <button type="button" class="gate-more" id="gate-main-more">자세히 알아보기</button>
+        <div class="gate-members-detail" id="gate-members-detail" aria-hidden="true">
+          <div class="gate-members-card">
+            <article class="gate-member-preview">
+              <div class="gmp-rank" aria-hidden="true">01</div>
+              <div class="gmp-body">
+                <div class="gmp-ordinal">첫 번째 공개 프로필</div>
+                <h3 class="gmp-name"><span class="gmp-firm">법무법인 혜움</span>김정률 대표님</h3>
+                <p class="gmp-desc">만 <strong>21세 최연소</strong> 세무사 합격 · 계약 거래처 <strong>500+</strong> · <strong>현 BNI 의장</strong></p>
+              </div>
+            </article>
+          </div>
+          <div class="gate-more-wrap">
+            <button type="button" class="gate-more" id="gate-main-more">이너서클 자세히 알아보기</button>
+          </div>
         </div>
       </div>
     </div>
@@ -4366,87 +4370,47 @@
     });
   })();
 
-  // Invitation Gate — 봉인→편지 2단 오프닝
+  // Invitation Gate — seal → letter → member CTA → main site
   (function () {
     const gate = document.getElementById('invitation');
     const openBtn = document.getElementById('gate-open');
-    const enterBtn = document.getElementById('gate-enter');
+    const previewMembersBtn = document.getElementById('gate-preview-members');
     const mainMoreBtn = document.getElementById('gate-main-more');
-    const membersPanel = document.getElementById('gate-members-panel');
+    const membersDetail = document.getElementById('gate-members-detail');
     if (!gate || !openBtn) return;
 
     document.body.classList.add('gate-locked');
     document.body.classList.add('gate-intro');
 
-    function revealMembers() {
-      if (gate.classList.contains('show-members')) return;
-      gate.classList.add('show-members');
-      document.body.classList.add('gate-scrollable');
-      if (membersPanel) membersPanel.setAttribute('aria-hidden', 'false');
-    }
-
-    function invitationCanScroll() {
-      return gate.scrollHeight > gate.clientHeight + 2;
-    }
-
-    function invitationNearBottom() {
-      return gate.scrollHeight - gate.scrollTop - gate.clientHeight < 100;
-    }
-
     openBtn.addEventListener('click', () => {
       gate.classList.add('opened');
     });
 
-    if (enterBtn) {
-      enterBtn.addEventListener('click', revealMembers);
+    if (previewMembersBtn && membersDetail) {
+      previewMembersBtn.addEventListener('click', () => {
+        if (gate.classList.contains('member-detail-open')) return;
+        gate.classList.add('member-detail-open');
+        document.body.classList.add('gate-scrollable');
+        membersDetail.setAttribute('aria-hidden', 'false');
+        try {
+          membersDetail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } catch (e) { /* ignore */ }
+      });
     }
-
-    gate.addEventListener(
-      'wheel',
-      (e) => {
-        if (!gate.classList.contains('opened') || gate.classList.contains('show-members')) return;
-        if (e.deltaY <= 0) return;
-        const canScroll = invitationCanScroll();
-        if (!canScroll || invitationNearBottom()) {
-          e.preventDefault();
-          revealMembers();
-        }
-      },
-      { passive: false }
-    );
-
-    gate.addEventListener(
-      'scroll',
-      () => {
-        if (!gate.classList.contains('opened') || gate.classList.contains('show-members')) return;
-        if (invitationNearBottom()) revealMembers();
-      },
-      { passive: true }
-    );
-
-    let touchY0 = 0;
-    gate.addEventListener('touchstart', (e) => {
-      touchY0 = e.touches[0].clientY;
-    }, { passive: true });
-    gate.addEventListener('touchend', (e) => {
-      if (!gate.classList.contains('opened') || gate.classList.contains('show-members')) return;
-      if (invitationCanScroll()) return;
-      const y = e.changedTouches[0].clientY;
-      if (touchY0 - y > 56) revealMembers();
-    }, { passive: true });
 
     if (mainMoreBtn) {
       mainMoreBtn.addEventListener('click', () => {
         document.body.classList.remove('gate-scrollable');
         document.body.classList.remove('gate-intro');
         document.body.classList.remove('gate-locked');
-        const target = document.getElementById('video-intro');
+        document.body.classList.add('gate-unlocked-main');
         requestAnimationFrame(() => {
-          window.scrollTo(0, 0);
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       });
     }
+  })();
+
   })();
 
   // Topbar — always visible
