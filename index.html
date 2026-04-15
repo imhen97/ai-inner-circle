@@ -2681,18 +2681,6 @@
     background: linear-gradient(0deg, rgba(0,0,0,0.55), transparent);
   }
 
-  .feature-icon--visual {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 2rem;
-    padding-top: 0.1rem;
-    color: var(--gold);
-  }
-  .feature-icon--visual svg {
-    display: block;
-    opacity: 0.92;
-  }
   .feature-content a.feature-deeplink {
     color: var(--gold);
     font-weight: 600;
@@ -2931,13 +2919,22 @@
   .feature-item:last-child { border-bottom: none; }
   .feature-item:hover { background: rgba(201,169,110,0.04); }
 
-  .feature-icon {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--gold);
-    letter-spacing: 0.1em;
-    min-width: 28px;
-    padding-top: 0.15rem;
+  .feature-index {
+    flex-shrink: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 2.8vw, 2rem);
+    font-weight: 500;
+    font-variant-numeric: lining-nums;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    min-width: 2.35rem;
+    padding-top: 0.12rem;
+    text-align: right;
+    background: linear-gradient(165deg, var(--gold-light) 0%, var(--gold) 42%, var(--gold-dark) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 22px rgba(201, 169, 110, 0.18));
   }
 
   .feature-content h4 {
@@ -4225,6 +4222,9 @@
     /* Grid sections become single-column on phones */
     .weeks { grid-template-columns: 1fr; }
 
+    .feature-item { padding: 1.2rem 1.15rem; gap: 1.1rem; }
+    .feature-index { font-size: 1.42rem; min-width: 2rem; padding-top: 0.08rem; }
+
     /* Keep visual glows proportional to viewport */
     .hero::after { width: min(90vw, 520px); height: min(90vw, 520px); }
     .invitation::before { width: min(140vw, 760px); height: min(140vw, 760px); }
@@ -4584,53 +4584,49 @@
     </div>
     <div class="feature-list reveal">
       <div class="feature-item">
-        <span class="feature-icon">W1</span>
+        <span class="feature-index" aria-hidden="true">01</span>
         <div class="feature-content">
           <h4>주 1회 온·오프라인 실전 클래스</h4>
           <p>이론과 실습을 함께 진행해, 당일 배운 도구를 내 사업에 바로 적용하고 마칩니다. 주 1회 라이브(약 2시간) 기준으로 운영되며, 오프라인 일정·장소는 아래 투자 안내 및 FAQ에서 확인하실 수 있습니다.</p>
         </div>
       </div>
       <div class="feature-item">
-        <span class="feature-icon">↗</span>
+        <span class="feature-index" aria-hidden="true">02</span>
         <div class="feature-content">
           <h4>검증된 프롬프트·템플릿 라이브러리</h4>
           <p>현장에서 검증된 프롬프트 100+, 바이브코딩 템플릿, 자동화 워크플로우를 제공합니다. 멤버는 평생 열람하고, 매월 신규 업데이트를 받습니다.</p>
         </div>
       </div>
       <div class="feature-item">
-        <span class="feature-icon">○</span>
+        <span class="feature-index" aria-hidden="true">03</span>
         <div class="feature-content">
           <h4>대표·전문직 비공개 네트워크</h4>
           <p>같은 레벨의 대표·임원·전문직만 입장하는 멤버 전용 채널. 다른 산업의 AI 적용 사례를 실시간 공유받고 자기 사업에 즉시 응용합니다.</p>
         </div>
       </div>
       <div class="feature-item">
-        <span class="feature-icon">1:1</span>
+        <span class="feature-index" aria-hidden="true">04</span>
         <div class="feature-content">
           <h4>1:1 사업 적용 코칭</h4>
           <p>디렉터가 업종·사업 단계에 맞춘 AI 자동화 로드맵을 직접 설계합니다. 실행 우선의 1:1 맞춤 코칭으로 연결합니다.</p>
         </div>
       </div>
       <div class="feature-item">
-        <span class="feature-icon feature-icon--visual" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
+        <span class="feature-index" aria-hidden="true">05</span>
         <div class="feature-content">
           <h4>주간 Zoom 공유회</h4>
           <p>멤버들이 매주 실제 AI 적용 사례를 공유하고 서로 피드백합니다. 다른 업종 성공 공식을 내 비즈니스에 빠르게 이식합니다. <a class="feature-deeplink" href="#experience-zoom">화면 예시 보기</a></p>
         </div>
       </div>
       <div class="feature-item">
-        <span class="feature-icon feature-icon--visual" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 2v4m8-4v4m-9 4h10M5 6h14a2 2 0 012 2v2M5 6a2 2 0 00-2 2v11a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2M5 10h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M9 16h6M9 20h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </span>
+        <span class="feature-index" aria-hidden="true">06</span>
         <div class="feature-content">
           <h4>오프라인 디너 네트워킹</h4>
           <p>대표·임원·전문직이 오프라인에서 밀도 있게 연결됩니다. 파트너십·레퍼럴·협업 기회를 만드는 핵심 네트워킹 세션입니다. <a class="feature-deeplink" href="#experience-dinner">무드 예시 보기</a></p>
         </div>
       </div>
       <div class="feature-item">
-        <span class="feature-icon">+</span>
+        <span class="feature-index" aria-hidden="true">07</span>
         <div class="feature-content">
           <h4>4주 후 멤버십 1달 무료 연장 <span class="feature-value">(월 10만원+ 가치)</span></h4>
           <p>프로그램 종료 후 1개월 멤버십 무료 자동 연장. 새 AI 툴·트렌드 리포트·<strong>멤버 네트워킹 파티 참여권</strong>이 끊기지 않습니다.</p>
