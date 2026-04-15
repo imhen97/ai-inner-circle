@@ -1002,6 +1002,65 @@
     body:not(.gate-locked) { padding-bottom: 60px; }
   }
 
+  /* SECONDARY CTA — 지인 추천 등 */
+  .btn-secondary-lg {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 1rem auto 0;
+    background: transparent;
+    color: var(--gold);
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 1.2rem 2rem;
+    border: 1px solid var(--gold);
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .btn-secondary-lg:hover {
+    background: var(--gold);
+    color: #000;
+  }
+
+  /* TOAST 알림 */
+  .toast {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--gold);
+    color: #000;
+    padding: 0.85rem 1.5rem;
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: -0.01em;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* FAQ disclaimer */
+  .faq-disclaimer {
+    text-align: center;
+    max-width: 720px;
+    margin: 2rem auto 0;
+    padding: 0 1rem;
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 0.78rem;
+    color: rgba(240,236,228,0.42);
+    letter-spacing: -0.005em;
+  }
+
   /* GATE LOCK (초대장 열기 전 스크롤 차단) */
   body.gate-locked { overflow: hidden; height: 100vh; }
   body.gate-locked .topbar { opacity: 0 !important; pointer-events: none !important; }
@@ -3080,7 +3139,7 @@
         <span class="feature-icon">W1</span>
         <div class="feature-content">
           <h4>주 1회 온·오프라인 실전 클래스</h4>
-          <p>이론은 짧게, 실습이 90%. 당일 다룬 도구를 그 자리에서 내 사업에 적용하고 마칩니다. 매주 결과물이 쌓입니다.</p>
+          <p>이론과 실습 시간을 적절히 배분해, 당일 배운 도구를 내 사업에 바로 적용하고 마칩니다. 매주 결과물이 쌓입니다.</p>
         </div>
       </div>
       <div class="feature-item">
@@ -3369,6 +3428,7 @@
       </div>
     </div>
   </div>
+  <p class="faq-disclaimer">* 세부적인 사안은 변동될 수 있습니다.</p>
 </section>
 
 <div class="divider"></div>
@@ -3383,6 +3443,7 @@
   <p class="footer-cta-sub reveal">첫 10인 129만원 · 다음 10인 149만원 · 2기 30% 이상 추가 인상</p>
   <div class="footer-cta-btn reveal">
     <a href="https://open.kakao.com/o/placeholder" class="btn-primary-lg" style="max-width:320px; margin:0 auto;"><span>지금 신청하기</span></a>
+    <button type="button" class="btn-secondary-lg" id="referral-btn"><span>검증된 지인 추천하기</span></button>
   </div>
 </section>
 
@@ -3423,6 +3484,40 @@
   }, { threshold: 0.1 });
 
   revealEls.forEach(el => observer.observe(el));
+
+  // Referral share — 검증된 지인 추천하기
+  (function () {
+    const btn = document.getElementById('referral-btn');
+    if (!btn) return;
+    const shareData = {
+      title: 'The AI Inner Circle · 1기 선발 초대장',
+      text: "검증된 분들께만 전하는 초대장. AI 이너서클 1기 모집.",
+      url: 'https://imhen97.github.io/ai-inner-circle/'
+    };
+    function showToast(msg) {
+      const t = document.createElement('div');
+      t.className = 'toast';
+      t.textContent = msg;
+      document.body.appendChild(t);
+      requestAnimationFrame(() => t.classList.add('visible'));
+      setTimeout(() => {
+        t.classList.remove('visible');
+        setTimeout(() => t.remove(), 320);
+      }, 2200);
+    }
+    btn.addEventListener('click', async () => {
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else if (navigator.clipboard) {
+          await navigator.clipboard.writeText(shareData.url);
+          showToast('초대 링크가 복사되었습니다.');
+        } else {
+          window.prompt('초대 링크를 복사하세요:', shareData.url);
+        }
+      } catch (e) { /* user cancelled */ }
+    });
+  })();
 
   // Members marquee — 카드 복제로 무한 루프
   (function () {
