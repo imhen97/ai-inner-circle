@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Inner Circle 1기에 함께해주세요</title>
-<meta name="description" content="Invitation · Confidential. 대표·전문직 한정, The Inner Circle 1기에 함께해주세요. 첫 10인만 모집합니다.">
+<title>The AI Inner Circle · 1기 선발 초대장</title>
+<meta name="description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 10인 한정 · 5/4(월) 시작.">
 <meta name="theme-color" content="#080808">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The AI Inner Circle">
-<meta property="og:title" content="The Inner Circle 1기에 함께해주세요">
-<meta property="og:description" content="1기 5/4(월) 시작 예정 · 비공개 · 대표·전문직 10인 · 4주, 코딩 없이 사업에 AI 이식.">
-<meta property="og:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416i">
-<meta property="og:image:secure_url" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416i">
+<meta property="og:title" content="The AI Inner Circle · 1기 선발 초대장">
+<meta property="og:description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 10인 한정 · 5/4(월) 시작.">
+<meta property="og:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k2">
+<meta property="og:image:secure_url" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k2">
 <meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Inner Circle 1기 초대">
+<meta property="og:image:width" content="482">
+<meta property="og:image:height" content="458">
+<meta property="og:image:alt" content="The AI Inner Circle 1기 선발 초대장">
 <meta property="og:url" content="https://imhen97.github.io/ai-inner-circle/">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Inner Circle 1기에 함께해주세요">
-<meta name="twitter:description" content="1기 5/4(월) 시작 예정 · 비공개 · 대표·전문직 10인 · 4주, 코딩 없이 사업에 AI 이식.">
-<meta name="twitter:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416i">
+<meta name="twitter:title" content="The AI Inner Circle · 1기 선발 초대장">
+<meta name="twitter:description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 10인 한정 · 5/4(월) 시작.">
+<meta name="twitter:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k2">
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Sans+KR:wght@500;700;900&family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -1079,7 +1079,7 @@
     min-height: 100vh;
     -webkit-overflow-scrolling: touch;
   }
-  body.gate-intro .topbar { opacity: 0 !important; pointer-events: none !important; }
+  body.gate-intro .topbar { pointer-events: auto; }
 
   /* INVITATION GATE (봉인→편지) */
   .invitation.gate {
@@ -1088,6 +1088,18 @@
     align-items: center;
     justify-content: center;
     padding: 5rem 2rem;
+  }
+  .invitation.gate.opened {
+    align-items: flex-start;
+    justify-content: center;
+  }
+  /* Before full unlock: trap scroll inside invitation so content below does not show */
+  body.gate-locked:not(.gate-scrollable) .invitation.gate.opened {
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
   .invitation.gate .invitation-inner {
     position: relative;
@@ -1339,15 +1351,27 @@
     box-shadow: 0 18px 48px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
   }
   .gate-members-kicker {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.56rem;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--gold);
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: clamp(1.05rem, 2.8vw, 1.45rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.35;
+    text-transform: none;
+    color: #fff;
     text-align: center;
     margin-bottom: 0.85rem;
     padding-bottom: 0.65rem;
     border-bottom: 1px solid rgba(201,169,110,0.22);
+    text-shadow: 0 1px 22px rgba(201,169,110,0.35);
+  }
+  .gate-members-kicker::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 2px;
+    margin: 0 auto 0.65rem;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.9;
   }
   .gate-member-preview {
     display: flex;
@@ -1721,6 +1745,11 @@
     gap: 3rem;
     align-items: start;
   }
+  .build-inner--community-only {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    gap: 0;
+  }
   .build-text .section-label { margin-bottom: 1.2rem; }
   .build-title {
     font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
@@ -1839,12 +1868,21 @@
     .build-thumb { height: 180px; }
   }
 
-  /* DAILY AI NEWS BRIEF */
+  /* DAILY AI NEWS BRIEF — Kakao-style preview */
   .daily-news-section {
     padding: 6.5rem 2rem;
     background: rgba(201,169,110,0.015);
     border-top: 1px solid rgba(201,169,110,0.1);
     border-bottom: 1px solid rgba(201,169,110,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  .daily-news-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 75% 55% at 78% 25%, rgba(254, 229, 0, 0.09), transparent 58%);
+    pointer-events: none;
   }
   .daily-news-inner {
     max-width: 1100px;
@@ -1853,6 +1891,52 @@
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
     align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .daily-news-device {
+    border-radius: 1.85rem;
+    padding: 0.5rem 0.5rem 1.1rem;
+    background: linear-gradient(160deg, #1c1c1c 0%, #0a0a0a 100%);
+    border: 1px solid rgba(201,169,110,0.32);
+    box-shadow:
+      0 44px 110px rgba(0,0,0,0.58),
+      0 0 0 1px rgba(255,255,255,0.05) inset;
+  }
+  .daily-news-device-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    background: #fee500;
+    color: #191919;
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    padding: 0.68rem 1rem;
+    border-radius: 1.35rem 1.35rem 0 0;
+    margin: -0.5rem -0.5rem 0.75rem -0.5rem;
+  }
+  .daily-news-device-bar .daily-news-device-sub {
+    font-weight: 600;
+    font-size: 0.64rem;
+    opacity: 0.82;
+  }
+  .daily-news-shot {
+    margin: 0;
+    border-radius: 0 0 1.2rem 1.2rem;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow:
+      0 14px 34px rgba(0,0,0,0.42),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .daily-news-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
   .daily-news-title {
     font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
@@ -1889,21 +1973,40 @@
   }
   .daily-news-points strong { color: var(--gold); }
   .daily-news-card {
-    border: 1px solid rgba(201,169,110,0.2);
-    background: linear-gradient(180deg, #111 0%, #0a0a0a 100%);
-    padding: 1.2rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: linear-gradient(180deg, rgba(22,22,22,0.98) 0%, rgba(8,8,8,0.99) 100%);
+    padding: 1.15rem 1.05rem 1.05rem;
+    border-radius: 0 0 1.2rem 1.2rem;
+    box-shadow: inset 0 1px 0 rgba(254, 229, 0, 0.06);
   }
   .daily-news-card h4 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 0.7rem;
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: rgba(240,236,228,0.92);
+    margin-bottom: 0.85rem;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .daily-news-card h4::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fee500;
+    box-shadow: 0 0 12px rgba(254, 229, 0, 0.45);
   }
   .daily-news-item {
-    border-top: 1px solid rgba(240,236,228,0.08);
-    padding: 0.6rem 0;
+    border-top: none;
+    padding: 0.62rem 0.72rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.35rem 0.85rem 0.85rem 0.85rem;
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid rgba(254, 229, 0, 0.85);
   }
-  .daily-news-item:first-of-type { border-top: none; padding-top: 0.2rem; }
+  .daily-news-item:last-of-type { margin-bottom: 0; }
+  .daily-news-item:first-of-type { padding-top: 0.62rem; }
   .daily-news-item-title {
     font-size: 0.82rem;
     font-weight: 600;
@@ -1918,6 +2021,7 @@
   @media (max-width: 768px) {
     .daily-news-section { padding: 4.5rem 1.5rem; }
     .daily-news-inner { grid-template-columns: 1fr; gap: 1.8rem; }
+    .daily-news-device { border-radius: 1.5rem; }
   }
 
   /* DIFFERENTIATION — 차별점 */
@@ -3178,6 +3282,7 @@
     .invitation-final { font-size: 1.2rem; line-height: 1.55; margin-bottom: 2.8rem; }
     .gate-enter { font-size: 0.62rem; letter-spacing: 0.2em; padding: 0.9rem 1.4rem; }
     .gate.show-members .gate-members-panel { max-height: 1200px; }
+    .gate-members-kicker { font-size: clamp(1.12rem, 4.2vw, 1.38rem); margin-bottom: 1rem; }
     .gate-members-card { margin-top: 0; padding: 1rem 1rem 1.1rem; max-width: none; }
     .gate-more { width: 100%; max-width: 100%; box-sizing: border-box; font-size: 0.84rem; }
     .gate-member-preview { gap: 0.65rem; }
@@ -3408,7 +3513,7 @@
 <body>
 
 <!-- TOP NAV (appears after hero) -->
-<header class="topbar" id="topbar">
+<header class="topbar visible" id="topbar">
   <a href="#hero-main" class="topbar-logo">The AI Inner Circle</a>
   <nav class="topbar-menu">
     <a href="#curriculum">커리큘럼</a>
@@ -3725,13 +3830,10 @@
 
 <div class="divider"></div>
 
-<!-- BUILD GALLERY + COMMUNITY -->
+<!-- COMMUNITY -->
 <section class="build-gallery-section" id="build-gallery">
-  <div class="build-inner">
+  <div class="build-inner build-inner--community-only">
     <div class="build-text reveal">
-      <div class="section-label">이런 것들을 만들 수 있습니다</div>
-      <h2 class="build-title">대표자가 직접 만들었습니다.<br><em>실전 결과물 갤러리</em></h2>
-      <p class="build-sub">강의가 끝났을 때 "아는 상태"가 아니라, 실제 작동하는 시스템을 보유하게 됩니다. Engz 사이트, 영어 단어 앱, 수강생 모집 자동화봇까지 같은 방식으로 구축합니다.</p>
       <div class="community-points">
         <p class="community-point"><strong>주간 Zoom 공유회</strong> — 멤버끼리 매주 AI 활용 사례를 공유하며 각자 업종에 맞게 개선 포인트를 바로 반영합니다.</p>
         <p class="community-point"><strong>디너 네트워킹</strong> — 대표·전문직 중심 오프라인 모임으로 협업/레퍼럴 기회를 연결합니다.</p>
@@ -3740,29 +3842,6 @@
         <h4>커뮤니티 밀도는 성과 속도를 결정합니다.</h4>
         <p>혼자 공부하면 속도가 느립니다. Inner Circle은 매주 공유회 + 오프라인 네트워킹을 통해 실제 적용 사례가 계속 누적되는 구조입니다.</p>
       </div>
-    </div>
-    <div class="build-gallery-grid reveal">
-      <article class="build-card">
-        <img class="build-thumb" src="assets/class-management-platform.png" alt="Engz 수업 관리 플랫폼 스크린샷">
-        <div class="build-meta">
-          <h5>Engz 수업 관리 플랫폼</h5>
-          <p>수업 운영, 일정, 숙제, 수강생 데이터가 연결된 운영 시스템.</p>
-        </div>
-      </article>
-      <article class="build-card">
-        <div class="build-thumb placeholder">English Word App<br>Screenshot</div>
-        <div class="build-meta">
-          <h5>영어 단어 앱</h5>
-          <p>학습 흐름에 맞춘 단어 학습 앱. 개인화 콘텐츠 생성 구조 포함.</p>
-        </div>
-      </article>
-      <article class="build-card">
-        <img class="build-thumb" src="assets/automation-bot-chat.png" alt="AI 자동화봇 운영 화면 예시">
-        <div class="build-meta">
-          <h5>수강생 모집 자동화봇</h5>
-          <p>유입-응대-전환 프로세스를 자동화해 운영 효율과 전환률을 동시에 높입니다.</p>
-        </div>
-      </article>
     </div>
   </div>
 </section>
@@ -3780,24 +3859,14 @@
         <p>멤버십 연장 기간에도 <strong>지속 제공</strong></p>
       </div>
     </div>
-    <div class="daily-news-card reveal">
-      <h4>오늘의 AI 뉴스 4선</h4>
-      <div class="daily-news-item">
-        <div class="daily-news-item-title">OpenAI, GPT-5 기업용 API 발표</div>
-        <div class="daily-news-item-meta">요약: 추론 성능 향상 · 자동화 워크플로우 적용 범위 확대</div>
+    <div class="daily-news-device reveal">
+      <div class="daily-news-device-bar">
+        카카오톡 · AI 브리핑
+        <span class="daily-news-device-sub">오전 8:30</span>
       </div>
-      <div class="daily-news-item">
-        <div class="daily-news-item-title">Google Gemini, 업무 자동화 에이전트 업데이트</div>
-        <div class="daily-news-item-meta">요약: 문서/메일/일정 연계 개선 · 팀 단위 적용 사례 증가</div>
-      </div>
-      <div class="daily-news-item">
-        <div class="daily-news-item-title">국내 전문직 대상 AI 자동화 도입 가속</div>
-        <div class="daily-news-item-meta">요약: 상담·응대·운영 프로세스 자동화 수요 급증</div>
-      </div>
-      <div class="daily-news-item">
-        <div class="daily-news-item-title">EU AI Act 후속 가이드라인 공개</div>
-        <div class="daily-news-item-meta">요약: 고위험 AI 기준 강화 · 기업 대응 체크리스트 필요</div>
-      </div>
+      <figure class="daily-news-shot">
+        <img src="assets/kakao-ai-news-brief.png" alt="카카오톡 AI 뉴스 브리핑 예시 화면">
+      </figure>
     </div>
   </div>
 </section>
@@ -4171,17 +4240,62 @@
     document.body.classList.add('gate-locked');
     document.body.classList.add('gate-intro');
 
+    function revealMembers() {
+      if (gate.classList.contains('show-members')) return;
+      gate.classList.add('show-members');
+      document.body.classList.add('gate-scrollable');
+      if (membersPanel) membersPanel.setAttribute('aria-hidden', 'false');
+    }
+
+    function invitationCanScroll() {
+      return gate.scrollHeight > gate.clientHeight + 2;
+    }
+
+    function invitationNearBottom() {
+      return gate.scrollHeight - gate.scrollTop - gate.clientHeight < 100;
+    }
+
     openBtn.addEventListener('click', () => {
       gate.classList.add('opened');
     });
 
     if (enterBtn) {
-      enterBtn.addEventListener('click', () => {
-        gate.classList.add('show-members');
-        document.body.classList.add('gate-scrollable');
-        if (membersPanel) membersPanel.setAttribute('aria-hidden', 'false');
-      });
+      enterBtn.addEventListener('click', revealMembers);
     }
+
+    gate.addEventListener(
+      'wheel',
+      (e) => {
+        if (!gate.classList.contains('opened') || gate.classList.contains('show-members')) return;
+        if (e.deltaY <= 0) return;
+        const canScroll = invitationCanScroll();
+        if (!canScroll || invitationNearBottom()) {
+          e.preventDefault();
+          revealMembers();
+        }
+      },
+      { passive: false }
+    );
+
+    gate.addEventListener(
+      'scroll',
+      () => {
+        if (!gate.classList.contains('opened') || gate.classList.contains('show-members')) return;
+        if (invitationNearBottom()) revealMembers();
+      },
+      { passive: true }
+    );
+
+    let touchY0 = 0;
+    gate.addEventListener('touchstart', (e) => {
+      touchY0 = e.touches[0].clientY;
+    }, { passive: true });
+    gate.addEventListener('touchend', (e) => {
+      if (!gate.classList.contains('opened') || gate.classList.contains('show-members')) return;
+      if (invitationCanScroll()) return;
+      const y = e.changedTouches[0].clientY;
+      if (touchY0 - y > 56) revealMembers();
+    }, { passive: true });
 
     if (mainMoreBtn) {
       mainMoreBtn.addEventListener('click', () => {
@@ -4197,29 +4311,11 @@
     }
   })();
 
-  // Topbar show/hide — appears once user scrolls past video intro
+  // Topbar — always visible
   (function () {
     const topbar = document.getElementById('topbar');
-    const hero = document.getElementById('hero-main');
-    if (!topbar || !hero) return;
-    const mobileMq = window.matchMedia('(max-width: 768px)');
-
-    // Mobile: always visible so menu is never lost.
-    if (mobileMq.matches) {
-      topbar.classList.add('visible');
-      return;
-    }
-
-    function getTrigger() {
-      return hero.offsetTop + hero.offsetHeight - 120;
-    }
-    let trigger = getTrigger();
-    function onScroll() {
-      topbar.classList.toggle('visible', window.scrollY >= trigger);
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', () => { trigger = getTrigger(); onScroll(); });
-    onScroll();
+    if (!topbar) return;
+    topbar.classList.add('visible');
   })();
 
   // Countdown to 2029-01-01 (KST) — with centiseconds
