@@ -1851,6 +1851,40 @@
     margin-bottom: 2rem;
   }
 
+  /* PRICE — 이미 합류한 멤버 패널 */
+  .price-members {
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1.8rem;
+    border: 1px solid rgba(201,169,110,0.25);
+    background: rgba(201,169,110,0.04);
+    text-align: left;
+  }
+  .pm-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+    color: rgba(201,169,110,0.85);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .pm-list {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(240,236,228,0.88);
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+  }
+  .pm-list strong {
+    color: var(--gold);
+    font-weight: 700;
+  }
+  @media (max-width: 640px) {
+    .price-members { padding: 0.9rem 1rem; margin-bottom: 1.4rem; }
+    .pm-label { font-size: 0.52rem; letter-spacing: 0.22em; }
+    .pm-list { font-size: 0.78rem; }
+  }
+
   .price-amount {
     font-family: 'Cormorant Garamond', serif;
     font-size: 5rem;
@@ -2466,7 +2500,7 @@
 
   <nav>
     <div class="nav-logo">The AI Inner Circle</div>
-    <div class="nav-badge"><span class="live-dot"></span>1기 모집 중 · 20인 한정</div>
+    <div class="nav-badge"><span class="live-dot"></span>12/20 선발 완료 · 8석 남음</div>
   </nav>
 
   <div class="hero-content">
@@ -2766,6 +2800,10 @@
     <p class="pricing-sub">창립 멤버 20인 한정. 2기부터 30% 이상 인상됩니다.</p>
 
     <div class="price-card">
+      <div class="price-members">
+        <div class="pm-label">이미 합류한 멤버</div>
+        <div class="pm-list">헬스케어 대표 · 법무법인 파트너 · 제조사 대표 · 기업 임원 외 <strong>8인</strong></div>
+      </div>
       <div class="price-badge">1기 한정 특가 · The AI Inner Circle</div>
       <div class="price-amount">129<span style="font-size:2rem;">만원</span></div>
       <div class="price-raise">추후 30% 이상 인상 예정</div>
