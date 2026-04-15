@@ -1702,6 +1702,87 @@
     .build-thumb { height: 180px; }
   }
 
+  /* DAILY AI NEWS BRIEF */
+  .daily-news-section {
+    padding: 6.5rem 2rem;
+    background: rgba(201,169,110,0.015);
+    border-top: 1px solid rgba(201,169,110,0.1);
+    border-bottom: 1px solid rgba(201,169,110,0.1);
+  }
+  .daily-news-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .daily-news-title {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+    line-height: 1.32;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin-bottom: 1rem;
+    font-weight: 800;
+  }
+  .daily-news-title em {
+    font-style: normal;
+    color: var(--gold);
+    background: linear-gradient(180deg, var(--gold-light), var(--gold) 55%, var(--gold-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .daily-news-sub {
+    font-size: 0.98rem;
+    line-height: 1.72;
+    color: rgba(240,236,228,0.7);
+    margin-bottom: 1.4rem;
+  }
+  .daily-news-points {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .daily-news-points p {
+    font-size: 0.9rem;
+    color: rgba(240,236,228,0.8);
+    line-height: 1.6;
+  }
+  .daily-news-points strong { color: var(--gold); }
+  .daily-news-card {
+    border: 1px solid rgba(201,169,110,0.2);
+    background: linear-gradient(180deg, #111 0%, #0a0a0a 100%);
+    padding: 1.2rem;
+  }
+  .daily-news-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.7rem;
+  }
+  .daily-news-item {
+    border-top: 1px solid rgba(240,236,228,0.08);
+    padding: 0.6rem 0;
+  }
+  .daily-news-item:first-of-type { border-top: none; padding-top: 0.2rem; }
+  .daily-news-item-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.4;
+    margin-bottom: 0.18rem;
+  }
+  .daily-news-item-meta {
+    font-size: 0.7rem;
+    color: rgba(240,236,228,0.5);
+  }
+  @media (max-width: 768px) {
+    .daily-news-section { padding: 4.5rem 1.5rem; }
+    .daily-news-inner { grid-template-columns: 1fr; gap: 1.8rem; }
+  }
+
   /* DIFFERENTIATION — 차별점 */
   .differentiation { padding-top: 7rem; padding-bottom: 7rem; }
   .diff-header {
@@ -3460,7 +3541,7 @@
   <div class="build-inner">
     <div class="build-text reveal">
       <div class="section-label">이런 것들을 만들 수 있습니다</div>
-      <h2 class="build-title">해나님이 직접 만든<br><em>실전 결과물 갤러리</em></h2>
+      <h2 class="build-title">대표자가 직접 만들었습니다.<br><em>실전 결과물 갤러리</em></h2>
       <p class="build-sub">강의가 끝났을 때 "아는 상태"가 아니라, 실제 작동하는 시스템을 보유하게 됩니다. Engz 사이트, 영어 단어 앱, 수강생 모집 자동화봇까지 같은 방식으로 구축합니다.</p>
       <div class="community-points">
         <p class="community-point"><strong>주간 Zoom 공유회</strong> — 멤버끼리 매주 AI 활용 사례를 공유하며 각자 업종에 맞게 개선 포인트를 바로 반영합니다.</p>
@@ -3493,6 +3574,41 @@
           <p>유입-응대-전환 프로세스를 자동화해 운영 효율과 전환률을 동시에 높입니다.</p>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- DAILY AI NEWS BRIEF -->
+<section class="daily-news-section" id="news-brief">
+  <div class="daily-news-inner">
+    <div class="reveal">
+      <div class="section-label">멤버 전용 일간 브리핑</div>
+      <h2 class="daily-news-title"><em>매일 아침</em> AI 뉴스 전송</h2>
+      <p class="daily-news-sub">빠르게 변하는 AI 흐름을 매일 오전 8:30 카카오톡으로 받아봅니다. 바쁜 대표·전문직도 핵심만 놓치지 않도록 3~4개 뉴스로 압축 제공합니다.</p>
+      <div class="daily-news-points">
+        <p><strong>오전 8:30</strong> 자동 전송</p>
+        <p>실무에 바로 쓰는 <strong>핵심 요약</strong> 중심</p>
+        <p>멤버십 연장 기간에도 <strong>지속 제공</strong></p>
+      </div>
+    </div>
+    <div class="daily-news-card reveal">
+      <h4>오늘의 AI 뉴스 4선</h4>
+      <div class="daily-news-item">
+        <div class="daily-news-item-title">OpenAI, GPT-5 기업용 API 발표</div>
+        <div class="daily-news-item-meta">요약: 추론 성능 향상 · 자동화 워크플로우 적용 범위 확대</div>
+      </div>
+      <div class="daily-news-item">
+        <div class="daily-news-item-title">Google Gemini, 업무 자동화 에이전트 업데이트</div>
+        <div class="daily-news-item-meta">요약: 문서/메일/일정 연계 개선 · 팀 단위 적용 사례 증가</div>
+      </div>
+      <div class="daily-news-item">
+        <div class="daily-news-item-title">국내 전문직 대상 AI 자동화 도입 가속</div>
+        <div class="daily-news-item-meta">요약: 상담·응대·운영 프로세스 자동화 수요 급증</div>
+      </div>
+      <div class="daily-news-item">
+        <div class="daily-news-item-title">EU AI Act 후속 가이드라인 공개</div>
+        <div class="daily-news-item-meta">요약: 고위험 AI 기준 강화 · 기업 대응 체크리스트 필요</div>
+      </div>
     </div>
   </div>
 </section>
