@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The AI Inner Circle 1기에 함께해주세요</title>
-<meta name="description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 10인 한정 · 5/4(월) 시작.">
+<meta name="description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 대상 · 1기 정원 20명 · 첫 10인 특가 · 5/4(월) 시작.">
 <meta name="theme-color" content="#080808">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The AI Inner Circle">
 <meta property="og:title" content="The AI Inner Circle 1기에 함께해주세요">
-<meta property="og:description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 10인 한정 · 5/4(월) 시작.">
+<meta property="og:description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 대상 · 1기 정원 20명 · 첫 10인 특가 · 5/4(월) 시작.">
 <meta property="og:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k3">
 <meta property="og:image:secure_url" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k3">
 <meta property="og:image:type" content="image/png">
@@ -21,9 +21,35 @@
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The AI Inner Circle 1기에 함께해주세요">
-<meta name="twitter:description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 10인 한정 · 5/4(월) 시작.">
+<meta name="twitter:description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 대상 · 1기 정원 20명 · 첫 10인 특가 · 5/4(월) 시작.">
 <meta name="twitter:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k3">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "The AI Inner Circle 1기",
+  "description": "대표·전문직을 위한 4주 AI 자동화 실전 프로그램입니다. 코딩 없이 사업에 AI 워크플로를 이식합니다.",
+  "url": "https://imhen97.github.io/ai-inner-circle/",
+  "inLanguage": "ko-KR",
+  "provider": {
+    "@type": "Organization",
+    "name": "The AI Inner Circle",
+    "url": "https://imhen97.github.io/ai-inner-circle/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1290000",
+    "priceCurrency": "KRW",
+    "availability": "https://schema.org/LimitedAvailability",
+    "url": "https://pf.kakao.com/_FdqCX/chat",
+    "description": "첫 10인 특가. 세부 조건은 개별 안내 시 확인"
+  }
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Sans+KR:wght@500;700;900&family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -39,6 +65,41 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -100px;
+    z-index: 10001;
+    padding: 0.65rem 1rem;
+    background: var(--gold);
+    color: var(--black);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: top 0.15s ease;
+  }
+  .skip-link:focus {
+    top: 1rem;
+    outline: 2px solid var(--off-white);
+    outline-offset: 2px;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 
   body {
     background: var(--black);
@@ -3513,11 +3574,14 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#video-intro">본문으로 건너뛰기</a>
 
 <!-- TOP NAV (appears after hero) -->
 <header class="topbar visible" id="topbar">
   <a href="#hero-main" class="topbar-logo">The AI Inner Circle</a>
-  <nav class="topbar-menu">
+  <nav class="topbar-menu" aria-label="페이지 섹션">
+    <a href="#program">프로그램</a>
+    <a href="#differentiation">차별점</a>
     <a href="#curriculum">커리큘럼</a>
     <a href="#members">멤버구성</a>
     <a href="#pricing">수강료</a>
@@ -3609,7 +3673,7 @@
     <h2 class="video-intro-title">우리가 아는 모든 일자리는<br><em>2029년, 사라집니다.</em></h2>
     <div class="video-wrap">
       <a class="video-card" href="https://www.youtube.com/watch?v=VyTo59QmiIE&t=2420s" target="_blank" rel="noopener noreferrer" aria-label="Ray Kurzweil 인터뷰 40:20부터 재생">
-        <img class="video-thumb" src="assets/kurzweil.png" alt="Ray Kurzweil — 92NY conversation"
+        <img class="video-thumb" src="assets/kurzweil.png" loading="lazy" decoding="async" alt="Ray Kurzweil — 92NY conversation"
              onerror="this.onerror=null;this.src='https://img.youtube.com/vi/VyTo59QmiIE/maxresdefault.jpg';">
         <div class="video-rec"><span class="rec-dot"></span>ARCHIVE · 2024</div>
         <div class="video-top-right">92NY · LIVE CONVERSATION</div>
@@ -3739,7 +3803,7 @@
     </div>
     <div class="diff-pair">
       <p class="diff-them">그들은 <strong>누구나</strong> 받습니다.</p>
-      <p class="diff-us">우리는 <em>엄선된 20인</em>만 선발합니다.</p>
+      <p class="diff-us">1기는 <em>정원 20명</em>이며, <em>엄선된 분</em>만 함께합니다.</p>
       <p class="diff-note">같은 전문직종 <strong>최대 3인</strong>까지만 받아 섹터 다양성을 보장합니다.</p>
     </div>
     <div class="diff-pair">
@@ -3756,7 +3820,7 @@
 <div class="divider"></div>
 
 <!-- WHAT IS IT -->
-<section class="section">
+<section class="section" id="program">
   <div class="what-layout">
     <div class="reveal">
       <div class="section-label">프로그램 소개</div>
@@ -3863,7 +3927,7 @@
         <span class="daily-news-device-sub">오전 8:30</span>
       </div>
       <figure class="daily-news-shot">
-        <img src="assets/kakao-ai-news-brief.png" alt="카카오톡 AI 뉴스 브리핑 예시 화면">
+        <img src="assets/kakao-ai-news-brief.png" loading="lazy" decoding="async" alt="카카오톡 AI 뉴스 브리핑 예시 화면">
       </figure>
     </div>
   </div>
@@ -3965,7 +4029,7 @@
   <div class="instructor-layout">
     <div class="reveal">
       <div class="instructor-img-placeholder">
-        <img class="instructor-photo" src="assets/haena.jpg" alt="김해나 · AI Inner Circle Founding Director">
+        <img class="instructor-photo" src="assets/haena.jpg" loading="lazy" decoding="async" alt="김해나 · AI Inner Circle Founding Director">
         <div class="instructor-name-tag">
           <div class="instructor-company">ENGZ 대표</div>
           <div class="instructor-name">김해나</div>
@@ -4144,13 +4208,13 @@
 
 <footer>
   <div class="footer-logo">The AI Inner Circle</div>
-  <div class="footer-copy">© 2025 Engz · 김해나</div>
+  <div class="footer-copy">© 2026 Engz · 김해나</div>
 </footer>
 
 <!-- STICKY BOTTOM CTA -->
-<a class="sticky-cta" href="https://pf.kakao.com/_FdqCX/chat" target="_blank" rel="noopener noreferrer">
+<a class="sticky-cta" href="https://pf.kakao.com/_FdqCX/chat" target="_blank" rel="noopener noreferrer" aria-label="카카오톡으로 The AI Inner Circle 1기 신청하기">
   <span>1기 지금 신청하기</span>
-  <span class="sticky-cta-sub">5/4(월) 시작 · 선착순 20명</span>
+  <span class="sticky-cta-sub">5/4(월) 시작 · 1기 정원 20명</span>
 </a>
 
 <script>
