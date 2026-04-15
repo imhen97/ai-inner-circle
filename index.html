@@ -229,6 +229,84 @@
     margin-top: 0.2rem;
   }
 
+  /* AUTHORITY PANEL — 영상 아래 권위·스토리 */
+  .authority-panel {
+    max-width: 640px;
+    margin: 0 auto 2.4rem;
+    padding: 2.2rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(201,169,110,0.22);
+    border-bottom: 1px solid rgba(201,169,110,0.22);
+    position: relative;
+  }
+  .authority-panel::before,
+  .authority-panel::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    transform: translateX(-50%);
+    opacity: 0.6;
+  }
+  .authority-panel::before { top: -1px; }
+  .authority-panel::after  { bottom: -1px; }
+
+  .authority-lead {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    color: rgba(240,236,228,0.85);
+    line-height: 1.75;
+    margin-bottom: 1.3rem;
+    letter-spacing: -0.01em;
+  }
+  .authority-lead em {
+    font-style: normal;
+    font-weight: 900;
+    color: var(--gold);
+    background: linear-gradient(180deg, var(--gold-light), var(--gold) 55%, var(--gold-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.4em;
+    letter-spacing: -0.02em;
+    padding: 0 0.08em;
+  }
+
+  .authority-body {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+    color: #fff;
+    line-height: 1.6;
+    margin-bottom: 1.6rem;
+    letter-spacing: -0.015em;
+  }
+  .authority-body em {
+    font-style: normal;
+    font-weight: 900;
+    color: var(--gold);
+  }
+
+  .authority-cite {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.24em;
+    color: rgba(201,169,110,0.8);
+    line-height: 1.95;
+    text-transform: uppercase;
+  }
+  .authority-cite .cite-sub {
+    display: block;
+    color: rgba(240,236,228,0.5);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: none;
+    margin-top: 0.2rem;
+  }
+
   .video-intro-sub {
     font-size: 0.95rem;
     color: rgba(240,236,228,0.5);
@@ -1604,7 +1682,7 @@
 <section class="video-intro" id="video-intro">
   <div class="video-intro-overlay"></div>
   <div class="video-intro-content">
-    <div class="video-warning-badge">⚠ 2029년까지 남은 시간</div>
+    <div class="video-warning-badge">⚠ AI가 인간을 대체하는 데 남은 시간</div>
     <div class="countdown" id="countdown" aria-live="polite">
       <div class="cd-unit"><div class="cd-num" id="cd-y">--</div><div class="cd-lbl">년</div></div>
       <div class="cd-sep">:</div>
@@ -1618,8 +1696,7 @@
       <div class="cd-sep">:</div>
       <div class="cd-unit cd-sec"><div class="cd-num"><span id="cd-s">--</span><span class="cd-ms">:<span id="cd-ms">00</span></span></div><div class="cd-lbl">초</div></div>
     </div>
-    <h2 class="video-intro-title">트럭 운전사, 회계사,<br>코딩하는 개발자들…<br>우리가 아는 생계를 위한 노동이<br><em>2029년, 모두 사라집니다.</em></h2>
-    <p class="video-intro-cite">— Ray Kurzweil<span class="cite-work">《The Singularity Is Nearer》 · 2024</span></p>
+    <h2 class="video-intro-title">우리가 아는 모든 일은<br><em>2029년, 사라집니다.</em></h2>
     <div class="video-wrap">
       <a class="video-card" href="https://www.youtube.com/watch?v=VyTo59QmiIE&t=2416s" target="_blank" rel="noopener noreferrer" aria-label="Ray Kurzweil 인터뷰 40:16부터 재생">
         <img class="video-thumb" src="assets/kurzweil.png" alt="Ray Kurzweil — 92NY conversation"
@@ -1639,6 +1716,11 @@
           </div>
         </div>
       </a>
+    </div>
+    <div class="authority-panel">
+      <p class="authority-lead">지난 20년, 그의 AI 예측 적중률 <em>87%</em>.</p>
+      <p class="authority-body">그런 그가 이번엔 말했다 —<br>"2029년, 인간의 일자리는 <em>모두 대체된다</em>."</p>
+      <p class="authority-cite">— Ray Kurzweil<span class="cite-sub">Google AI 디렉터 · 美 국가기술훈장 수여자 · 《The Singularity Is Nearer》 (2024)</span></p>
     </div>
     <a href="#hero-main" class="video-skip">시간 될 때 영상을 처음부터 시청하시길 추천드립니다 ↓</a>
   </div>
