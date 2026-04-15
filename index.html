@@ -4011,12 +4011,12 @@
 
     openBtn.addEventListener('click', () => {
       gate.classList.add('opened');
-      document.body.classList.remove('gate-intro');
     });
 
     if (enterBtn) {
       enterBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        document.body.classList.remove('gate-intro');
         document.body.classList.remove('gate-locked');
         const target = document.getElementById('members');
         setTimeout(() => {
