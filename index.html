@@ -1022,10 +1022,16 @@
   .invitation-signature {
     display: flex;
     justify-content: flex-end;
-    align-items: baseline;
-    gap: 1rem;
     padding-top: 1.5rem;
     border-top: 1px solid rgba(201,169,110,0.18);
+  }
+  .sig-block { text-align: right; }
+  .sig-top {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    justify-content: flex-end;
+    margin-bottom: 0.55rem;
   }
   .sig-name {
     font-family: 'Cormorant Garamond', serif;
@@ -1042,6 +1048,15 @@
     color: rgba(240,236,228,0.45);
     text-transform: uppercase;
   }
+  .sig-cred {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(240,236,228,0.68);
+    letter-spacing: -0.005em;
+    line-height: 1.6;
+  }
+  .sig-cred .sig-dot { color: rgba(201,169,110,0.6); padding: 0 0.3em; }
 
   @media (max-width: 768px) {
     .invitation { padding: 6rem 1.5rem; }
@@ -1869,8 +1884,13 @@
     <p class="invitation-offer">2029년이 오기 전,<br>남들보다 앞서 생산성을 최대로 끌어올려<br><em>사다리의 최상단에 설 20인</em> —</p>
     <p class="invitation-final">'The AI Inner Circle · 1기'에 모십니다.</p>
     <div class="invitation-signature">
-      <span class="sig-name">김해나</span>
-      <span class="sig-role">Program Director</span>
+      <div class="sig-block">
+        <div class="sig-top">
+          <span class="sig-name">김해나</span>
+          <span class="sig-role">Founding Director</span>
+        </div>
+        <div class="sig-cred">The AI Inner Circle<span class="sig-dot">·</span>1st Cohort</div>
+      </div>
     </div>
   </div>
 </section>
