@@ -7,13 +7,14 @@
 <meta name="description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 대상 · 1기 정원 20명 · 첫 10인 특가 · 5/4(월) 시작.">
 <meta name="theme-color" content="#080808">
 <link rel="canonical" href="https://imhen97.github.io/ai-inner-circle/">
+<link rel="image_src" href="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k4">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The AI Inner Circle">
 <meta property="og:title" content="The AI Inner Circle 1기에 함께해주세요">
 <meta property="og:description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 대상 · 1기 정원 20명 · 첫 10인 특가 · 5/4(월) 시작.">
-<meta property="og:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k3">
-<meta property="og:image:secure_url" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k3">
+<meta property="og:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k4">
+<meta property="og:image:secure_url" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k4">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="482">
 <meta property="og:image:height" content="458">
@@ -23,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The AI Inner Circle 1기에 함께해주세요">
 <meta name="twitter:description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 대상 · 1기 정원 20명 · 첫 10인 특가 · 5/4(월) 시작.">
-<meta name="twitter:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k3">
+<meta name="twitter:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k4">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,6 +35,7 @@
   "@type": "Course",
   "name": "The AI Inner Circle 1기",
   "description": "대표·전문직을 위한 4주 AI 자동화 실전 프로그램입니다. 코딩 없이 사업에 AI 워크플로를 이식합니다.",
+  "image": "https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k4",
   "url": "https://imhen97.github.io/ai-inner-circle/",
   "inLanguage": "ko-KR",
   "provider": {
@@ -761,6 +763,13 @@
     -webkit-text-fill-color: transparent;
     letter-spacing: 0.01em;
   }
+  /* Reset aggressive overflow-wrap from mobile body so English wordmark does not break per-letter */
+  .brand-wordmark .brand-eyebrow,
+  .brand-wordmark .brand-name {
+    word-break: normal;
+    overflow-wrap: normal;
+    line-break: auto;
+  }
   .nav-logo.brand-wordmark {
     gap: 0.85rem;
   }
@@ -782,9 +791,12 @@
     padding: 0.45rem 1rem;
     text-transform: uppercase;
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.6rem;
     background: rgba(201,169,110,0.04);
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    line-break: strict;
   }
 
   .nav-badge .live-dot {
@@ -794,6 +806,28 @@
     background: #ff4444;
     box-shadow: 0 0 0 0 rgba(255,68,68,0.6);
     animation: liveDot 1.8s ease infinite;
+    flex-shrink: 0;
+    margin-top: 0.35em;
+  }
+
+  .nav-badge-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0.22rem;
+    min-width: 0;
+    line-height: 1.35;
+    text-transform: none;
+    letter-spacing: 0.14em;
+  }
+
+  .nav-badge-line {
+    display: block;
+  }
+
+  .nav-badge-line--secondary {
+    opacity: 0.9;
+    font-size: 0.92em;
+    letter-spacing: 0.12em;
   }
 
   @keyframes liveDot {
@@ -1212,7 +1246,24 @@
     min-height: 100vh;
     -webkit-overflow-scrolling: touch;
   }
+  /* Seal screen: taps pass through fixed #topbar to the invitation card */
+  body.gate-seal-phase #topbar {
+    pointer-events: none;
+  }
+  @supports selector(:has(*)) {
+    body.gate-locked:has(#invitation:not(.opened)) #topbar {
+      pointer-events: none;
+    }
+  }
   body.gate-intro .topbar { pointer-events: auto; }
+  body.gate-seal-phase.gate-intro #topbar {
+    pointer-events: none;
+  }
+
+  /* Mobile: stack invitation above .topbar (phones use z-index: 1300) */
+  body.gate-seal-phase #invitation {
+    z-index: 1350;
+  }
 
   /* INVITATION GATE (봉인→편지) */
   .invitation.gate {
@@ -1247,6 +1298,7 @@
   .invitation.gate .invitation-inner {
     position: relative;
     width: 100%;
+    isolation: isolate;
   }
 
   /* SEAL — 봉인 상태 */
@@ -1258,6 +1310,7 @@
     border: 1px solid rgba(201,169,110,0.32);
     background: linear-gradient(180deg, rgba(201,169,110,0.05), rgba(8,8,8,0.55));
     position: relative;
+    z-index: 2;
     box-shadow: 0 30px 80px rgba(0,0,0,0.55), inset 0 0 60px rgba(201,169,110,0.04);
     transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.2,.7,.3,1), visibility 0s linear 0.6s;
   }
@@ -1386,19 +1439,46 @@
     margin-top: 2rem;
   }
 
+  /* Seal closed: letter takes no layout; avoids iOS hit-testing glitches */
+  .invitation.gate:not(.opened) .gate-letter {
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(12px);
+    transition: none;
+  }
+
   /* LETTER — 편지 (초대장 열린 상태) */
   .gate-letter {
     max-width: 760px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
     opacity: 0;
+    visibility: hidden;
     transform: translateY(26px);
     pointer-events: none;
-    transition: opacity 0.9s ease 0.2s, transform 0.9s cubic-bezier(.2,.7,.3,1) 0.2s;
+    transition:
+      opacity 0.9s ease 0.2s,
+      transform 0.9s cubic-bezier(.2,.7,.3,1) 0.2s,
+      visibility 0s linear 0.9s;
   }
   .gate.opened .gate-letter {
+    max-height: none;
+    overflow: visible;
+    margin: 0 auto;
     opacity: 1;
+    visibility: visible;
     transform: translateY(0);
     pointer-events: auto;
+    transition:
+      opacity 0.9s ease 0.2s,
+      transform 0.9s cubic-bezier(.2,.7,.3,1) 0.2s,
+      visibility 0s linear 0s;
   }
 
   .gate-members-flow {
@@ -1450,14 +1530,99 @@
     pointer-events: none;
     transition: opacity 0.45s ease, transform 0.45s cubic-bezier(.2,.7,.3,1), max-height 0.6s ease, visibility 0s linear 0.45s;
   }
-  .gate.member-detail-open .gate-members-detail {
+  /* Member list modal */
+  .gate-members-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2500;
+    align-items: center;
+    justify-content: center;
+    padding: max(1rem, env(safe-area-inset-top, 0px)) max(1rem, env(safe-area-inset-right, 0px)) max(1rem, env(safe-area-inset-bottom, 0px)) max(1rem, env(safe-area-inset-left, 0px));
+    box-sizing: border-box;
+  }
+  .gate-members-modal.is-open {
+    display: flex;
+  }
+  .gate-members-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.76);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  .gate-members-modal__panel {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 26.5rem);
+    max-height: min(88dvh, 640px);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(201, 169, 110, 0.42);
+    background: linear-gradient(180deg, #0c0c0c 0%, #080808 100%);
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.72), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    box-sizing: border-box;
+  }
+  .gate-members-modal__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    padding: 1rem 1rem 0.85rem 1.15rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.22);
+  }
+  .gate-members-modal__title {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin: 0;
+    line-height: 1.3;
+  }
+  .gate-members-modal__close {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: -0.35rem -0.25rem -0.35rem 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: rgba(240, 236, 228, 0.75);
+    font-size: 1.65rem;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: color 0.2s ease, background 0.2s ease;
+    -webkit-tap-highlight-color: rgba(201, 169, 110, 0.25);
+  }
+  .gate-members-modal__close:hover {
+    color: var(--gold);
+    background: rgba(201, 169, 110, 0.08);
+  }
+  .gate-members-modal__body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding: 1.1rem 1.15rem 1.35rem;
+    overscroll-behavior: contain;
+  }
+  #gate-members-modal-host .gate-members-detail {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
-    max-height: 920px;
+    transform: none;
+    max-height: none;
+    overflow: visible;
     pointer-events: auto;
-    margin-top: 1.75rem;
-    transition: opacity 0.5s ease 0.06s, transform 0.5s cubic-bezier(.2,.7,.3,1) 0.06s, max-height 0.65s ease, visibility 0s linear 0s;
+    margin-top: 0;
+    transition: none;
+  }
+  #gate-members-modal-host .gate-members-card {
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
   }
 
   .gate-more-wrap {
@@ -1491,7 +1656,7 @@
   body.gate-unlocked-main #invitation {
     display: none;
   }
-  /* Gate letter: member list after CTA (.member-detail-open) */
+  /* Gate letter: member card (shown in modal) */
   .gate-members-card {
     margin: 0 auto;
     max-width: 420px;
@@ -2184,14 +2349,20 @@
   }
   @media (max-width: 768px) {
     .daily-news-section { padding: 4.5rem 1.5rem; }
-    /* Mobile: device mockup left, copy right (2-col) */
+    /* Mobile: single column — narrow 2-col squashes Zoom/Dinner mockups */
     .daily-news-inner {
-      grid-template-columns: minmax(0, 38%) minmax(0, 1fr);
-      gap: 1rem 1.15rem;
-      align-items: start;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: stretch;
     }
-    .daily-news-inner > .daily-news-device { order: 1; align-self: start; }
-    .daily-news-inner > .reveal:first-of-type { order: 2; min-width: 0; }
+    .daily-news-inner > .reveal:first-of-type { order: 1; min-width: 0; }
+    .daily-news-inner > .daily-news-device {
+      order: 2;
+      align-self: center;
+      width: 100%;
+      max-width: min(22.5rem, 100%);
+      margin-inline: auto;
+    }
     .daily-news-device {
       border-radius: 1.25rem;
       padding: 0.35rem 0.35rem 0.75rem;
@@ -2222,10 +2393,7 @@
   }
 
   @media (max-width: 400px) {
-    .daily-news-inner {
-      grid-template-columns: minmax(0, 36%) minmax(0, 1fr);
-      gap: 0.85rem 0.75rem;
-    }
+    .daily-news-inner { gap: 1.35rem; }
     .daily-news-device-bar { font-size: 0.58rem; padding: 0.45rem 0.45rem; }
     .daily-news-points p { font-size: 0.72rem; }
   }
@@ -2523,13 +2691,28 @@
 
   @media (max-width: 768px) {
     .spotlight-zoom-stage {
-      grid-template-columns: 1fr minmax(44px, 24%);
-      min-height: 148px;
-      padding: 0.5rem 0.45rem;
+      grid-template-columns: 1fr minmax(3.25rem, 20%);
+      min-height: 158px;
+      gap: 0.5rem;
+      padding: 0.55rem 0.5rem;
+    }
+    .spotlight-zoom-speaker {
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .spotlight-zoom-speaker-meta {
+      flex: 1 1 7rem;
+    }
+    .spotlight-zoom-name,
+    .spotlight-zoom-sub {
+      white-space: normal;
+      overflow: visible;
+      text-overflow: unset;
+      word-break: keep-all;
     }
     .spotlight-zoom-title { font-size: 0.52rem; }
     .spotlight-zoom-name { font-size: 0.65rem; }
-    .spotlight-dinner-ui { min-height: 148px; }
+    .spotlight-dinner-ui { min-height: 158px; }
   }
 
   /* DIFFERENTIATION — 차별점 */
@@ -3802,7 +3985,6 @@
     .invitation-offer { font-size: 1.08rem; line-height: 1.65; margin-bottom: 1.8rem; }
     .invitation-final { font-size: 1.2rem; line-height: 1.55; margin-bottom: 2.8rem; }
     .gate-teaser-cta { width: 100%; max-width: 100%; box-sizing: border-box; font-size: 0.84rem; }
-    .gate.member-detail-open .gate-members-detail { max-height: 1200px; }
     .gate-members-kicker { font-size: clamp(1.12rem, 4.2vw, 1.38rem); margin-bottom: 1rem; }
     .gate-members-sub { font-size: 0.68rem; line-height: 1.52; margin: -0.15rem 0 0.95rem; }
     .gate-members-card { margin-top: 0; padding: 1.2rem 1.15rem 1.95rem; max-width: none; }
@@ -4050,6 +4232,7 @@
 </head>
 <body>
 <a class="skip-link" href="#video-intro">본문으로 건너뛰기</a>
+<img src="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k4" alt="" width="482" height="458" decoding="async" fetchpriority="low" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);border:0;margin:-1px;padding:0">
 
 <!-- TOP NAV (appears after hero) -->
 <header class="topbar visible" id="topbar">
@@ -4081,7 +4264,7 @@
       <div class="seal-brand">The AI <em>Inner Circle</em></div>
       <div class="seal-sub">1st Cohort · Sealed Invitation</div>
       <div class="seal-wax" aria-hidden="true">✺</div>
-      <button class="seal-btn" type="button" id="gate-open" onclick="document.getElementById('invitation').classList.add('opened')">
+      <button class="seal-btn" type="button" id="gate-open">
         <span>초대장 열어보기</span>
         <span class="seal-btn-arrow">▼</span>
       </button>
@@ -4131,6 +4314,17 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="gate-members-modal" id="gate-members-modal" aria-hidden="true">
+    <div class="gate-members-modal__backdrop" data-gate-members-modal-close tabindex="-1"></div>
+    <div class="gate-members-modal__panel" role="dialog" aria-modal="true" aria-labelledby="gate-members-modal-title" tabindex="-1">
+      <div class="gate-members-modal__head">
+        <h2 class="gate-members-modal__title" id="gate-members-modal-title">1기 · 멤버 프로필</h2>
+        <button type="button" class="gate-members-modal__close" data-gate-members-modal-close aria-label="닫기">×</button>
+      </div>
+      <div class="gate-members-modal__body" id="gate-members-modal-host"></div>
     </div>
   </div>
 </section>
@@ -4210,7 +4404,13 @@
         <span class="brand-name">Inner Circle</span>
       </span>
     </div>
-    <div class="nav-badge"><span class="live-dot"></span>1기 5/4(월) 시작 예정 · 첫 10인 모집 중 · 9석 남음</div>
+    <div class="nav-badge">
+      <span class="live-dot" aria-hidden="true"></span>
+      <div class="nav-badge-lines">
+        <span class="nav-badge-line nav-badge-line--primary">1기 5/4(월) 시작 예정</span>
+        <span class="nav-badge-line nav-badge-line--secondary">첫 10인 모집 중 · 9석 남음</span>
+      </div>
+    </div>
   </nav>
 
   <div class="hero-content">
@@ -4824,7 +5024,7 @@
     const shareData = {
       title: 'The AI Inner Circle 1기에 함께해주세요',
       text: "검증된 분들께만 전하는 초대. The AI Inner Circle 1기 모집.",
-      url: 'https://imhen97.github.io/ai-inner-circle/?v=20260416k3'
+      url: 'https://imhen97.github.io/ai-inner-circle/?v=20260416k4'
     };
     function showToast(msg) {
       const t = document.createElement('div');
@@ -4874,25 +5074,69 @@
 
     document.body.classList.add('gate-locked');
     document.body.classList.add('gate-intro');
+    document.body.classList.add('gate-seal-phase');
 
-    openBtn.addEventListener('click', () => {
+    function openGate() {
       gate.classList.add('opened');
-    });
+      document.body.classList.remove('gate-seal-phase');
+    }
 
-    if (previewMembersBtn && membersDetail) {
+    openBtn.addEventListener('click', openGate);
+
+    const membersModal = document.getElementById('gate-members-modal');
+    const membersModalHost = document.getElementById('gate-members-modal-host');
+
+    function membersModalIsOpen() {
+      return membersModal && membersModal.classList.contains('is-open');
+    }
+
+    function closeMembersModal() {
+      if (!membersDetail || !membersModal || !membersModalHost) return;
+      if (membersDetail.parentElement !== membersModalHost) return;
+      const flow = gate.querySelector('.gate-members-flow');
+      const teaser = flow && flow.querySelector('.gate-members-teaser');
+      if (teaser) teaser.after(membersDetail);
+      membersModal.classList.remove('is-open');
+      membersModal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('gate-members-modal-open');
+      document.body.classList.remove('gate-scrollable');
+      membersDetail.setAttribute('aria-hidden', 'true');
+    }
+
+    function openMembersModal() {
+      if (!membersModal || !membersModalHost || !membersDetail) return;
+      membersModalHost.appendChild(membersDetail);
+      membersModal.classList.add('is-open');
+      membersModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('gate-members-modal-open');
+      document.body.classList.add('gate-scrollable');
+      membersDetail.setAttribute('aria-hidden', 'false');
+      const closeBtn = membersModal.querySelector('.gate-members-modal__close');
+      if (closeBtn) closeBtn.focus({ preventScroll: true });
+    }
+
+    if (previewMembersBtn && membersDetail && membersModal && membersModalHost) {
       previewMembersBtn.addEventListener('click', () => {
-        if (gate.classList.contains('member-detail-open')) return;
-        gate.classList.add('member-detail-open');
-        document.body.classList.add('gate-scrollable');
-        membersDetail.setAttribute('aria-hidden', 'false');
-        try {
-          membersDetail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } catch (e) { /* ignore */ }
+        if (membersModalIsOpen()) return;
+        openMembersModal();
+      });
+      membersModal.addEventListener('click', (e) => {
+        if (e.target.closest('[data-gate-members-modal-close]')) {
+          closeMembersModal();
+          previewMembersBtn.focus({ preventScroll: true });
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape' || !membersModalIsOpen()) return;
+        e.preventDefault();
+        closeMembersModal();
+        previewMembersBtn.focus({ preventScroll: true });
       });
     }
 
     if (mainMoreBtn) {
       mainMoreBtn.addEventListener('click', () => {
+        closeMembersModal();
         document.body.classList.remove('gate-scrollable');
         document.body.classList.remove('gate-intro');
         document.body.classList.remove('gate-locked');
@@ -4911,61 +5155,66 @@
     topbar.classList.add('visible');
   })();
 
-  // Countdown to 2029-01-01 (KST) — with centiseconds
+  // Countdown to 2029-01-01 00:00 KST (avoids iOS ISO-parse quirks; uses setInterval — rAF can stall on phones)
   (function () {
-    const target = new Date('2029-01-01T00:00:00+09:00');
-    const pad = (n) => String(n).padStart(2, '0');
-    const el = {
+    var targetMs = Date.UTC(2028, 11, 31, 15, 0, 0, 0);
+    var target = new Date(targetMs);
+    var el = {
       y: document.getElementById('cd-y'),
       mo: document.getElementById('cd-mo'),
       d: document.getElementById('cd-d'),
       h: document.getElementById('cd-h'),
       mi: document.getElementById('cd-mi'),
       s: document.getElementById('cd-s'),
-      ms: document.getElementById('cd-cs'),
+      cs: document.getElementById('cd-cs')
     };
-    if (!el.y) return;
+    if (!el.y || !el.mo || !el.d || !el.h || !el.mi || !el.s) return;
+    if (isNaN(target.getTime())) return;
+
+    function pad2(n) {
+      var v = Math.floor(Number(n));
+      if (!(v >= 0) || v > 99) v = 0;
+      return (v < 10 ? '0' : '') + v;
+    }
 
     function tick() {
-      const now = new Date();
-      if (now >= target) {
-        el.y.textContent = el.mo.textContent = el.d.textContent = '00';
-        el.h.textContent = el.mi.textContent = el.s.textContent = '00';
-        if (el.ms) el.ms.textContent = '00';
-        return;
-      }
-      let y = target.getFullYear() - now.getFullYear();
-      let mo = target.getMonth() - now.getMonth();
-      let d = target.getDate() - now.getDate();
-      let h = target.getHours() - now.getHours();
-      let mi = target.getMinutes() - now.getMinutes();
-      let s = target.getSeconds() - now.getSeconds();
-      let ms = 999 - now.getMilliseconds();
-      if (ms < 0) { s--; ms += 1000; }
-      if (s < 0) { mi--; s += 60; }
-      if (mi < 0) { h--; mi += 60; }
-      if (h < 0) { d--; h += 24; }
-      if (d < 0) {
-        mo--;
-        const prev = new Date(target.getFullYear(), target.getMonth(), 0);
-        d += prev.getDate();
-      }
-      if (mo < 0) { y--; mo += 12; }
-      el.y.textContent = pad(y);
-      el.mo.textContent = pad(mo);
-      el.d.textContent = pad(d);
-      el.h.textContent = pad(h);
-      el.mi.textContent = pad(mi);
-      el.s.textContent = pad(s);
-      if (el.ms) el.ms.textContent = pad(Math.floor(ms / 10));
+      try {
+        var now = new Date();
+        if (now.getTime() >= targetMs) {
+          el.y.textContent = el.mo.textContent = el.d.textContent = '00';
+          el.h.textContent = el.mi.textContent = el.s.textContent = '00';
+          if (el.cs) el.cs.textContent = '00';
+          return;
+        }
+        var y = target.getFullYear() - now.getFullYear();
+        var mo = target.getMonth() - now.getMonth();
+        var d = target.getDate() - now.getDate();
+        var h = target.getHours() - now.getHours();
+        var mi = target.getMinutes() - now.getMinutes();
+        var s = target.getSeconds() - now.getSeconds();
+        if (s < 0) { mi--; s += 60; }
+        if (mi < 0) { h--; mi += 60; }
+        if (h < 0) { d--; h += 24; }
+        if (d < 0) {
+          mo--;
+          d += new Date(target.getFullYear(), target.getMonth(), 0).getDate();
+        }
+        if (mo < 0) { y--; mo += 12; }
+        var rem = targetMs - now.getTime();
+        var cs = Math.floor((rem % 1000) / 10);
+        if (cs < 0) cs = 0;
+        el.y.textContent = pad2(y);
+        el.mo.textContent = pad2(mo);
+        el.d.textContent = pad2(d);
+        el.h.textContent = pad2(h);
+        el.mi.textContent = pad2(mi);
+        el.s.textContent = pad2(s);
+        if (el.cs) el.cs.textContent = pad2(cs);
+      } catch (err) { /* keep placeholders on unexpected errors */ }
     }
 
-    let rafId;
-    function loop() {
-      tick();
-      rafId = requestAnimationFrame(loop);
-    }
-    loop();
+    tick();
+    setInterval(tick, 100);
   })();
 </script>
 </body>
