@@ -709,12 +709,68 @@
     border-bottom: 1px solid rgba(201,169,110,0.15);
   }
 
-  .nav-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
+  /* Brand wordmark — topbar + hero */
+  .brand-wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    color: inherit;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .brand-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
     color: var(--gold);
+    width: 2.45rem;
+    height: 2.45rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(201,169,110,0.5);
+    border-radius: 0.4rem;
+    background: linear-gradient(145deg, rgba(201,169,110,0.14), rgba(8,8,8,0.35));
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset, 0 12px 28px rgba(0,0,0,0.35);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    line-height: 1.05;
+    min-width: 0;
+  }
+  .brand-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.24em;
+    color: rgba(240,236,228,0.48);
     text-transform: uppercase;
+  }
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.18rem;
+    font-weight: 500;
+    font-style: italic;
+    background: linear-gradient(180deg, var(--gold-light), var(--gold) 55%, var(--gold-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.01em;
+  }
+  .nav-logo.brand-wordmark {
+    gap: 0.85rem;
+  }
+  .nav-logo.brand-wordmark .brand-mark {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.2rem;
+  }
+  .nav-logo.brand-wordmark .brand-name {
+    font-size: 1.32rem;
   }
 
   .nav-badge {
@@ -976,13 +1032,22 @@
   }
   .topbar.visible { transform: translateY(0); opacity: 1; }
 
-  .topbar-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.28em;
-    color: var(--gold);
-    text-transform: uppercase;
+  .topbar-logo.brand-wordmark {
     text-decoration: none;
+    flex-shrink: 0;
+    min-width: 0;
+  }
+  .topbar-logo.brand-wordmark .brand-mark {
+    width: 2.15rem;
+    height: 2.15rem;
+    font-size: 0.92rem;
+  }
+  .topbar-logo.brand-wordmark .brand-eyebrow {
+    font-size: 0.48rem;
+    letter-spacing: 0.2em;
+  }
+  .topbar-logo.brand-wordmark .brand-name {
+    font-size: 1.02rem;
   }
 
   .topbar-menu {
@@ -1031,7 +1096,12 @@
     .topbar { padding: 0.7rem 1rem; }
     .topbar-menu { gap: 1rem; }
     .topbar-menu a { font-size: 0.72rem; }
-    .topbar-logo { font-size: 0.6rem; letter-spacing: 0.2em; }
+    .topbar-logo.brand-wordmark .brand-mark {
+      width: 1.95rem;
+      height: 1.95rem;
+      font-size: 0.82rem;
+    }
+    .topbar-logo.brand-wordmark .brand-name { font-size: 0.92rem; }
     .topbar-cta { padding: 0.5rem 0.9rem; font-size: 0.6rem; letter-spacing: 0.15em; }
 
   }
@@ -2146,6 +2216,308 @@
     }
     .daily-news-device-bar { font-size: 0.58rem; padding: 0.45rem 0.45rem; }
     .daily-news-points p { font-size: 0.72rem; }
+  }
+
+  /* Experience spotlights — Zoom & Dinner (same grid as daily brief) */
+  .experience-spotlight--zoom::before {
+    background:
+      radial-gradient(ellipse 68% 50% at 20% 32%, rgba(14, 114, 237, 0.16), transparent 55%),
+      radial-gradient(ellipse 58% 48% at 88% 78%, rgba(201, 169, 110, 0.07), transparent 52%);
+  }
+  .experience-spotlight--dinner::before {
+    background:
+      radial-gradient(ellipse 74% 56% at 76% 22%, rgba(139, 74, 46, 0.2), transparent 58%),
+      radial-gradient(ellipse 52% 42% at 14% 82%, rgba(201, 169, 110, 0.1), transparent 50%);
+  }
+  @media (min-width: 769px) {
+    .experience-spotlight--zoom .daily-news-inner {
+      direction: rtl;
+    }
+    .experience-spotlight--zoom .daily-news-inner > * {
+      direction: ltr;
+    }
+  }
+
+  .spotlight-device.spotlight-device--zoom {
+    background: linear-gradient(165deg, #151c28 0%, #06080d 100%);
+    border-color: rgba(46, 132, 255, 0.38);
+    box-shadow:
+      0 44px 110px rgba(0,0,0,0.58),
+      0 0 0 1px rgba(46, 132, 255, 0.12) inset;
+  }
+  .spotlight-device-bar--zoom {
+    background: linear-gradient(90deg, #0b5cff 0%, #2d8cff 55%, #4db2ff 100%) !important;
+    color: #fff !important;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+  }
+  .spotlight-device-bar--zoom .daily-news-device-sub {
+    color: rgba(255,255,255,0.88) !important;
+    opacity: 1 !important;
+  }
+
+  .spotlight-zoom-ui {
+    border-radius: 0 0 1.15rem 1.15rem;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.07);
+    background: linear-gradient(180deg, rgba(12,16,24,0.98) 0%, rgba(5,7,11,0.99) 100%);
+  }
+  .spotlight-zoom-chrome {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.65rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(0,0,0,0.35);
+  }
+  .spotlight-zoom-dots {
+    display: inline-flex;
+    gap: 0.28rem;
+    flex-shrink: 0;
+  }
+  .spotlight-zoom-dots i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    display: block;
+  }
+  .spotlight-zoom-dots i:first-child { background: #ff5f57; }
+  .spotlight-zoom-dots i:nth-child(2) { background: #febc2e; }
+  .spotlight-zoom-dots i:nth-child(3) { background: #28c840; }
+  .spotlight-zoom-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    color: rgba(240,236,228,0.45);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+  .spotlight-zoom-stage {
+    display: grid;
+    grid-template-columns: 1fr minmax(52px, 22%);
+    gap: 0.45rem;
+    padding: 0.65rem 0.55rem 0.55rem;
+    min-height: 168px;
+  }
+  .spotlight-zoom-speaker {
+    border-radius: 0.45rem;
+    padding: 0.65rem 0.55rem;
+    background:
+      radial-gradient(ellipse 90% 80% at 50% 20%, rgba(46, 132, 255, 0.22), transparent 65%),
+      linear-gradient(145deg, rgba(255,255,255,0.06), rgba(0,0,0,0.15));
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .spotlight-zoom-avatar {
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--gold);
+    background: rgba(201,169,110,0.12);
+    border: 1px solid rgba(201,169,110,0.35);
+    flex-shrink: 0;
+  }
+  .spotlight-zoom-speaker-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
+    min-width: 0;
+  }
+  .spotlight-zoom-name {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.92);
+    letter-spacing: -0.02em;
+  }
+  .spotlight-zoom-sub {
+    font-size: 0.58rem;
+    color: rgba(240,236,228,0.45);
+  }
+  .spotlight-zoom-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.32rem;
+    justify-content: flex-end;
+  }
+  .spotlight-zoom-tile {
+    flex: 1;
+    min-height: 28px;
+    border-radius: 0.28rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .spotlight-zoom-tile--active {
+    background: rgba(46, 132, 255, 0.22);
+    border-color: rgba(46, 132, 255, 0.45);
+    box-shadow: 0 0 14px rgba(46, 132, 255, 0.25);
+  }
+  .spotlight-zoom-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.45rem 0.65rem 0.55rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    background: rgba(0,0,0,0.4);
+  }
+  .spotlight-live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    color: #ff6b6b;
+    font-weight: 600;
+  }
+  .spotlight-rec-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ff4444;
+    box-shadow: 0 0 10px rgba(255,68,68,0.7);
+    animation: liveDot 1.8s ease infinite;
+  }
+  .spotlight-zoom-foot-note {
+    font-size: 0.58rem;
+    color: rgba(240,236,228,0.42);
+  }
+
+  .spotlight-device.spotlight-device--dinner {
+    background: linear-gradient(165deg, #1a1410 0%, #070605 100%);
+    border-color: rgba(201, 169, 110, 0.42);
+    box-shadow:
+      0 44px 110px rgba(0,0,0,0.58),
+      0 0 0 1px rgba(201, 169, 110, 0.08) inset;
+  }
+  .spotlight-device-bar--dinner {
+    background: linear-gradient(90deg, #4a3024 0%, #7a4e32 45%, #a67444 100%) !important;
+    color: #f8eee4 !important;
+  }
+  .spotlight-device-bar--dinner .daily-news-device-sub {
+    color: rgba(248,238,228,0.85) !important;
+    opacity: 1 !important;
+  }
+  .spotlight-dinner-ui {
+    position: relative;
+    border-radius: 0 0 1.15rem 1.15rem;
+    overflow: hidden;
+    min-height: 168px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .spotlight-dinner-ambient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 65% at 50% 18%, rgba(255, 200, 120, 0.18), transparent 55%),
+      linear-gradient(180deg, rgba(35, 22, 14, 0.95) 0%, rgba(8, 5, 4, 0.98) 100%);
+  }
+  .spotlight-dinner-table {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: 28%;
+    height: 22%;
+    border-radius: 0.35rem 0.35rem 0.15rem 0.15rem;
+    background: linear-gradient(180deg, rgba(60, 38, 24, 0.95), rgba(28, 18, 12, 0.98));
+    box-shadow:
+      0 12px 28px rgba(0,0,0,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    border: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .spotlight-dinner-glow {
+    position: absolute;
+    width: 42%;
+    height: 38%;
+    border-radius: 50%;
+    filter: blur(28px);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .spotlight-dinner-glow--a {
+    top: 8%;
+    left: 12%;
+    background: rgba(255, 190, 110, 0.35);
+  }
+  .spotlight-dinner-glow--b {
+    top: 18%;
+    right: 8%;
+    background: rgba(201, 169, 110, 0.28);
+  }
+  .spotlight-dinner-seats {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 10% 14%;
+    pointer-events: none;
+  }
+  .spotlight-dinner-seats span {
+    width: 11%;
+    aspect-ratio: 1/1.15;
+    border-radius: 0.25rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.25));
+    border: 1px solid rgba(201, 169, 110, 0.15);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+  }
+  .spotlight-dinner-caption {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 0.55rem 0.65rem 0.65rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    color: rgba(240,236,228,0.55);
+    text-align: center;
+    border-top: 1px solid rgba(201, 169, 110, 0.12);
+    background: linear-gradient(0deg, rgba(0,0,0,0.55), transparent);
+  }
+
+  .feature-icon--visual {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    padding-top: 0.1rem;
+    color: var(--gold);
+  }
+  .feature-icon--visual svg {
+    display: block;
+    opacity: 0.92;
+  }
+  .feature-content a.feature-deeplink {
+    color: var(--gold);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,169,110,0.4);
+    margin-left: 0.15rem;
+    white-space: nowrap;
+  }
+  .feature-content a.feature-deeplink:hover {
+    border-bottom-color: var(--gold-light);
+    color: var(--gold-light);
+  }
+
+  @media (max-width: 768px) {
+    .spotlight-zoom-stage {
+      grid-template-columns: 1fr minmax(44px, 24%);
+      min-height: 148px;
+      padding: 0.5rem 0.45rem;
+    }
+    .spotlight-zoom-title { font-size: 0.52rem; }
+    .spotlight-zoom-name { font-size: 0.65rem; }
+    .spotlight-dinner-ui { min-height: 148px; }
   }
 
   /* DIFFERENTIATION — 차별점 */
@@ -3558,13 +3930,27 @@
       background: rgba(8,8,8,0.92);
       box-sizing: border-box;
     }
-    .topbar-logo {
-      font-size: 0.56rem;
-      letter-spacing: 0.14em;
+    .topbar-logo.brand-wordmark {
+      min-width: 0;
+      max-width: 100%;
+    }
+    .topbar-logo.brand-wordmark .brand-text {
+      min-width: 0;
+      overflow: hidden;
+    }
+    .topbar-logo.brand-wordmark .brand-name {
+      font-size: 0.88rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      max-width: min(46vw, 9.5rem);
     }
+    .topbar-logo.brand-wordmark .brand-mark {
+      width: 1.85rem;
+      height: 1.85rem;
+      font-size: 0.78rem;
+    }
+    .topbar-logo.brand-wordmark .brand-eyebrow { font-size: 0.44rem; }
     .topbar-cta {
       padding: 0.45rem 0.62rem;
       font-size: 0.54rem;
@@ -3620,7 +4006,6 @@
     .hero-note,
     .video-skip,
     .topbar-menu a,
-    .topbar-logo,
     .topbar-cta {
       letter-spacing: 0.04em !important;
     }
@@ -3656,7 +4041,13 @@
 
 <!-- TOP NAV (appears after hero) -->
 <header class="topbar visible" id="topbar">
-  <a href="#hero-main" class="topbar-logo">The AI Inner Circle</a>
+  <a href="#hero-main" class="topbar-logo brand-wordmark" aria-label="The AI Inner Circle, 페이지 상단으로">
+    <span class="brand-mark" aria-hidden="true">IC</span>
+    <span class="brand-text">
+      <span class="brand-eyebrow">The AI</span>
+      <span class="brand-name">Inner Circle</span>
+    </span>
+  </a>
   <nav class="topbar-menu" aria-label="페이지 섹션">
     <a href="#program">프로그램</a>
     <a href="#differentiation">차별점</a>
@@ -3800,7 +4191,13 @@
   <div class="hero-rail" aria-hidden="true">EST · MMXXVI — VOL. 01</div>
 
   <nav>
-    <div class="nav-logo">The AI Inner Circle</div>
+    <div class="nav-logo brand-wordmark" aria-label="The AI Inner Circle">
+      <span class="brand-mark" aria-hidden="true">IC</span>
+      <span class="brand-text">
+        <span class="brand-eyebrow">The AI</span>
+        <span class="brand-name">Inner Circle</span>
+      </span>
+    </div>
     <div class="nav-badge"><span class="live-dot"></span>1기 5/4(월) 시작 예정 · 첫 10인 모집 중 · 9석 남음</div>
   </nav>
 
@@ -3950,17 +4347,21 @@
         </div>
       </div>
       <div class="feature-item">
-        <span class="feature-icon">ZOOM</span>
+        <span class="feature-icon feature-icon--visual" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
         <div class="feature-content">
           <h4>주간 Zoom 공유회</h4>
-          <p>멤버들이 매주 실제 AI 적용 사례를 공유하고 서로 피드백합니다. 다른 업종 성공 공식을 내 비즈니스에 빠르게 이식합니다.</p>
+          <p>멤버들이 매주 실제 AI 적용 사례를 공유하고 서로 피드백합니다. 다른 업종 성공 공식을 내 비즈니스에 빠르게 이식합니다. <a class="feature-deeplink" href="#experience-zoom">화면 예시 보기</a></p>
         </div>
       </div>
       <div class="feature-item">
-        <span class="feature-icon">DINNER</span>
+        <span class="feature-icon feature-icon--visual" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 2v4m8-4v4m-9 4h10M5 6h14a2 2 0 012 2v2M5 6a2 2 0 00-2 2v11a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2M5 10h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M9 16h6M9 20h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
         <div class="feature-content">
           <h4>오프라인 디너 네트워킹</h4>
-          <p>대표·임원·전문직이 오프라인에서 밀도 있게 연결됩니다. 파트너십·레퍼럴·협업 기회를 만드는 핵심 네트워킹 세션입니다.</p>
+          <p>대표·임원·전문직이 오프라인에서 밀도 있게 연결됩니다. 파트너십·레퍼럴·협업 기회를 만드는 핵심 네트워킹 세션입니다. <a class="feature-deeplink" href="#experience-dinner">무드 예시 보기</a></p>
         </div>
       </div>
       <div class="feature-item">
@@ -3982,7 +4383,7 @@
     <div class="build-text reveal">
       <div class="community-card">
         <h4>커뮤니티 밀도는 성과 속도를 결정합니다.</h4>
-        <p>혼자 공부하면 속도가 느립니다. Inner Circle은 멤버 간 사례 공유와 오프라인 연결로 실제 적용 경험이 계속 쌓이도록 설계했습니다. 아래 일간 브리핑까지 포함해, 학습이 끊기지 않게 운영합니다.</p>
+        <p>혼자 공부하면 속도가 느립니다. Inner Circle은 멤버 간 사례 공유와 오프라인 연결로 실제 적용 경험이 계속 쌓이도록 설계했습니다. 아래 일간 브리핑과 주간 Zoom·디너 화면 예시까지 포함해, 학습이 끊기지 않게 운영합니다.</p>
       </div>
     </div>
   </div>
@@ -4012,6 +4413,86 @@
     </div>
   </div>
 </section>
+
+<!-- WEEKLY ZOOM SHARE — spotlight (same rhythm as daily brief) -->
+<section class="daily-news-section experience-spotlight experience-spotlight--zoom" id="experience-zoom">
+  <div class="daily-news-inner">
+    <div class="reveal">
+      <div class="section-label">주간 라이브 셰어</div>
+      <h2 class="daily-news-title">주간 <em>Zoom 공유회</em></h2>
+      <p class="daily-news-sub">멤버 전용 Zoom에서 실제 적용 사례를 라이브로 공유합니다. 다른 업종의 실행 디테일을 그대로 보고, 바로 내 의사결정에 연결할 수 있도록 진행합니다.</p>
+      <div class="daily-news-points">
+        <p><strong>실전 사례</strong> 중심 라이브</p>
+        <p>업종을 넘는 <strong>즉시 피드백</strong></p>
+        <p>적용 속도를 높이는 <strong>케이스 이식</strong></p>
+      </div>
+    </div>
+    <div class="daily-news-device reveal spotlight-device spotlight-device--zoom">
+      <div class="daily-news-device-bar spotlight-device-bar spotlight-device-bar--zoom">
+        Zoom · Inner Circle Live
+        <span class="daily-news-device-sub">주간 공유회</span>
+      </div>
+      <div class="spotlight-zoom-ui" aria-hidden="true">
+        <div class="spotlight-zoom-chrome">
+          <span class="spotlight-zoom-dots"><i></i><i></i><i></i></span>
+          <span class="spotlight-zoom-title">inner-circle-share — LIVE</span>
+        </div>
+        <div class="spotlight-zoom-stage">
+          <div class="spotlight-zoom-speaker">
+            <div class="spotlight-zoom-avatar">IC</div>
+            <div class="spotlight-zoom-speaker-meta">
+              <span class="spotlight-zoom-name">멤버 사례 라이브</span>
+              <span class="spotlight-zoom-sub">적용 · 자동화 · 성과</span>
+            </div>
+          </div>
+          <div class="spotlight-zoom-strip">
+            <div class="spotlight-zoom-tile"></div>
+            <div class="spotlight-zoom-tile"></div>
+            <div class="spotlight-zoom-tile"></div>
+            <div class="spotlight-zoom-tile spotlight-zoom-tile--active"></div>
+          </div>
+        </div>
+        <div class="spotlight-zoom-footer">
+          <span class="spotlight-live-pill"><span class="spotlight-rec-dot"></span> LIVE</span>
+          <span class="spotlight-zoom-foot-note">케이스 공유 · Q&amp;A</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFLINE DINNER — spotlight -->
+<section class="daily-news-section experience-spotlight experience-spotlight--dinner" id="experience-dinner">
+  <div class="daily-news-inner">
+    <div class="reveal">
+      <div class="section-label">오프라인 밀도 네트워킹</div>
+      <h2 class="daily-news-title">오프라인 <em>디너 네트워킹</em></h2>
+      <p class="daily-news-sub">같은 레벨의 대표·전문직만 초대되는 비공개 디너입니다. 온라인에서 나눌 논의를 오프라인에서 한층 더 밀도 있게 이어가고, 협업과 레퍼럴로 연결되도록 자리를 설계합니다.</p>
+      <div class="daily-news-points">
+        <p>동일 레벨 <strong>소수 정원</strong></p>
+        <p><strong>파트너십·협업</strong>까지 연결</p>
+        <p>프로그램 <strong>핵심 네트워킹</strong> 세션</p>
+      </div>
+    </div>
+    <div class="daily-news-device reveal spotlight-device spotlight-device--dinner">
+      <div class="daily-news-device-bar spotlight-device-bar spotlight-device-bar--dinner">
+        Offline · Executive Dinner
+        <span class="daily-news-device-sub">비공개 초대</span>
+      </div>
+      <div class="spotlight-dinner-ui" aria-hidden="true">
+        <div class="spotlight-dinner-ambient"></div>
+        <div class="spotlight-dinner-table"></div>
+        <div class="spotlight-dinner-glow spotlight-dinner-glow--a"></div>
+        <div class="spotlight-dinner-glow spotlight-dinner-glow--b"></div>
+        <div class="spotlight-dinner-seats">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p class="spotlight-dinner-caption">프라이빗 룸 · 소수 라운드</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <div class="divider"></div>
 
