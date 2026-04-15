@@ -1312,6 +1312,53 @@
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
   }
+
+  /* Perf: invitation gate — kill full-screen SVG noise on any touch device (feTurbulence is costly while scrolling) */
+  @media (hover: none) and (pointer: coarse) {
+    body.gate-locked::before {
+      display: none;
+    }
+  }
+
+  /* Perf: phones — pause off-screen CSS animations, simplify modal backdrop, lighter glow on kicker */
+  @media (max-width: 768px) {
+    .gate.opened .seal-wax,
+    .gate.opened .seal-btn {
+      animation: none;
+    }
+    body.gate-locked .marquee-track {
+      animation-play-state: paused !important;
+    }
+    body.gate-locked .video-warning-badge,
+    body.gate-locked .countdown .cd-num,
+    body.gate-locked .cd-sep {
+      animation: none !important;
+    }
+    .invitation.gate .invitation-inner {
+      transform: translateZ(0);
+    }
+    .invitation.gate.opened .gate-members-kicker {
+      text-shadow: 0 1px 8px rgba(201, 169, 110, 0.22);
+    }
+    .gate-members-modal__backdrop {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      background: rgba(0, 0, 0, 0.9);
+    }
+  }
+
+  /* Touch: gradient text clipping repaints often while scrolling the letter */
+  @media (hover: none) and (pointer: coarse) {
+    .invitation.gate.opened .invitation-lead em,
+    .invitation.gate.opened .invitation-offer em {
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      -webkit-text-fill-color: var(--gold);
+      color: var(--gold);
+    }
+  }
+
   .invitation.gate .invitation-inner {
     position: relative;
     width: 100%;
