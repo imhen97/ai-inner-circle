@@ -1073,6 +1073,12 @@
 
   /* GATE LOCK (초대장 열기 전 스크롤 차단) */
   body.gate-locked { overflow: hidden; height: 100vh; }
+  body.gate-locked.gate-scrollable {
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+    -webkit-overflow-scrolling: touch;
+  }
   body.gate-intro .topbar { opacity: 0 !important; pointer-events: none !important; }
 
   /* INVITATION GATE (봉인→편지) */
@@ -1269,27 +1275,68 @@
   .enter-arrow { transition: transform 0.3s ease; display: inline-block; }
   .gate-enter:hover .enter-arrow { transform: translateY(3px); }
 
+  .gate-members-panel {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    max-height: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.2,.7,.3,1), max-height 0.65s ease, visibility 0s linear 0.5s;
+  }
+  .gate.show-members .gate-members-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    max-height: 920px;
+    pointer-events: auto;
+    transition: opacity 0.55s ease 0.08s, transform 0.55s cubic-bezier(.2,.7,.3,1) 0.08s, max-height 0.65s ease, visibility 0s linear 0s;
+  }
+  .gate.show-members .gate-enter-wrap {
+    display: none;
+  }
+
+  .gate-more-wrap {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-bottom: 0.25rem;
+  }
+  .gate-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.85rem;
+    background: var(--gold);
+    color: var(--black);
+    border: 1px solid var(--gold);
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: filter 0.25s ease, transform 0.2s ease;
+  }
+  .gate-more:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+
   button.gate-enter {
     cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
   }
-  /* Gate letter: members preview (Enter does not jump to #members) */
+  /* Gate letter: members preview — shown after Enter (see .gate.show-members) */
   .gate-members-card {
-    margin: 2.2rem auto 0;
+    margin: 0 auto;
     max-width: 420px;
     padding: 1.15rem 1.25rem 1.25rem;
     border: 1px solid rgba(201,169,110,0.45);
     background: linear-gradient(165deg, rgba(201,169,110,0.12), rgba(8,8,8,0.55));
     box-shadow: 0 18px 48px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.55s ease, transform 0.55s cubic-bezier(.2,.7,.3,1);
-  }
-  .gate.opened .gate-members-card {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.85s;
   }
   .gate-members-kicker {
     font-family: 'DM Mono', monospace;
@@ -3130,7 +3177,9 @@
     .invitation-offer { font-size: 1.08rem; line-height: 1.65; margin-bottom: 1.8rem; }
     .invitation-final { font-size: 1.2rem; line-height: 1.55; margin-bottom: 2.8rem; }
     .gate-enter { font-size: 0.62rem; letter-spacing: 0.2em; padding: 0.9rem 1.4rem; }
-    .gate-members-card { margin-top: 1.6rem; padding: 1rem 1rem 1.1rem; max-width: none; }
+    .gate.show-members .gate-members-panel { max-height: 1200px; }
+    .gate-members-card { margin-top: 0; padding: 1rem 1rem 1.1rem; max-width: none; }
+    .gate-more { width: 100%; max-width: 100%; box-sizing: border-box; font-size: 0.84rem; }
     .gate-member-preview { gap: 0.65rem; }
     .gmp-rank { font-size: 1.4rem; }
     .gmp-name { font-size: 0.88rem; }
@@ -3406,22 +3455,27 @@
           <div class="sig-cred">The AI Inner Circle<span class="sig-dot">·</span>1st Cohort</div>
         </div>
       </div>
-      <div class="gate-members-card" aria-labelledby="gate-members-heading">
-        <div class="gate-members-kicker" id="gate-members-heading">현재 함께하는 멤버</div>
-        <article class="gate-member-preview">
-          <div class="gmp-rank" aria-hidden="true">01</div>
-          <div class="gmp-body">
-            <div class="gmp-ordinal">첫 번째 멤버</div>
-            <h3 class="gmp-name"><span class="gmp-firm">법무법인 혜움</span>김정률 대표님</h3>
-            <p class="gmp-desc">만 <strong>21세 최연소</strong> 세무사 합격 · 계약 거래처 <strong>500+</strong> · <strong>BNI 영등포 섹터 의장</strong></p>
-          </div>
-        </article>
-      </div>
       <div class="gate-enter-wrap">
         <button type="button" class="gate-enter" id="gate-enter">
           <span>Enter the Inner Circle</span>
           <span class="enter-arrow">↓</span>
         </button>
+      </div>
+      <div class="gate-members-panel" id="gate-members-panel" aria-hidden="true">
+        <div class="gate-members-card" aria-labelledby="gate-members-heading">
+          <div class="gate-members-kicker" id="gate-members-heading">현재 함께하는 멤버</div>
+          <article class="gate-member-preview">
+            <div class="gmp-rank" aria-hidden="true">01</div>
+            <div class="gmp-body">
+              <div class="gmp-ordinal">첫 번째 멤버</div>
+              <h3 class="gmp-name"><span class="gmp-firm">법무법인 혜움</span>김정률 대표님</h3>
+              <p class="gmp-desc">만 <strong>21세 최연소</strong> 세무사 합격 · 계약 거래처 <strong>500+</strong> · <strong>BNI 영등포 섹터 의장</strong></p>
+            </div>
+          </article>
+        </div>
+        <div class="gate-more-wrap">
+          <button type="button" class="gate-more" id="gate-main-more">자세히 알아보기</button>
+        </div>
       </div>
     </div>
   </div>
@@ -4110,6 +4164,8 @@
     const gate = document.getElementById('invitation');
     const openBtn = document.getElementById('gate-open');
     const enterBtn = document.getElementById('gate-enter');
+    const mainMoreBtn = document.getElementById('gate-main-more');
+    const membersPanel = document.getElementById('gate-members-panel');
     if (!gate || !openBtn) return;
 
     document.body.classList.add('gate-locked');
@@ -4121,6 +4177,15 @@
 
     if (enterBtn) {
       enterBtn.addEventListener('click', () => {
+        gate.classList.add('show-members');
+        document.body.classList.add('gate-scrollable');
+        if (membersPanel) membersPanel.setAttribute('aria-hidden', 'false');
+      });
+    }
+
+    if (mainMoreBtn) {
+      mainMoreBtn.addEventListener('click', () => {
+        document.body.classList.remove('gate-scrollable');
         document.body.classList.remove('gate-intro');
         document.body.classList.remove('gate-locked');
         const target = document.getElementById('video-intro');
