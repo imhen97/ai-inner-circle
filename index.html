@@ -89,7 +89,7 @@
     color: #ff4444;
     border: 1px solid rgba(255,68,68,0.4);
     padding: 0.5rem 1.2rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.4rem;
     text-transform: uppercase;
     animation: pulse-red 2s ease infinite;
   }
@@ -97,6 +97,85 @@
   @keyframes pulse-red {
     0%, 100% { border-color: rgba(255,68,68,0.4); color: #ff4444; }
     50% { border-color: rgba(255,68,68,0.9); color: #ff6666; }
+  }
+
+  /* COUNTDOWN TO 2030 */
+  .countdown {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0.6rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .cd-unit {
+    min-width: 78px;
+    padding: 0.9rem 0.6rem 0.7rem;
+    background: linear-gradient(180deg, rgba(255,68,68,0.06) 0%, rgba(255,68,68,0.02) 100%);
+    border: 1px solid rgba(255,68,68,0.3);
+    text-align: center;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(255,68,68,0.05);
+  }
+
+  .cd-unit::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,68,68,0.6), transparent);
+  }
+
+  .cd-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #ff5555;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 20px rgba(255,68,68,0.35);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cd-lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: rgba(255,68,68,0.55);
+    text-transform: uppercase;
+    margin-top: 0.55rem;
+  }
+
+  .cd-sep {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.6rem;
+    color: rgba(255,68,68,0.35);
+    padding-bottom: 1.2rem;
+    animation: cdSepBlink 1s steps(2) infinite;
+  }
+
+  @keyframes cdSepBlink {
+    0% { opacity: 1; }
+    50% { opacity: 0.25; }
+    100% { opacity: 1; }
+  }
+
+  .cd-unit.cd-sec .cd-num {
+    animation: cdPulse 1s ease infinite;
+  }
+
+  @keyframes cdPulse {
+    0%, 100% { text-shadow: 0 0 20px rgba(255,68,68,0.35); color: #ff5555; }
+    50% { text-shadow: 0 0 28px rgba(255,102,102,0.6); color: #ff7777; }
+  }
+
+  @media (max-width: 640px) {
+    .countdown { gap: 0.35rem; }
+    .cd-unit { min-width: 54px; padding: 0.7rem 0.3rem 0.55rem; }
+    .cd-num { font-size: 1.35rem; }
+    .cd-lbl { font-size: 0.5rem; letter-spacing: 0.18em; }
+    .cd-sep { display: none; }
   }
 
   .video-intro-title {
@@ -173,6 +252,78 @@
     pointer-events: none;
   }
 
+  /* Giant background wordmark */
+  .hero-watermark {
+    position: absolute;
+    right: -2vw;
+    bottom: -4vw;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(16rem, 32vw, 36rem);
+    line-height: 0.8;
+    letter-spacing: -0.03em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,169,110,0.09);
+    pointer-events: none;
+    z-index: 0;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  /* Right-side vertical edition rail */
+  .hero-rail {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    color: rgba(201,169,110,0.55);
+    text-transform: uppercase;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .hero-rail::before,
+  .hero-rail::after {
+    content: '';
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, rgba(201,169,110,0.5), transparent);
+  }
+
+  /* Page index top-right */
+  .hero-index {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    transform: translateY(-50%);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: rgba(201,169,110,0.4);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-index span { color: var(--gold); }
+  .hero-index::after {
+    content: '';
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(201,169,110,0.5), transparent);
+  }
+
+  .hero > * { position: relative; z-index: 2; }
+
   nav {
     display: flex;
     justify-content: space-between;
@@ -193,10 +344,28 @@
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
     letter-spacing: 0.2em;
-    color: var(--grey-light);
-    border: 1px solid rgba(201,169,110,0.2);
-    padding: 0.4rem 1rem;
+    color: var(--off-white);
+    border: 1px solid rgba(201,169,110,0.3);
+    padding: 0.45rem 1rem;
     text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(201,169,110,0.04);
+  }
+
+  .nav-badge .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ff4444;
+    box-shadow: 0 0 0 0 rgba(255,68,68,0.6);
+    animation: liveDot 1.8s ease infinite;
+  }
+
+  @keyframes liveDot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,68,68,0.6); }
+    50% { box-shadow: 0 0 0 6px rgba(255,68,68,0); }
   }
 
   .hero-content {
@@ -220,10 +389,10 @@
 
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-size: clamp(3.8rem, 9vw, 8.5rem);
     font-weight: 300;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
     margin-bottom: 2rem;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.4s;
@@ -232,6 +401,22 @@
   .hero-title em {
     font-style: italic;
     color: var(--gold);
+    position: relative;
+    background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 55%, var(--gold-dark) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-title em::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.08em;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    opacity: 0.5;
   }
 
   .hero-subtitle {
@@ -258,16 +443,25 @@
     color: var(--black);
     font-family: 'DM Mono', monospace;
     font-size: 0.7rem;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    padding: 1.1rem 2.5rem;
-    border: none;
+    padding: 1.2rem 2.8rem;
+    border: 1px solid var(--gold);
     cursor: pointer;
     text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    transition: all 0.35s cubic-bezier(.2,.7,.3,1);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 0 0 rgba(201,169,110,0.35);
+    animation: btnPulse 2.8s ease infinite;
+  }
+
+  @keyframes btnPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,110,0.35); }
+    50% { box-shadow: 0 0 0 10px rgba(201,169,110,0); }
   }
 
   .btn-primary::after {
@@ -276,12 +470,19 @@
     inset: 0;
     background: var(--black);
     transform: translateX(-101%);
-    transition: transform 0.3s ease;
+    transition: transform 0.35s cubic-bezier(.2,.7,.3,1);
   }
 
   .btn-primary:hover::after { transform: translateX(0); }
   .btn-primary:hover { color: var(--gold); }
-  .btn-primary span { position: relative; z-index: 1; }
+  .btn-primary span,
+  .btn-primary .btn-arrow { position: relative; z-index: 1; }
+
+  .btn-arrow {
+    display: inline-block;
+    transition: transform 0.35s cubic-bezier(.2,.7,.3,1);
+  }
+  .btn-primary:hover .btn-arrow { transform: translateX(4px); }
 
   .hero-note {
     font-family: 'DM Mono', monospace;
@@ -295,13 +496,20 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    border-top: 1px solid rgba(201,169,110,0.1);
+    border-top: 1px solid rgba(201,169,110,0.15);
+    background: linear-gradient(to top, rgba(201,169,110,0.025), transparent);
   }
 
   .hero-stats {
     display: flex;
-    gap: 4rem;
+    gap: 0;
   }
+  .hero-stats .stat {
+    padding: 0 2.5rem;
+    border-right: 1px solid rgba(201,169,110,0.12);
+  }
+  .hero-stats .stat:first-child { padding-left: 0; }
+  .hero-stats .stat:last-child { border-right: none; }
 
   .stat {
     opacity: 0;
@@ -313,10 +521,13 @@
 
   .stat-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 300;
     color: var(--gold);
     display: block;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
   }
 
   .stat-label {
@@ -1081,7 +1292,10 @@
   /* MOBILE */
   @media (max-width: 768px) {
     nav, .section, .hero-content, .hero-bottom { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .hero-stats { gap: 2rem; }
+    .hero-stats .stat { padding: 0 1rem; }
+    .hero-stats .stat:first-child { padding-left: 0; }
+    .hero-rail, .hero-index { display: none; }
+    .hero-watermark { font-size: 12rem; right: -10vw; bottom: -6vw; }
     .problem-grid, .weeks, .what-layout, .for-whom-layout, .instructor-layout { grid-template-columns: 1fr; }
     .weeks { grid-template-columns: 1fr 1fr; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
@@ -1096,12 +1310,25 @@
   <div class="video-intro-overlay"></div>
   <div class="video-intro-content">
     <div class="video-warning-badge">⚠ 2030년까지 남은 시간</div>
+    <div class="countdown" id="countdown" aria-live="polite">
+      <div class="cd-unit"><div class="cd-num" id="cd-y">--</div><div class="cd-lbl">Years</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-num" id="cd-mo">--</div><div class="cd-lbl">Months</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-num" id="cd-d">--</div><div class="cd-lbl">Days</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Hours</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-num" id="cd-mi">--</div><div class="cd-lbl">Minutes</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit cd-sec"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Seconds</div></div>
+    </div>
     <h2 class="video-intro-title">AI와 인간의 경계가<br><em>허물어지는 2030년</em><br>특이점이 도래합니다.</h2>
     <p class="video-intro-sub">Google 엔지니어링 디렉터 레이 커즈와일이 경고합니다.<br>지금 이 영상을 보고 판단하십시오.</p>
     <div class="video-wrap">
       <iframe
         id="kurzweil-video"
-        src="https://www.youtube.com/embed/VyTo59QmiIE?start=2400&rel=0&modestbranding=1"
+        src="https://www.youtube.com/embed/VyTo59QmiIE?start=2416&rel=0&modestbranding=1"
         title="Ray Kurzweil - The Singularity"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -1114,9 +1341,13 @@
 
 <!-- HERO -->
 <section class="hero" id="hero-main">
+  <div class="hero-watermark" aria-hidden="true">Inner Circle</div>
+  <div class="hero-index" aria-hidden="true">01 / 04 <span>·</span> CHAPTER I</div>
+  <div class="hero-rail" aria-hidden="true">EST · MMXXVI — VOL. 01</div>
+
   <nav>
     <div class="nav-logo">The AI Inner Circle</div>
-    <div class="nav-badge">1기 모집 중 · 20인 한정</div>
+    <div class="nav-badge"><span class="live-dot"></span>1기 모집 중 · 20인 한정</div>
   </nav>
 
   <div class="hero-content">
@@ -1131,7 +1362,7 @@
       4주 후, 당신의 업무 방식은 완전히 달라져 있습니다.
     </p>
     <div class="hero-cta-group">
-      <a href="#pricing" class="btn-primary"><span>1기 신청하기</span></a>
+      <a href="#pricing" class="btn-primary"><span>1기 신청하기</span><span class="btn-arrow">→</span></a>
       <span class="hero-note">월 200만원 · 20인 한정</span>
     </div>
   </div>
@@ -1511,6 +1742,53 @@
   }, { threshold: 0.1 });
 
   revealEls.forEach(el => observer.observe(el));
+
+  // Countdown to 2030-01-01 (KST)
+  (function () {
+    const target = new Date('2030-01-01T00:00:00+09:00');
+    const pad = (n) => String(n).padStart(2, '0');
+    const el = {
+      y: document.getElementById('cd-y'),
+      mo: document.getElementById('cd-mo'),
+      d: document.getElementById('cd-d'),
+      h: document.getElementById('cd-h'),
+      mi: document.getElementById('cd-mi'),
+      s: document.getElementById('cd-s'),
+    };
+    if (!el.y) return;
+
+    function tick() {
+      const now = new Date();
+      if (now >= target) {
+        el.y.textContent = el.mo.textContent = el.d.textContent = '00';
+        el.h.textContent = el.mi.textContent = el.s.textContent = '00';
+        return;
+      }
+      let y = target.getFullYear() - now.getFullYear();
+      let mo = target.getMonth() - now.getMonth();
+      let d = target.getDate() - now.getDate();
+      let h = target.getHours() - now.getHours();
+      let mi = target.getMinutes() - now.getMinutes();
+      let s = target.getSeconds() - now.getSeconds();
+      if (s < 0) { mi--; s += 60; }
+      if (mi < 0) { h--; mi += 60; }
+      if (h < 0) { d--; h += 24; }
+      if (d < 0) {
+        mo--;
+        const prev = new Date(target.getFullYear(), target.getMonth(), 0);
+        d += prev.getDate();
+      }
+      if (mo < 0) { y--; mo += 12; }
+      el.y.textContent = pad(y);
+      el.mo.textContent = pad(mo);
+      el.d.textContent = pad(d);
+      el.h.textContent = pad(h);
+      el.mi.textContent = pad(mi);
+      el.s.textContent = pad(s);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
 </script>
 </body>
 </html>
