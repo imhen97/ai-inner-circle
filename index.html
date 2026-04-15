@@ -1210,6 +1210,31 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  .personal-fear-secondary {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: clamp(1rem, 1.7vw, 1.3rem);
+    font-weight: 500;
+    line-height: 1.7;
+    color: rgba(240,236,228,0.72);
+    margin-top: 2.8rem;
+    letter-spacing: -0.015em;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201,169,110,0.18);
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .personal-fear-secondary strong {
+    color: #fff;
+    font-weight: 700;
+  }
+  @media (max-width: 640px) {
+    .personal-fear-secondary {
+      font-size: 0.92rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+    }
+  }
   @media (max-width: 640px) {
     .personal-fear { padding: 5rem 1.5rem; }
     .personal-fear-title { font-size: clamp(1.35rem, 6.5vw, 1.9rem); margin-bottom: 1.3rem; }
@@ -2238,9 +2263,9 @@
     box-shadow: 0 30px 80px rgba(0,0,0,0.4), inset 0 0 60px rgba(201,169,110,0.05);
   }
   .members-feature .mc-rank { font-size: 2.4rem; min-width: 2.8rem; }
-  .members-feature .mc-ordinal { font-size: 1.05rem; margin-bottom: 0.4rem; }
-  .members-feature .mc-name { font-size: 1.25rem; }
-  .members-feature .mc-desc { font-size: 0.88rem; }
+  .members-feature .mc-ordinal { font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .members-feature .mc-name { font-size: 1.5rem; line-height: 1.3; margin-bottom: 0.3rem; letter-spacing: -0.02em; }
+  .members-feature .mc-desc { font-size: 0.88rem; line-height: 1.65; }
 
   .members-status {
     display: inline-flex;
@@ -2804,6 +2829,7 @@
   <div class="personal-fear-inner reveal">
     <h2 class="personal-fear-title">AI는 당신의 직업을<br>빼앗지 않습니다.</h2>
     <p class="personal-fear-punch"><em>AI를 쓰는 경쟁자가 빼앗습니다.</em></p>
+    <p class="personal-fear-secondary">그리고 <strong>안주하는 사이</strong>, 동종업계 누군가는<br><strong>지금도 당신의 파이를 가져가고 있습니다.</strong></p>
   </div>
 </section>
 
@@ -2936,8 +2962,8 @@
       <div class="feature-item">
         <span class="feature-icon">W1</span>
         <div class="feature-content">
-          <h4>주 1회 온라인 라이브 클래스</h4>
-          <p>실습 중심. 그날 배운 것을 그날 만듭니다.</p>
+          <h4>주 1회 온·오프라인 실전 클래스</h4>
+          <p>지루한 강의가 아닙니다. 당일 실습을 통해 체득시켜드립니다.</p>
         </div>
       </div>
       <div class="feature-item">
@@ -3120,9 +3146,8 @@
       <div class="mc-rank">01</div>
       <div class="mc-body">
         <div class="mc-ordinal">첫 번째 멤버</div>
-        <div class="mc-title">법무법인 혜움 대표 · BNI 영등포 섹터 의장</div>
-        <h3 class="mc-name">김정률 대표님</h3>
-        <p class="mc-desc">만 <strong>21세 최연소</strong> 세무사 합격 · 계약 거래처 <strong>500+</strong></p>
+        <h3 class="mc-name">법무법인 혜움 김정률 대표님</h3>
+        <p class="mc-desc">만 <strong>21세 최연소</strong> 세무사 합격 · 계약 거래처 <strong>500+</strong> · <strong>BNI 영등포 섹터 의장</strong></p>
       </div>
     </article>
     <div class="members-status">
