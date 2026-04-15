@@ -1438,6 +1438,20 @@
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
     opacity: 0.9;
   }
+  .gate-members-sub {
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: -0.02em;
+    color: rgba(240,236,228,0.48);
+    text-align: center;
+    margin: -0.2rem 0 1.05rem;
+    padding: 0 0.35rem;
+    max-width: 26rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .gate-member-preview {
     display: flex;
     gap: 0.85rem;
@@ -3361,6 +3375,7 @@
     .gate-enter { font-size: 0.62rem; letter-spacing: 0.2em; padding: 0.9rem 1.4rem; }
     .gate.show-members .gate-members-panel { max-height: 1200px; }
     .gate-members-kicker { font-size: clamp(1.12rem, 4.2vw, 1.38rem); margin-bottom: 1rem; }
+    .gate-members-sub { font-size: 0.68rem; line-height: 1.52; margin: -0.15rem 0 0.95rem; }
     .gate-members-card { margin-top: 0; padding: 1.2rem 1.15rem 1.95rem; max-width: none; }
     .gate-more { width: 100%; max-width: 100%; box-sizing: border-box; font-size: 0.84rem; }
     .gate-more-wrap { margin-top: 2.1rem; padding-bottom: 1.25rem; }
@@ -3652,11 +3667,12 @@
       </div>
       <div class="gate-members-panel" id="gate-members-panel" aria-hidden="true">
         <div class="gate-members-card" aria-labelledby="gate-members-heading">
-          <div class="gate-members-kicker" id="gate-members-heading">현재 함께하는 멤버</div>
+          <div class="gate-members-kicker" id="gate-members-heading">1기 · 먼저 합류하신 멤버</div>
+          <p class="gate-members-sub">실명·프로필은 본인 동의 시에만 공개됩니다. 멤버는 순차적으로 공개됩니다.</p>
           <article class="gate-member-preview">
             <div class="gmp-rank" aria-hidden="true">01</div>
             <div class="gmp-body">
-              <div class="gmp-ordinal">첫 번째 멤버</div>
+              <div class="gmp-ordinal">첫 번째 공개 프로필</div>
               <h3 class="gmp-name"><span class="gmp-firm">법무법인 혜움</span>김정률 대표님</h3>
               <p class="gmp-desc">만 <strong>21세 최연소</strong> 세무사 합격 · 계약 거래처 <strong>500+</strong> · <strong>현 BNI 의장</strong></p>
             </div>
