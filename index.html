@@ -2204,6 +2204,56 @@
     color: rgba(240,236,228,0.45);
     letter-spacing: -0.005em;
   }
+  /* 단일 피처 레이아웃 (현재 1명 · 중앙 강조) */
+  .members-feature {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem;
+  }
+  .members-feature .member-card {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 520px;
+    padding: 1.8rem 2rem;
+    background: linear-gradient(180deg, rgba(201,169,110,0.1), rgba(8,8,8,0.7));
+    border: 1px solid rgba(201,169,110,0.5);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4), inset 0 0 60px rgba(201,169,110,0.05);
+  }
+  .members-feature .mc-rank { font-size: 2.4rem; min-width: 2.8rem; }
+  .members-feature .mc-ordinal { font-size: 1.05rem; margin-bottom: 0.4rem; }
+  .members-feature .mc-name { font-size: 1.25rem; }
+  .members-feature .mc-desc { font-size: 0.88rem; }
+
+  .members-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.65rem 1.3rem;
+    border: 1px solid rgba(201,169,110,0.28);
+    background: rgba(201,169,110,0.05);
+    font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(240,236,228,0.78);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .ms-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ff4444;
+    box-shadow: 0 0 0 0 rgba(255,68,68,0.5);
+    animation: liveDot 1.8s ease infinite;
+  }
+  .members-status strong {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .marquee-track { animation: none; }
     .members-marquee { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -3050,83 +3100,22 @@
     <h2 class="members-title"><em>대표·전문직</em>이<br>함께하는 네트워크</h2>
     <p class="members-sub">섹터별로 다양하게 선발합니다. 첫 10인 특가 마감 후 가격이 인상됩니다. 4주가 끝이 아닌, 끈끈한 멤버십으로 이어집니다.</p>
   </div>
-  <div class="members-marquee reveal" aria-label="합류 멤버 명단">
-    <div class="marquee-track">
-      <article class="member-card featured">
-        <div class="mc-rank">01</div>
-        <div class="mc-body">
-          <div class="mc-ordinal">첫 번째 멤버</div>
-          <div class="mc-title">세무법인 대표 · 세무사</div>
-          <h3 class="mc-name">김정률 대표</h3>
-          <p class="mc-desc">만 <strong>21세 최연소</strong> 세무사 합격 · 계약 거래처 <strong>500+</strong></p>
-        </div>
-      </article>
-      <article class="member-card empty">
-        <div class="mc-rank">02</div>
-        <div class="mc-body">
-          <div class="mc-ordinal">두 번째 멤버</div>
-          <div class="mc-empty-mark">— 선발 진행 중 —</div>
-        </div>
-      </article>
-      <article class="member-card empty">
-        <div class="mc-rank">03</div>
-        <div class="mc-body">
-          <div class="mc-ordinal">세 번째 멤버</div>
-          <div class="mc-empty-mark">— 선발 진행 중 —</div>
-        </div>
-      </article>
-      <article class="member-card empty">
-        <div class="mc-rank">04</div>
-        <div class="mc-body">
-          <div class="mc-ordinal">네 번째 멤버</div>
-          <div class="mc-empty-mark">— 선발 진행 중 —</div>
-        </div>
-      </article>
-      <article class="member-card empty">
-        <div class="mc-rank">05</div>
-        <div class="mc-body">
-          <div class="mc-ordinal">다섯 번째 멤버</div>
-          <div class="mc-empty-mark">— 선발 진행 중 —</div>
-        </div>
-      </article>
-      <article class="member-card empty">
-        <div class="mc-rank">06</div>
-        <div class="mc-body">
-          <div class="mc-ordinal">여섯 번째 멤버</div>
-          <div class="mc-empty-mark">— 선발 진행 중 —</div>
-        </div>
-      </article>
-      <article class="member-card empty">
-        <div class="mc-rank">07</div>
-        <div class="mc-body">
-          <div class="mc-ordinal">일곱 번째 멤버</div>
-          <div class="mc-empty-mark">— 선발 진행 중 —</div>
-        </div>
-      </article>
-      <article class="member-card empty">
-        <div class="mc-rank">08</div>
-        <div class="mc-body">
-          <div class="mc-ordinal">여덟 번째 멤버</div>
-          <div class="mc-empty-mark">— 선발 진행 중 —</div>
-        </div>
-      </article>
-      <article class="member-card empty">
-        <div class="mc-rank">09</div>
-        <div class="mc-body">
-          <div class="mc-ordinal">아홉 번째 멤버</div>
-          <div class="mc-empty-mark">— 선발 진행 중 —</div>
-        </div>
-      </article>
-      <article class="member-card empty">
-        <div class="mc-rank">10</div>
-        <div class="mc-body">
-          <div class="mc-ordinal">열 번째 멤버</div>
-          <div class="mc-empty-mark">— 선발 진행 중 —</div>
-        </div>
-      </article>
+  <div class="members-feature reveal">
+    <article class="member-card featured">
+      <div class="mc-rank">01</div>
+      <div class="mc-body">
+        <div class="mc-ordinal">첫 번째 멤버</div>
+        <div class="mc-title">세무법인 대표 · 세무사</div>
+        <h3 class="mc-name">김정률 대표</h3>
+        <p class="mc-desc">만 <strong>21세 최연소</strong> 세무사 합격 · 계약 거래처 <strong>500+</strong></p>
+      </div>
+    </article>
+    <div class="members-status">
+      <span class="ms-dot"></span>
+      <span>다음 멤버 선발 진행 중 — 첫 10인까지 <strong>9석 남음</strong></span>
     </div>
   </div>
-  <p class="members-note">* 일부 멤버는 프라이버시 보호를 위해 직책·성과만 공개합니다.</p>
+  <p class="members-note">* 멤버가 늘어날 때마다 이 자리에 순차 공개됩니다.</p>
 </section>
 
 <div class="divider"></div>
