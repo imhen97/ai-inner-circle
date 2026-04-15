@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The AI Inner Circle · 1기 선발 초대장</title>
+<title>The AI Inner Circle 1기에 함께해주세요</title>
 <meta name="description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 10인 한정 · 5/4(월) 시작.">
 <meta name="theme-color" content="#080808">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The AI Inner Circle">
-<meta property="og:title" content="The AI Inner Circle · 1기 선발 초대장">
+<meta property="og:title" content="The AI Inner Circle 1기에 함께해주세요">
 <meta property="og:description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 10인 한정 · 5/4(월) 시작.">
-<meta property="og:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k2">
-<meta property="og:image:secure_url" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k2">
+<meta property="og:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k3">
+<meta property="og:image:secure_url" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k3">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="482">
 <meta property="og:image:height" content="458">
-<meta property="og:image:alt" content="The AI Inner Circle 1기 선발 초대장">
+<meta property="og:image:alt" content="The AI Inner Circle 1기에 함께해주세요">
 <meta property="og:url" content="https://imhen97.github.io/ai-inner-circle/">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The AI Inner Circle · 1기 선발 초대장">
+<meta name="twitter:title" content="The AI Inner Circle 1기에 함께해주세요">
 <meta name="twitter:description" content="2029년, AI가 인간 일자리를 대체하기 전에. 코딩 없이 4주 안에 사업에 AI를 이식합니다. 대표·전문직 10인 한정 · 5/4(월) 시작.">
-<meta name="twitter:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k2">
+<meta name="twitter:image" content="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260416k3">
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Sans+KR:wght@500;700;900&family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -3414,9 +3414,10 @@
       grid-template-columns: 1fr auto;
       align-items: center;
       gap: 0.55rem 0.7rem;
-      padding: 0.65rem 0.75rem;
+      padding: calc(0.45rem + env(safe-area-inset-top, 0px)) 0.75rem 0.65rem;
       z-index: 1300;
       background: rgba(8,8,8,0.92);
+      box-sizing: border-box;
     }
     .topbar-logo {
       font-size: 0.56rem;
@@ -3434,12 +3435,13 @@
     .topbar-menu {
       grid-column: 1 / -1;
       width: 100%;
+      min-width: 0;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       white-space: nowrap;
       gap: 0.85rem;
-      padding-bottom: 0.2rem;
+      padding-bottom: 0.28rem;
     }
     .topbar-menu::-webkit-scrollbar { display: none; }
     .topbar-menu a {
@@ -4187,9 +4189,9 @@
     const btn = document.getElementById('referral-btn');
     if (!btn) return;
     const shareData = {
-      title: 'The Inner Circle 1기에 함께해주세요',
-      text: "검증된 분들께만 전하는 초대. The Inner Circle 1기 모집.",
-      url: 'https://imhen97.github.io/ai-inner-circle/'
+      title: 'The AI Inner Circle 1기에 함께해주세요',
+      text: "검증된 분들께만 전하는 초대. The AI Inner Circle 1기 모집.",
+      url: 'https://imhen97.github.io/ai-inner-circle/?v=20260416k3'
     };
     function showToast(msg) {
       const t = document.createElement('div');
