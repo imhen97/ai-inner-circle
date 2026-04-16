@@ -1881,6 +1881,28 @@
     color: rgba(201,169,110,0.95);
     font-weight: 700;
   }
+  .gate-member-preview--celebrity {
+    position: relative;
+    padding-top: 1.85rem;
+  }
+  .gmp-celebrity-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.52rem;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    padding: 0.32rem 0.55rem 0.32rem 0.62rem;
+    border: 1px solid rgba(201,169,110,0.42);
+    background: linear-gradient(165deg, rgba(201,169,110,0.2), rgba(8,8,8,0.92));
+    box-shadow: 0 6px 24px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.07);
+    pointer-events: none;
+  }
 
 
   /* PERSONAL FEAR (개인화 공포) */
@@ -4547,7 +4569,7 @@
           <div class="gate-members-kicker" id="gate-members-heading">1기 · 먼저 합류하신 멤버</div>
           <p class="gate-members-sub">실명·프로필은 본인 동의 시에만 공개됩니다. 멤버는 순차적으로 공개됩니다.</p>
           <div class="gate-teaser-cta-wrap">
-            <button type="button" class="gate-teaser-cta" id="gate-preview-members">현재 먼저 참여 멤버 확인하기</button>
+            <button type="button" class="gate-teaser-cta" id="gate-preview-members">현재 확정 참여 멤버 확인하기</button>
           </div>
         </div>
         <div class="gate-members-detail" id="gate-members-detail" aria-hidden="true">
@@ -4566,6 +4588,23 @@
                 <div class="gmp-ordinal">두 번째 공개 프로필</div>
                 <h3 class="gmp-name"><span class="gmp-firm">승민종합건설(주), (주)치탑</span>김치헌 대표님</h3>
                 <p class="gmp-desc"><strong>두 회사 대표</strong> · <strong>현장·도급</strong> 운영 · <strong>그 외 여러 회사</strong> 경영</p>
+              </div>
+            </article>
+            <article class="gate-member-preview">
+              <div class="gmp-rank" aria-hidden="true">03</div>
+              <div class="gmp-body">
+                <div class="gmp-ordinal">세 번째 공개 프로필</div>
+                <h3 class="gmp-name"><span class="gmp-firm">여배우 &amp; 가족</span>김나현 배우님 &amp; 김ㅇㅇ님</h3>
+                <p class="gmp-desc">걸그룹 소나무 출신 · 여배우</p>
+              </div>
+            </article>
+            <article class="gate-member-preview gate-member-preview--celebrity">
+              <span class="gmp-celebrity-badge" aria-label="Celebrity 멤버">Celebrity</span>
+              <div class="gmp-rank" aria-hidden="true">04</div>
+              <div class="gmp-body">
+                <div class="gmp-ordinal">네 번째 합류 멤버</div>
+                <h3 class="gmp-name"><span class="gmp-firm">비공개</span>ㅇㅇㅇ 님</h3>
+                <p class="gmp-desc">실명·세부 프로필은 <strong>비공개</strong>로 운영됩니다. 공개 가능 범위에서만 안내드립니다.</p>
               </div>
             </article>
           </div>
