@@ -3575,6 +3575,7 @@
 
   .member-card {
     flex: 0 0 320px;
+    position: relative;
     padding: 1.3rem 1.4rem;
     background: linear-gradient(180deg, rgba(201,169,110,0.05), rgba(8,8,8,0.6));
     border: 1px solid rgba(201,169,110,0.22);
@@ -3583,7 +3584,44 @@
     align-items: flex-start;
     transition: border-color 0.3s ease, background 0.3s ease;
   }
-  .member-card:hover {
+  .member-card--celebrity {
+    padding-top: 2.35rem;
+    border-color: rgba(201,169,110,0.38);
+    background:
+      linear-gradient(145deg, rgba(201,169,110,0.14) 0%, transparent 42%),
+      linear-gradient(180deg, rgba(201,169,110,0.06), rgba(8,8,8,0.65));
+    box-shadow: 0 22px 56px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+  .member-card--celebrity:hover {
+    border-color: rgba(232,213,176,0.55);
+    box-shadow: 0 26px 64px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .mc-celebrity-badge {
+    position: absolute;
+    top: 0.72rem;
+    left: 0.72rem;
+    z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.62rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    padding: 0.38rem 0.65rem 0.38rem 0.72rem;
+    border: 1px solid rgba(201,169,110,0.42);
+    background: linear-gradient(165deg, rgba(201,169,110,0.2), rgba(8,8,8,0.92));
+    box-shadow: 0 6px 24px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.07);
+    pointer-events: none;
+  }
+  .mc-celebrity-badge::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border: 1px solid rgba(232,213,176,0.12);
+    pointer-events: none;
+  }
+  .member-card:hover:not(.member-card--celebrity) {
     border-color: rgba(201,169,110,0.5);
     background: linear-gradient(180deg, rgba(201,169,110,0.08), rgba(8,8,8,0.7));
   }
@@ -3739,6 +3777,25 @@
   .members-feature .mc-ordinal { font-size: 1.05rem; margin-bottom: 0.5rem; }
   .members-feature .mc-name { font-size: 1.5rem; line-height: 1.3; margin-bottom: 0.3rem; letter-spacing: -0.02em; }
   .members-feature .mc-desc { font-size: 0.88rem; line-height: 1.65; }
+  .members-feature .member-card--celebrity {
+    padding-top: 2.65rem;
+    background:
+      linear-gradient(145deg, rgba(201,169,110,0.2) 0%, transparent 46%),
+      linear-gradient(180deg, rgba(201,169,110,0.11), rgba(8,8,8,0.74));
+    border-color: rgba(232,213,176,0.42);
+    box-shadow: 0 34px 92px rgba(0,0,0,0.48), inset 0 0 72px rgba(201,169,110,0.07), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .members-feature .mc-celebrity-badge {
+    top: 0.95rem;
+    left: 0.95rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.48em;
+    padding: 0.42rem 0.75rem 0.42rem 0.82rem;
+  }
+  .members-feature .member-card--celebrity:hover {
+    border-color: rgba(232,213,176,0.58);
+    box-shadow: 0 38px 100px rgba(0,0,0,0.52), inset 0 0 80px rgba(201,169,110,0.09), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
 
   .members-status {
     display: inline-flex;
@@ -5075,9 +5132,19 @@
         <p class="mc-goal"><span class="mc-goal-label">참가 목표</span>운영·일정 흐름에 <strong>AI 자동화</strong>를 붙여 반복 업무를 줄입니다.</p>
       </div>
     </article>
+    <article class="member-card member-card--celebrity">
+      <span class="mc-celebrity-badge" aria-label="Celebrity 멤버">Celebrity</span>
+      <div class="mc-rank">04</div>
+      <div class="mc-body">
+        <div class="mc-ordinal">네 번째 합류 멤버</div>
+        <h3 class="mc-name"><span class="mc-firm">비공개</span>황ㅇㅇ 님</h3>
+        <p class="mc-desc">실명·세부 프로필은 <strong>비공개</strong>로 운영됩니다. 공개 가능 범위에서만 안내드립니다.</p>
+        <p class="mc-goal"><span class="mc-goal-label">참가 목표</span>일정·운영 흐름에 <strong>AI 워크플로</strong>를 붙여 반복 업무를 줄입니다.</p>
+      </div>
+    </article>
     <div class="members-status">
       <span class="ms-dot"></span>
-      <span>다음 멤버 선발 진행 중 — 첫 10인까지 <strong>7석 남음</strong></span>
+      <span>다음 멤버 선발 진행 중 — 첫 10인까지 <strong>6석 남음</strong></span>
     </div>
   </div>
   <p class="members-note">* 멤버가 늘어날 때마다 이 자리에 순차 공개됩니다.</p>
