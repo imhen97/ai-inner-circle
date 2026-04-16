@@ -67,7 +67,21 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    /* Anchor scroll lands below fixed topbar (e.g. #differentiation, #curriculum) */
+    scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 4.75rem);
+  }
+  @media (max-width: 768px) {
+    html {
+      scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 5.75rem);
+    }
+  }
+  @media (max-width: 640px) {
+    html {
+      scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 8.75rem);
+    }
+  }
 
   .skip-link {
     position: absolute;
@@ -1143,7 +1157,12 @@
   .topbar-cta:hover { background: transparent; color: var(--gold); }
 
   @media (max-width: 768px) {
-    .topbar { padding: 0.7rem 1rem; }
+    .topbar {
+      padding: 0.7rem 1rem;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      background: rgba(8, 8, 8, 0.92);
+    }
     .topbar-menu { gap: 1rem; }
     .topbar-menu a { font-size: 0.72rem; }
     .topbar-logo.brand-wordmark .brand-mark {
@@ -1311,13 +1330,49 @@
     overflow-x: hidden;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
 
-  /* Perf: invitation gate — kill full-screen SVG noise on any touch device (feTurbulence is costly while scrolling) */
+  /* Perf: touch — full-page SVG noise (feTurbulence) is expensive while scrolling */
   @media (hover: none) and (pointer: coarse) {
-    body.gate-locked::before {
-      display: none;
+    html { scroll-behavior: auto; }
+    body::before {
+      display: none !important;
     }
+  }
+
+  /* Perf: in-app browsers (KakaoTalk, etc.) — html.inapp-webview set by script below */
+  html.inapp-webview {
+    scroll-behavior: auto;
+  }
+  html.inapp-webview .topbar {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background: rgba(8, 8, 8, 0.96) !important;
+  }
+  html.inapp-webview .marquee-track {
+    animation: none !important;
+  }
+  html.inapp-webview .members-marquee {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  html.inapp-webview .members-marquee::-webkit-scrollbar {
+    display: none;
+  }
+  html.inapp-webview .video-warning-badge,
+  html.inapp-webview .countdown .cd-num,
+  html.inapp-webview .cd-sep,
+  html.inapp-webview .video-rec,
+  html.inapp-webview .video-play-wrap,
+  html.inapp-webview .scroll-hint::before,
+  html.inapp-webview .ms-dot,
+  html.inapp-webview .live-dot,
+  html.inapp-webview .nav-badge .live-dot,
+  html.inapp-webview .seal-wax,
+  html.inapp-webview .seal-btn {
+    animation: none !important;
   }
 
   /* Perf: phones — pause off-screen CSS animations, simplify modal backdrop, lighter glow on kicker */
@@ -3726,7 +3781,8 @@
     .mc-name { font-size: 0.98rem; }
     .mc-name.anon { font-size: 0.82rem; }
     .mc-desc { font-size: 0.74rem; }
-    .marquee-track { animation-duration: 40s; gap: 1rem; }
+    .marquee-track { animation: none !important; gap: 1rem; }
+    .members-marquee { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .members-marquee::before, .members-marquee::after { width: 50px; }
   }
 
@@ -4003,6 +4059,17 @@
     transform: translateY(0);
   }
 
+  /* Touch: skip translateY on reveal — less layer work while scrolling */
+  @media (hover: none) and (pointer: coarse) {
+    .reveal {
+      transform: none;
+      transition: opacity 0.45s ease;
+    }
+    .reveal.visible {
+      transform: none;
+    }
+  }
+
   /* MOBILE */
   @media (max-width: 768px) {
     nav, .section, .hero-content, .hero-bottom { padding-left: 1.5rem; padding-right: 1.5rem; }
@@ -4014,6 +4081,17 @@
     .weeks { grid-template-columns: 1fr 1fr; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
     .footer-cta { padding: 5rem 1.5rem; }
+    .marquee-track {
+      animation: none !important;
+    }
+    .members-marquee {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .members-marquee::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   /* MOBILE — 임팩트 우선 최적화 */
@@ -4224,6 +4302,8 @@
       padding: calc(0.45rem + env(safe-area-inset-top, 0px)) 0.75rem 0.65rem;
       z-index: 1300;
       background: rgba(8,8,8,0.92);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
       box-sizing: border-box;
     }
     .topbar-logo.brand-wordmark {
@@ -4336,6 +4416,16 @@
 </style>
 </head>
 <body>
+<script>
+(function () {
+  try {
+    var ua = navigator.userAgent || '';
+    if (/KAKAOTALK|KakaoTalk|Instagram|FBAN|FBAV|FBIOS|FB_IAB|Line\/\d|NAVER\(|Whale\/|SamsungBrowser.*NAVER/i.test(ua)) {
+      document.documentElement.classList.add('inapp-webview');
+    }
+  } catch (e) {}
+})();
+</script>
 <a class="skip-link" href="#video-intro">본문으로 건너뛰기</a>
 <img class="og-first-img" src="https://imhen97.github.io/ai-inner-circle/assets/og-card.png?v=20260418og6" alt="" width="1200" height="630" decoding="async" fetchpriority="high" aria-hidden="true">
 
@@ -5131,9 +5221,24 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
 
-  revealEls.forEach(el => observer.observe(el));
+  function primeDeepLinkReveals() {
+    const hash = (location.hash || '').replace(/^#/, '');
+    if (hash !== 'differentiation' && hash !== 'curriculum') return;
+    const sec = document.getElementById(hash);
+    if (!sec) return;
+    sec.querySelectorAll('.reveal').forEach((el) => {
+      el.classList.add('visible');
+      observer.unobserve(el);
+    });
+  }
+
+  primeDeepLinkReveals();
+  revealEls.forEach((el) => {
+    if (!el.classList.contains('visible')) observer.observe(el);
+  });
+  window.addEventListener('hashchange', primeDeepLinkReveals);
 
   // Referral share — 검증된 지인 추천하기
   (function () {
@@ -5190,6 +5295,26 @@
     const membersDetail = document.getElementById('gate-members-detail');
     if (!gate || !openBtn) return;
 
+    const membersModal = document.getElementById('gate-members-modal');
+    const membersModalHost = document.getElementById('gate-members-modal-host');
+
+    const deepHash = (location.hash || '').replace(/^#/, '');
+    const deepTarget = deepHash && deepHash !== 'invitation'
+      ? document.getElementById(deepHash)
+      : null;
+    const skipGateForDeepLink = !!deepTarget;
+
+    if (skipGateForDeepLink) {
+      document.body.classList.add('gate-unlocked-main');
+      document.body.classList.remove('gate-locked', 'gate-intro', 'gate-seal-phase', 'gate-scrollable', 'gate-members-modal-open');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          deepTarget.scrollIntoView({ behavior: 'auto', block: 'start' });
+        });
+      });
+      return;
+    }
+
     document.body.classList.add('gate-locked');
     document.body.classList.add('gate-intro');
     document.body.classList.add('gate-seal-phase');
@@ -5200,9 +5325,6 @@
     }
 
     openBtn.addEventListener('click', openGate);
-
-    const membersModal = document.getElementById('gate-members-modal');
-    const membersModalHost = document.getElementById('gate-members-modal-host');
 
     function membersModalIsOpen() {
       return membersModal && membersModal.classList.contains('is-open');
@@ -5219,6 +5341,39 @@
       document.body.classList.remove('gate-members-modal-open');
       document.body.classList.remove('gate-scrollable');
       membersDetail.setAttribute('aria-hidden', 'true');
+    }
+
+    function unlockGateToMain(opts) {
+      opts = opts || {};
+      const behaviorScroll = opts.behaviorScroll != null ? opts.behaviorScroll : 'smooth';
+      const targetId = opts.targetId || null;
+      closeMembersModal();
+      document.body.classList.remove('gate-scrollable');
+      document.body.classList.remove('gate-intro');
+      document.body.classList.remove('gate-locked');
+      document.body.classList.remove('gate-seal-phase');
+      document.body.classList.add('gate-unlocked-main');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (targetId) {
+            const el = document.getElementById(targetId);
+            if (el) {
+              el.scrollIntoView({ behavior: behaviorScroll, block: 'start' });
+              try {
+                if (window.history && window.history.replaceState) {
+                  const u = new URL(window.location.href);
+                  u.hash = targetId;
+                  window.history.replaceState(null, '', u.pathname + u.search + '#' + targetId);
+                } else {
+                  window.location.hash = targetId;
+                }
+              } catch (err) { /* ignore */ }
+              return;
+            }
+          }
+          window.scrollTo({ top: 0, behavior: behaviorScroll });
+        });
+      });
     }
 
     function openMembersModal() {
@@ -5254,16 +5409,27 @@
 
     if (mainMoreBtn) {
       mainMoreBtn.addEventListener('click', () => {
-        closeMembersModal();
-        document.body.classList.remove('gate-scrollable');
-        document.body.classList.remove('gate-intro');
-        document.body.classList.remove('gate-locked');
-        document.body.classList.add('gate-unlocked-main');
-        requestAnimationFrame(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        unlockGateToMain({ behaviorScroll: 'smooth' });
       });
     }
+
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const href = a.getAttribute('href');
+      if (!href || href === '#') return;
+      if (!document.body.classList.contains('gate-locked')) return;
+      const id = href.slice(1);
+      if (id === 'invitation') return;
+      const dest = document.getElementById(id);
+      if (!dest) return;
+      e.preventDefault();
+      const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      unlockGateToMain({
+        targetId: id,
+        behaviorScroll: reduced ? 'auto' : 'smooth'
+      });
+    }, true);
   })();
 
   // Topbar — always visible
